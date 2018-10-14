@@ -1,7 +1,7 @@
 # Cryptography - encryption/decryption tools
 
-This project contains various **encryption/decryption tools** related to cryptography classes.
+This project contains various **encryption/decryption tools** related to **cryptography classes**.
 
-## Caesar Cipher
+## Affine Cipher
 
 ## Vigenere Cipher
