@@ -1,17 +1,4 @@
-# Application
-.env
-venv
-
+*.bin
+cmake-build-debug
+idea
 .idea
-
-# Python
-__pycache__/
-*.py[cod]
-
-# Editors
-*~
-*.sw[op]
-.idea/
-*.sublime-*
-tags
-tags.*
