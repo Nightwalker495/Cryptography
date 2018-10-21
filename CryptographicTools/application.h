@@ -1,0 +1,15 @@
+//
+// Created by milan on 10/14/18.
+//
+
+#ifndef CRYPTOGRAPHICTOOLS_APPLICATION_H
+#define CRYPTOGRAPHICTOOLS_APPLICATION_H
+
+
+class Application
+{
+
+};
+
+
+#endif //CRYPTOGRAPHICTOOLS_APPLICATION_H

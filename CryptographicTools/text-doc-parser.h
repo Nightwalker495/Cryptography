@@ -1,0 +1,15 @@
+//
+// Created by milan on 10/14/18.
+//
+
+#ifndef CRYPTOGRAPHICTOOLS_TEXTDOCPARSER_H
+#define CRYPTOGRAPHICTOOLS_TEXTDOCPARSER_H
+
+
+class TextDocParser
+{
+
+};
+
+
+#endif //CRYPTOGRAPHICTOOLS_TEXTDOCPARSER_H
