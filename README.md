@@ -2,6 +2,4 @@
 
 This project contains various **encryption/decryption tools** related to **cryptography classes**.
 
-## Affine Cipher
-
 ## Vigenere Cipher
