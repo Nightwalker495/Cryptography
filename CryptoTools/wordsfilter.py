@@ -20,7 +20,7 @@ def main(input_file_path, output_file_path):
             words.add(unidecode.unidecode(word))
 
     with open(output_file_path, 'w') as out_file:
-        for word in words:
+        for word in sorted(words):
             out_file.write(word + '\n')
 
     return 0
