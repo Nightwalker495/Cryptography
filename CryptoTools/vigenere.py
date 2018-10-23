@@ -5,66 +5,110 @@
 # This file is path of CryptoTools (Encryption/Decryption Tools)
 # related to the cryptography classes.
 
-import abc
 import sys
+import click
 import collections
 
 
-class LetterProbabilityAccessor(abc.ABC):
-
-    def __init__(self):
-        self.__letter_probability_dict = {}
-
-    def __getitem__(self, item):
-        item_upper = item.upper()
-        if item_upper not in self.__letter_probability_dict:
-            return 0.0
-        return self.__letter_probability_dict[item_upper]
-
-    def calc_letter_prob_diff(self, other):
-        pass
-
-    def _set_probability(self, letter, probability):
-        self.__letter_probability_dict[letter.upper()] = probability
-
-
-class TheoreticalLetterProbAccessor(LetterProbabilityAccessor):
+class ItemProbabilityCalc:
 
     @staticmethod
-    def build_from_file(file_path):
+    def init_from_item_prob_file(file_path):
         with open(file_path) as in_file:
             table = {line[0]: float(line[2:])
                      for line in in_file.readlines() if len(line) > 0}
-            return TheoreticalLetterProbAccessor(**table)
+            return ItemProbabilityCalc(**table)
 
-    def __init__(self, **kwargs):
-        super().__init__()
-
-        for letter, prob in kwargs.items():
-            self._set_probability(letter, prob)
-
-
-class SampleLetterProbAccessor(LetterProbabilityAccessor):
-
-    def __init__(self, text):
-        super().__init__()
-        self.__init_letters_count(text)
-
-    def __init_letters_count(self, text):
-        letter_count_dict = collections.defaultdict()
+    @staticmethod
+    def init_from_text(text):
+        char_count_dict = collections.defaultdict()
         total_count = 0
 
-        for c in text:
-            if not c.isalpha():
-                continue
-            letter_count_dict[c.upper()] += 1
+        for char in text:
+            char_count_dict[char] += 1
             total_count += 1
 
-        for letter, count in letter_count_dict.items():
-            self._set_probability(letter, float(count) / float(total_count))
+        table = {char: (count / float(total_count))
+                 for char, count in char_count_dict.items()}
+        return ItemProbabilityCalc(**table)
+
+    def __init__(self, **kwargs):
+        self.__item_probability_map = {}
+
+        for item, prob in kwargs.items():
+            self.__set_probability(item, prob)
+
+    def __getitem__(self, item):
+        if item not in self.__item_probability_map:
+            return 0.0
+        return self.__item_probability_map[item]
+
+    def __contains__(self, item):
+        return item in self.__item_probability_map
+
+    def calc_item_prob_diff(self, other):
+        diff = 0
+        for char, prob in self.__item_probability_map:
+            if char not in other:
+                continue
+            diff = abs(prob - other[char])
+        return diff
+
+    def __set_probability(self, item, probability):
+        if 0.0 <= probability <= 1.0:
+            self.__item_probability_map[item] = probability
+        raise ValueError('probability not in range <0, 1>')
 
 
-def main():
+class TextStripper:
+
+    @staticmethod
+    def strip_non_alpha(text):
+        return ''.join(c for c in text if c.isalpha())
+
+
+class VigenereCipher:
+
+    @staticmethod
+    def decrypt(text, password):
+        if not password.isalpha():
+            raise ValueError('password must contain only a-zA-Z letters')
+        if len(password) < 1:
+            raise ValueError('password must not be empty')
+
+        output = ''
+        password_pos = 0
+        for char in text:
+            decrypted_char = char
+            if char.isalpha():
+                decrypted_char = VigenereCipher.\
+                    __decrypt_char(char, password[password_pos])
+                password_pos = (password_pos + 1) % len(password)
+            output += decrypted_char
+
+        return output
+
+    @staticmethod
+    def __decrypt_char(char_text, char_password):
+        char_shift, password_shift = ord('A'), ord('A')
+
+        if char_text.islower():
+            char_shift = ord('a')
+        if char_password.islower():
+            password_shift = ord('a')
+
+        char_num = ord(char_text) - char_shift
+        password_num = ord(char_password) - password_shift
+        res_num = (char_num + (26 - password_num)) % 26
+
+        return chr(res_num + char_shift)
+
+
+@click.command()
+@click.argument('min_passwd_len')
+@click.argument('max_passwd_len')
+@click.argument('lang')
+def main(min_passwd_len, max_passwd_len, lang):
     return 0
 
 
