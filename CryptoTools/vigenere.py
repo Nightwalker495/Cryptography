@@ -21,7 +21,7 @@ class ItemProbabilityCalc:
 
     @staticmethod
     def init_from_text(text):
-        char_count_dict = collections.defaultdict()
+        char_count_dict = collections.defaultdict(int)
         total_count = 0
 
         for char in text:
@@ -57,7 +57,8 @@ class ItemProbabilityCalc:
     def __set_probability(self, item, probability):
         if 0.0 <= probability <= 1.0:
             self.__item_probability_map[item] = probability
-        raise ValueError('probability not in range <0, 1>')
+        else:
+            raise ValueError('probability not in range <0, 1>')
 
 
 class TextStripper:

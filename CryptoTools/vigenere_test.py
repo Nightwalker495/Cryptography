@@ -1,6 +1,8 @@
 import unittest
+
 from vigenere import TextStripper
 from vigenere import VigenereCipher
+from vigenere import ItemProbabilityCalc
 
 
 class TextStripperTest(unittest.TestCase):
@@ -87,3 +89,39 @@ class VigenereCipherTest(unittest.TestCase):
     def __then_exception_is_raised_for_decryption(self, expected_exception):
         self.assertRaises(expected_exception, VigenereCipher.decrypt,
                           self.__text, self.__password)
+
+
+class ItemProbabilityCalcTest(unittest.TestCase):
+
+    PRECISION_PLACES = 7
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__item_prob_calc_inst = None
+
+    def test_lowercase(self):
+        self.__test_letter_probability('abcdefg', 'a')
+        self.__test_letter_probability('abbbb', 'b')
+        self.__test_letter_probability('ijklmnoppppp', 'p')
+
+    def test_uppercase(self):
+        self.__test_letter_probability('ABCDEFFG', 'a')
+        self.__test_letter_probability('ABCDEFFG', 'F')
+        self.__test_letter_probability('MMNNOOPP', 'M')
+
+    def test_mixedcase(self):
+        self.__test_letter_probability('aBcDeF', 'a')
+        self.__test_letter_probability('aBcDeF', 'B')
+        self.__test_letter_probability('aBcDeF', 'c')
+
+    def __test_letter_probability(self, text, letter):
+        self.__given_text(text)
+        self.__then_item_probability_is(letter,
+                                        text.count(letter) / float(len(text)))
+
+    def __given_text(self, text):
+        self.__item_prob_calc_inst = ItemProbabilityCalc.init_from_text(text)
+
+    def __then_item_probability_is(self, item, expected_probability):
+        self.assertAlmostEqual(self.__item_prob_calc_inst[item],
+                               expected_probability, self.PRECISION_PLACES)
