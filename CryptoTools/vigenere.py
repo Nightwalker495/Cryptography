@@ -110,8 +110,6 @@ class VigenereCipher:
 class VigenereCipherBruteForceEngine:
 
     def __init__(self, text, password_len, theoretical_letter_prob):
-        if len(text) < password_len:
-            raise ValueError('text length is smaller than password length')
         if min(len(text), password_len) < 1:
             raise ValueError('text and password must not be empty')
 
@@ -128,15 +126,13 @@ class VigenereCipherBruteForceEngine:
         return subtexts
 
     def run(self):
-        password = self.__find_min_prob_diff_password()
-        print('***** Password: {0}'.format(password))
-        print(VigenereCipher.decrypt(self.__text, password))
+        return self.__find_min_prob_diff_password(self.__password_len)
 
-    def __find_min_prob_diff_password(self):
+    def __find_min_prob_diff_password(self, password_len):
         password = ''
         stripped_text = TextStripper.strip_non_alpha(self.__text)
         for subtext in self.__separate_text_into_subtexts(stripped_text,
-                                                          self.__password_len):
+                                                          password_len):
             password += self.__brute_force_subtext_caesar_cipher(subtext)
         return password
 
@@ -159,21 +155,98 @@ class VigenereCipherBruteForceEngine:
         return min_prob_password_char
 
 
-#@click.command()
-#@click.argument('min_password_len')
-#@click.argument('max_password_len')
-#@click.argument('lang')
-def main(min_password_len, max_password_len, lang):
-    with open('./input/vigenere/text_test_small_4_passwd_len.txt') as in_file:
-        content = in_file.read()
+class InvalidCmdArgsError(Exception):
+
+    def __init__(self, msg):
+        super().__init__(msg)
+
+
+class LangInfoProvider:
+
+    __SUPPORTED_LANGS = {'en': './resources/en_letter_probabilities.txt',
+                         'sk': './resources/sk_letter_probabilities.txt'}
+
+    @staticmethod
+    def get_supported_langs():
+        return iter(LangInfoProvider.__SUPPORTED_LANGS.keys())
+
+    @staticmethod
+    def get_theoretical_prob_file_for_lang(lang):
+        lang_lower = lang.strip().lower()
+        if lang_lower in LangInfoProvider.__SUPPORTED_LANGS:
+            return LangInfoProvider.__SUPPORTED_LANGS[lang_lower]
+        raise ValueError('unsupported language')
+
+
+def check_cmd_args_validity(brute_force, password, password_len_range):
+    if brute_force is None:
+        if password is None:
+            raise InvalidCmdArgsError('brute force or decryption mode '
+                                      'must be activated')
+    else:
+        if password_len_range is None:
+            raise InvalidCmdArgsError('password length range must be specified '
+                                      'in brute force mode')
+
+
+def process_decryption(text, password):
+    print('*** Text decrypted by password \'{}\''.format(password))
+    print(VigenereCipher.decrypt(text, password))
+
+
+def parse_password_len_range(password_len_range):
+    sep_pos = password_len_range.index(',')
+    if sep_pos < 0:
+        raise InvalidCmdArgsError('password length range not in format a,b')
+    return int(password_len_range[:sep_pos].strip()),\
+           int(password_len_range[sep_pos + 1:].strip())
+
+
+def process_brute_force(text, min_password_len, max_password_len):
+    if min_password_len > max_password_len:
+        min_password_len, max_password_len = max_password_len, min_password_len
+
+    for lang in LangInfoProvider.get_supported_langs():
+        print('### LANGUAGE = {}'.format(lang))
+
         theoretical_letter_prob = ItemProbabilityCalc.init_from_item_prob_file(
-            './resources/sk_letter_probabilities.txt')
-        brute_force_engine = VigenereCipherBruteForceEngine(content, 4,
-                                                            theoretical_letter_prob)
-        brute_force_engine.run()
+            LangInfoProvider.get_theoretical_prob_file_for_lang(lang))
+
+        for password_len in range(min_password_len, max_password_len + 1):
+            brute_force_engine =\
+                VigenereCipherBruteForceEngine(text, password_len,
+                                               theoretical_letter_prob)
+            password = brute_force_engine.run()
+            print('*** Brute force: [password = \'{}\'; length = {}]'.format(
+                password, password_len))
+            print(VigenereCipher.decrypt(text, password))
+
+
+@click.command()
+@click.argument('input_file_path')
+@click.option('--brute-force', is_flag=True, help='activates brute-force mode')
+@click.option('--password', help='decrypts the text using this password')
+@click.option('--password-len-range',
+              help='password length range in format a,b')
+def main(input_file_path, brute_force, password, password_len_range):
+    try:
+        check_cmd_args_validity(brute_force, password, password_len_range)
+    except InvalidCmdArgsError as e:
+        print('error: {}'.format(str(e)), file=sys.stderr)
+        return 1
+
+    with open(input_file_path) as in_file:
+        text = in_file.read()
+
+        if password is not None:
+            process_decryption(text, password)
+
+        if brute_force is not None:
+            min_len, max_len = parse_password_len_range(password_len_range)
+            process_brute_force(text, min_len, max_len)
 
     return 0
 
 
 if __name__ == '__main__':
-    sys.exit(main(4, 4, 'sk'))
+    sys.exit(main())
