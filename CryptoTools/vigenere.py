@@ -1,4 +1,4 @@
-#!/usr/bin/evn python3
+#!/usr/bin/env python3
 # Author: Milan Ondrasovic <milan.ondrasovic@gmail.com>
 # Vigenere cipher decryption
 #
@@ -20,7 +20,7 @@ class ItemProbabilityCalc:
             return ItemProbabilityCalc(**table)
 
     @staticmethod
-    def init_from_text(text):
+    def init_from_iterable(text):
         char_count_dict = collections.defaultdict(int)
         total_count = 0
 
@@ -46,12 +46,14 @@ class ItemProbabilityCalc:
     def __contains__(self, item):
         return item in self.__item_probability_map
 
+    def __iter__(self):
+        return iter(self.__item_probability_map.items())
+
     def calc_item_prob_diff(self, other):
         diff = 0
-        for char, prob in self.__item_probability_map:
-            if char not in other:
-                continue
-            diff = abs(prob - other[char])
+        for char, prob in self.__item_probability_map.items():
+            if char in other:
+                diff += abs(prob - other[char])
         return diff
 
     def __set_probability(self, item, probability):
@@ -105,13 +107,73 @@ class VigenereCipher:
         return chr(res_num + char_shift)
 
 
-@click.command()
-@click.argument('min_passwd_len')
-@click.argument('max_passwd_len')
-@click.argument('lang')
-def main(min_passwd_len, max_passwd_len, lang):
+class VigenereCipherBruteForceEngine:
+
+    def __init__(self, text, password_len, theoretical_letter_prob):
+        if len(text) < password_len:
+            raise ValueError('text length is smaller than password length')
+        if min(len(text), password_len) < 1:
+            raise ValueError('text and password must not be empty')
+
+        self.__text = text
+        self.__password_len = password_len
+        self.__theoretical_letter_prob = theoretical_letter_prob
+
+    @staticmethod
+    def __separate_text_into_subtexts(text, subtexts_no):
+        subtexts = []
+        for i in range(subtexts_no):
+            subtexts.append(''.join(
+                [text[j] for j in range(i, len(text), subtexts_no)]))
+        return subtexts
+
+    def run(self):
+        password = self.__find_min_prob_diff_password()
+        print('***** Password: {0}'.format(password))
+        print(VigenereCipher.decrypt(self.__text, password))
+
+    def __find_min_prob_diff_password(self):
+        password = ''
+        stripped_text = TextStripper.strip_non_alpha(self.__text)
+        for subtext in self.__separate_text_into_subtexts(stripped_text,
+                                                          self.__password_len):
+            password += self.__brute_force_subtext_caesar_cipher(subtext)
+        return password
+
+    def __brute_force_subtext_caesar_cipher(self, subtext):
+        min_prob_password_char, min_prob_diff = 0, float('inf')
+
+        for i in range(ord('A'), ord('Z') + 1):
+            password_char = chr(i)
+
+            decrypted_subtext = VigenereCipher.decrypt(subtext, password_char)
+            item_prob_calc = ItemProbabilityCalc.init_from_iterable(
+                decrypted_subtext)
+
+            prob_diff = self.__theoretical_letter_prob. \
+                calc_item_prob_diff(item_prob_calc)
+
+            if prob_diff < min_prob_diff:
+                min_prob_password_char, min_prob_diff = password_char, prob_diff
+
+        return min_prob_password_char
+
+
+#@click.command()
+#@click.argument('min_password_len')
+#@click.argument('max_password_len')
+#@click.argument('lang')
+def main(min_password_len, max_password_len, lang):
+    with open('./input/vigenere/text_test_small_4_passwd_len.txt') as in_file:
+        content = in_file.read()
+        theoretical_letter_prob = ItemProbabilityCalc.init_from_item_prob_file(
+            './resources/sk_letter_probabilities.txt')
+        brute_force_engine = VigenereCipherBruteForceEngine(content, 4,
+                                                            theoretical_letter_prob)
+        brute_force_engine.run()
+
     return 0
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(4, 4, 'sk'))

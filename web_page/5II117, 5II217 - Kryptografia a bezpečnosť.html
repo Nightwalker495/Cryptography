@@ -1,0 +1,633 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<link rel="stylesheet" type="text/css" href="5II117,%205II217%20-%20Kryptografia%20a%20bezpe%C4%8Dnos%C5%A5_files/styles.css">
+	<title>5II117, 5II217 - Kryptografia a bezpečnosť</title>
+</head>
+
+<body><table class="doc" cellspacing="0" cellpadding="0" border="0">
+
+	<tbody><tr class="head">
+		<!-- logo FRI -->
+		<td class="logo"><div class="logo">
+			<img src="5II117,%205II217%20-%20Kryptografia%20a%20bezpe%C4%8Dnos%C5%A5_files/fri.gif" alt="logo" border="0">
+		</div></td>
+		<!-- title -->
+		<td class="title"><div class="title">
+			5II117, 5II217 - Kryptografia a bezpečnosť
+		</div></td>
+	</tr><tr class="main">
+		<!-- navigation -->
+		<td class="menu"><div class="menu">
+			<p><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#oznamy">Oznamy</a></p>
+			<p><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#podmienky">Podmienky na zápočet</a></p>
+			<p><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#zadania">Zadania semestrálnyc prác</a></p>
+			<p>Prvé cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#caesar">Ceazarovská šifra</a></li>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#affine">Afínna šifra</a><br>
+				</li><li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#frequency">Frekvenčná analýza jazyka</a><br>
+			</li></ul>
+			<p>Druhé cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#coincidence">Index koincidencie</a></li>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#vigenere">Viegenerovská šifra</a><br>
+			</li></ul>
+			<p>Tretie cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#hill">Hillovská šifra</a></li>
+			</ul>
+			<p>Štvrté cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#stream">Prúdová šifra</a></li>
+			</ul>
+			<p>Piate cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#lfsr">Posuvné registre s&nbsp;lineárnou spätnou väzbou</a></li>
+			</ul>
+			<p>Šieste cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#feistell">Šifry Feistellovho typu</a></li>
+			</ul>
+			<p>Siedme cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#idea">Šifra IDEA</a></li>
+			</ul>
+			<p>Ôsme cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#numbers">Vlastnosti čísel a prvočísel</a></li>
+			</ul>
+			<p>Deviate cvičenie</p>
+			<ul>
+				<li><a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#rsa">RSA algoritmus</a></li>
+			</ul>
+		</div></td>
+		<!-- main content -->
+		<td class="main"><div class="vscroll"><div class="main">
+
+			<h1>Cvičenia z predmetu Kryptografia a bezpečnosť, akademický rok 2018/2019</h1>
+
+			<h2 id="oznamy">Oznamy</h2>
+			
+			<p class="upozornenie">Dňa 25.10.2018 (štvrtok) budem na konferencii 
+AIESA v Bratislave, preto budú cvičenia v náhradnom termíne. Na presnom 
+dátume a čase sa dohodneme.
+			
+			</p><p class="upozornenie">Dňa 30.10.2018 (utorok) a 1.11.2018 (štvrtok) cvičenia odpadajú, lebo je štátny sviatok.
+			
+			</p><p class="upozornenie">Dňa 8.11.2018 (štvrtok) budem na 
+konferencii TransData na Táloch, preto budú cvičenia v náhradnom 
+termíne. Na presnom dátume a čase sa dohodneme.
+
+			</p><h2 id="podmienky">Podmienky na zápočet</h2>
+
+			<p>Body zo semestra sa získavajú za vypracovanie semestrálnych prác -
+ vyriešenie zadaného problému. Počet bodov, ktoré za vypracovanie 
+semestrálnej úlohy môžete získať je 
+			uvedený v zadaní. Na úspešné absolvovanie cvičení je potrebné získať 
+aspoň 20 bodov z celkovo možných 40 bodov. 
+			
+			</p><p>Semestrálne práce sa odovzdávajú osobne na cvičení (v jeho 
+druhej polovici) alebo v individuálne dohodnutom termíne cez e-mail. K 
+jednotlivým riešeniam úloh nie je potrebné vypracovať dokumentáciu,
+			ale musíte rozumieť metóde a odpovedať na moje otázky pri 
+odovzdávaní. Semestrálky je možné odovzdať aj v januári, posledný možný 
+termín je deň pred skúškou. 
+			
+			</p><p>Zadania nájdete na tejto stránke <a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#zadania">dole</a>.
+
+			</p><h2 id="obsah">Obsah cvičení:</h2>
+			<ol>
+				<li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#prve">Monoalfabetické šifry, cézarovská a afínna šifra.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#druhe">Polyalfabetické šifry, viegenerovská šifra.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#tretie">Hillovská šifra, operácie v Galoisovom poli.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#stvrte">Prúdové šifry, štatistické vlastnosti generátorov náhodných čísel.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#piate">Lineárne spätnoväzobné registre.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#sieste">Šifrovacie algoritmy Feistellovho typu.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#siedme">Šifrovací algoritmus IDEA.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#osme">Štúdium vlastností čísel a prvočísel.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#deviate">RSA algoritmus.</a>
+				</li><li>
+					<a href="http://mayor.fri.uniza.sk/krypto/cvicenia.php#desiate">Práca s programom PGP.</a>
+				</li><li>
+					Diskusné fórum.
+			</li></ol>
+
+			<div class="cvicenie" id="prve">
+			
+				<h2>Monoalfabetické šifry</h2>
+				<h3 id="caesar">Cézarovská šifra</h3>
+				<p>Príklad cézarovskej šifry v tabuľkovom procesore: <a href="http://mayor.fri.uniza.sk/krypto/subory/cezarovska_sifra.ods">cezarovska_sifra.ods</a>.
+				</p><h3 id="affine">Afínna šifra</h3>
+				Príklad afínnej šifry v tabuľkovom procesore: <a href="http://mayor.fri.uniza.sk/krypto/subory/afinna_sifra.ods">afinna_sifra.ods</a>.
+				<div class="uloha">
+					<p>Dešifrujte nasledovný text v telegrafnej abecede
+					s medzerou zašifrovaný afínnou šifrou:
+					</p><pre>LIYGTOGDPOAUPDFQNVPVDAQV</pre>
+					Pôvodný text bol napísaný v slovenskom jazyku.
+				</div>
+				<div class="navod">
+					<p>Najskôr implementujte algoritmus afinnej
+					šifry pre telegrafnu abecedu s medzerou.
+					Príklad v C <a href="http://mayor.fri.uniza.sk/krypto/01/afinna.c">afinna.c</a>
+				</p></div>
+
+				<h3>Kódovacia tabuľka znakov na čísla</h3>
+				
+				<table width="*" cellspacing="2" cellpadding="2" border="1">
+					<tbody><tr><th width="100" align="center">A</th><td width="100" align="center">0</td><th width="100" align="center">J</th><td width="100" align="center">9</td><th width="100" align="center">S</th><td width="100" align="center">18
+					</td></tr><tr><th align="center">B</th><td align="center">1</td><th align="center">K</th><td align="center">10</td><th align="center">T</th><td align="center">19
+					</td></tr><tr><th align="center">C</th><td align="center">2</td><th align="center">L</th><td align="center">11</td><th align="center">U</th><td align="center">20
+					</td></tr><tr><th align="center">D</th><td align="center">3</td><th align="center">M</th><td align="center">12</td><th align="center">V</th><td align="center">21
+					</td></tr><tr><th align="center">E</th><td align="center">4</td><th align="center">N</th><td align="center">13</td><th align="center">W</th><td align="center">22
+					</td></tr><tr><th align="center">F</th><td align="center">5</td><th align="center">O</th><td align="center">14</td><th align="center">X</th><td align="center">23
+					</td></tr><tr><th align="center">G</th><td align="center">6</td><th align="center">P</th><td align="center">15</td><th align="center">Y</th><td align="center">24
+					</td></tr><tr><th align="center">H</th><td align="center">7</td><th align="center">Q</th><td align="center">16</td><th align="center">Z</th><td align="center">25
+					</td></tr><tr><th align="center">I</th><td align="center">8</td><th align="center">R</th><td align="center">17</td><th align="center">_</th><td align="center">26
+				</td></tr></tbody></table>
+
+				<h2 id="frequency">Frekvenčná analýza jazyka</h2>
+				<p>Príklad frekvenčnej analýzy slovenského textu (graf) v tabuľkovom procesore: <a href="http://mayor.fri.uniza.sk/krypto/subory/frekvencna_analyza.ods">frekvencna_analyza.ods</a>.
+				</p><div class="uloha">
+					<p>Urobte frekvenčnú analýzu anglického a slovenského jazyka, určte
+					pravdepodobnosti výskytov jednotlivých znakov referenčného textu
+					v rôznych kódových abecedách (telegrafná, telegrafná s medzerou, ASCII,
+					LATIN2, ...). Určte pravdepodobnosti dvojíc aj trojíc znakov. Na základe meraní
+					navrhnite náhodný generátor slov daného jazyka.
+					</p><p>Príklad anglického textu:<br>
+					</p><ul>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/01/en_teleg.txt">v telegrafnej abecede s medzerou</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/01/en_ascii.txt">v ASCII kóde</a></li>
+					</ul>
+					<p>Príklad slovenského textu:<br>
+					</p><ul>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/01/sk_teleg.txt">v telegrafnej abecede s medzerou</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/01/sk_ascii.txt">v ASCII kóde</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/01/sk_il2.txt">v ISO Latin 2 kóde</a></li>
+					</ul>
+				</div>
+				<div class="navod">
+					<p>Ukážka programu v C:
+					<a href="http://mayor.fri.uniza.sk/krypto/01/telegr.c">telegr.c</a>
+				</p><p>Výstup programu:<br>
+</p><pre>./telegr en_teleg.txt
+
+A:  267 vyskyt(-y, -ov), p = 0.0657
+B:   51 vyskyt(-y, -ov), p = 0.0126
+C:  162 vyskyt(-y, -ov), p = 0.0399
+D:  131 vyskyt(-y, -ov), p = 0.0322
+E:  389 vyskyt(-y, -ov), p = 0.0957
+F:   71 vyskyt(-y, -ov), p = 0.0175
+G:   59 vyskyt(-y, -ov), p = 0.0145
+H:  164 vyskyt(-y, -ov), p = 0.0404
+I:  285 vyskyt(-y, -ov), p = 0.0701
+J:    5 vyskyt(-y, -ov), p = 0.0012
+K:   20 vyskyt(-y, -ov), p = 0.0049
+L:  100 vyskyt(-y, -ov), p = 0.0246
+M:   94 vyskyt(-y, -ov), p = 0.0231
+N:  224 vyskyt(-y, -ov), p = 0.0551
+O:  245 vyskyt(-y, -ov), p = 0.0603
+P:  121 vyskyt(-y, -ov), p = 0.0298
+Q:    2 vyskyt(-y, -ov), p = 0.0005
+R:  234 vyskyt(-y, -ov), p = 0.0576
+S:  236 vyskyt(-y, -ov), p = 0.0581
+T:  342 vyskyt(-y, -ov), p = 0.0842
+U:   78 vyskyt(-y, -ov), p = 0.0192
+V:   33 vyskyt(-y, -ov), p = 0.0081
+W:   35 vyskyt(-y, -ov), p = 0.0086
+X:    3 vyskyt(-y, -ov), p = 0.0007
+Y:   68 vyskyt(-y, -ov), p = 0.0167
+Z:    2 vyskyt(-y, -ov), p = 0.0005
+
+medzera: 642 vyskyt(-y, -ov), p = 0.1580
+
+Spolu: 4063 znak(-y, -ov)
+
+./telegr sk_teleg.txt
+
+A:  228 vyskyt(-y, -ov), p = 0.0995
+B:   27 vyskyt(-y, -ov), p = 0.0118
+C:   61 vyskyt(-y, -ov), p = 0.0266
+D:  100 vyskyt(-y, -ov), p = 0.0436
+E:  160 vyskyt(-y, -ov), p = 0.0698
+F:   26 vyskyt(-y, -ov), p = 0.0113
+G:    4 vyskyt(-y, -ov), p = 0.0017
+H:   40 vyskyt(-y, -ov), p = 0.0175
+I:  163 vyskyt(-y, -ov), p = 0.0711
+J:   36 vyskyt(-y, -ov), p = 0.0157
+K:   93 vyskyt(-y, -ov), p = 0.0406
+L:   60 vyskyt(-y, -ov), p = 0.0262
+M:   81 vyskyt(-y, -ov), p = 0.0354
+N:  148 vyskyt(-y, -ov), p = 0.0646
+O:  186 vyskyt(-y, -ov), p = 0.0812
+P:   41 vyskyt(-y, -ov), p = 0.0179
+Q:    0 vyskyt(-y, -ov), p = 0.0000
+R:   98 vyskyt(-y, -ov), p = 0.0428
+S:  106 vyskyt(-y, -ov), p = 0.0463
+T:   99 vyskyt(-y, -ov), p = 0.0432
+U:   88 vyskyt(-y, -ov), p = 0.0384
+V:   72 vyskyt(-y, -ov), p = 0.0314
+W:    0 vyskyt(-y, -ov), p = 0.0000
+X:    1 vyskyt(-y, -ov), p = 0.0004
+Y:   39 vyskyt(-y, -ov), p = 0.0170
+Z:   40 vyskyt(-y, -ov), p = 0.0175
+
+medzera: 294 vyskyt(-y, -ov), p = 0.1283
+
+Spolu: 2291 znak(-y, -ov)
+</pre>
+				</div>
+			</div>
+			
+			<div class="cvicenie" id="druhe">
+
+				<h2>Polyalfabetické šifry</h2>
+				<h3 id="coincidence">Index koincidencie</h3>
+				<div class="uloha">
+					<p>Určte Indexy koincidencie pre nasledovné texty. Na základe výsledku
+					posúdte, či ide o monoalfabetickú príp. polyalfabetickú šifru. Priame texty 
+					sú napísané v slovenskom jazyku v telegrafnej abecede bez medzery. Pokúste sa 
+					texty dešifrovať.
+					</p><p>Zašifrované texty:
+					</p><ul>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/02/text1.txt">Text 1</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/02/text2.txt">Text 2</a></li>
+					</ul>
+				</div>
+				<div class="navod">
+					<p>Ukážka programu v C:
+					<a href="http://mayor.fri.uniza.sk/krypto/02/koinc.c">koinc.c</a>
+					</p><p>Výstup programu:
+</p><pre>./koinc text1.txt
+Index koincidencie: 0.0422 (0.0457)
+
+./koinc text2.txt
+Index koincidencie: 0.0589 (0.0634)
+</pre>
+				</div>
+
+				<h3 id="vigenere">Vigenerovská šifra</h3>
+				<p>Príklad viegenerovskej šifry v tabuľkovom procesore: <a href="http://mayor.fri.uniza.sk/krypto/subory/viegenerovska_sifra.ods">viegenerovska_sifra.ods</a>
+				</p><div class="uloha">
+					<p>Dešifrujte <a href="http://mayor.fri.uniza.sk/krypto/02/text1.txt">text1.txt</a> zašifrovaný viegenerovskou šifrou. 
+					Šifrovali sa len písmená telegrafnej abecedy programom v jazyku C <a href="http://mayor.fri.uniza.sk/krypto/02/vigen.c">vigen.c</a>.
+				</p></div>
+				<div class="navod">
+					<p>Na uhádnutie dĺžky použitého hesla môžete použiť Kasiského metódu, ktorá hľadá rovnaké trojice znakov 
+					v šifrovanom texte a vypočíta vzdialenosť medzi nimi. Táto vzdialenosť je s veľkou pravdepodobnosťou
+					násobkom dlžky hesla. Takto nejak môže vyzerať implementácia v jazyku Pascal: <a href="http://mayor.fri.uniza.sk/krypto/02/kassisk.pas">kassisk.pas</a>.
+					</p><p>Výstup programu:
+</p><pre>./kassisk
+13, 92, 92, 190, 12, 12, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 
+128, 128, 128, 128, 128, 128, 128, 128, 16, 160, 137, 160, 8, 8, 8, 24, 23, 23,
+</pre>
+				</div>
+			</div>
+			
+			<div class="cvicenie" id="tretie">
+				
+				<h3 id="hill">Hillovská šifra</h3>
+				<div class="uloha">
+					<p>Určte maticu <em>K</em> Hillovskej šifry šifrujúcej bigramy, ak 
+					viete, že <tt>FRIDAY</tt> sa zašifruje na <tt>PQCFKU</tt>. Používa sa 
+					telegrafná abeceda bez medzery.
+				</p></div>
+				<div class="navod">
+					<p>Maticové výpočty: <a href="http://mayor.fri.uniza.sk/krypto/02/hillovska_sifra.ods">hillovska_sifra.ods</a>.
+				</p></div>
+
+				<h3>Galoisove pole GF(2<sup>8</sup>)</h3>
+				<div class="uloha">
+					<p>Naprogramujte operácie násobenia matíc a výpočtu lineárnych rovníc v poli GF(2<sup>8</sup>).
+				</p></div>
+				<div class="navod">
+					<p>Zdrojový kód v jazyku C na hľadanie inverzného prvku: <a href="http://mayor.fri.uniza.sk/krypto/02/galois_2_8.c">galois_2_8.c</a>.
+				</p></div>
+			</div>
+			
+			<div class="cvicenie" id="stvrte">
+
+				<h2 id="stream">Prúdové šifry</h2>
+				<div class="uloha">
+					<p>Naprogramujte algoritmus prúdovej šifry (využite vstavaný generátor
+					pseudonáhodných čísel). Zašifrujte pomocou neho dostatočne dlhý text a urobte
+					frekvenčnú analýzu zašifrovaného textu. Aké bude rozdelenie
+					pravdepodobnosti znakov zašifrovaného textu? Vypočítajte index koincidencie
+					zašifrovaného textu.
+				</p></div>
+				<div class="navod">
+					<p>Generátor pseudonáhodnej postupnosti: <a href="http://mayor.fri.uniza.sk/krypto/03/prudova_sifra.ods">prudova_sifra.ods</a>.
+				</p></div>
+				<div class="uloha">
+					<p>Pokúste sa dešifrovať správu zašifrovanú prúdovou šifrou s použitím 
+					lineárneho kongruetného generátora pseudonáhodných čísel. Šifrované boli 
+					len znaky telegrafnej abecedy súčtom modulo 26 so znakmi náhodnej postupnosti 
+					pomocou programu <a href="http://mayor.fri.uniza.sk/krypto/03/otp.c">otp.c</a> resp. <a href="http://mayor.fri.uniza.sk/krypto/03/otp.pas">otp.pas</a>
+					(s inou postupnosťou!).
+					</p><p>Tu je šifrovaný text správy: <a href="http://mayor.fri.uniza.sk/krypto/03/sprava_enc.txt">sprava_enc.txt</a>.
+				</p></div>
+
+				<h3>Vlastnosti generátorov pseudonáhodných čísel</h3>
+				<div class="uloha">
+					<p>Otestujte vstavaný generátor pseudonáhodných čísel podľa špecifikácie
+					<a href="http://mayor.fri.uniza.sk/krypto/fips/index.html">FIPS140-1</a>. Otestujte prípadne aj ďalšie dostupné generátory.
+				</p></div>
+				<div class="navod">
+					<p>Urobte program, ktorý do súboru zapíše 20000 náhodne vygenerovaných
+					bitov (použite znaky '0' a '1'). Súbor potom "pošlite" na 
+					spracovanie skriptu na vyššie uvedenej adrese.
+				</p></div>
+				<div>
+					<p>Špecifikácia FIPS 140:
+					</p><ul>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/04/fips140-1.pdf">FIPS140-1</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/04/fips140-2.pdf">FIPS140-2</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="cvicenie" id="piate">
+				<h3 id="lfsr">Posuvné registre s&nbsp;lineárnou spätnou väzbou</h3>
+
+				<div class="uloha">
+					<p>Naprogramujte generátor pseudonáhodnej postupnosti založený na 
+					lineárnom spätnoväzobnom registri. Overte štatistické vlastnosti 
+					takéhoto generátora (napr. pomocou <a href="http://mayor.fri.uniza.sk/krypto/fips/index.html">FIPS testu</a>).
+				</p></div>
+				<div class="navod">
+					<p>Ukážka programu:
+					</p><ul>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/05/lfsr.c">lfsr.c</a></li>
+						<li><a href="http://mayor.fri.uniza.sk/krypto/05/lfsr.ods">lfsr.ods</a></li>
+					</ul>
+				</div>
+
+				<div class="uloha">
+					<p>Určte koeficienty 8-bitového lineárneho spätnoväzobného 
+					registra ak viete, že jeho výstup bol
+					<tt>...1110010011001111...</tt>
+				</p></div>
+				<div class="navod">
+					<p>Označme postupnosť k0,k1,k2,..k15 a uvažujme stav registra v časoch
+					t = 0,1,2,..15 pred posunom. Ak v čase T bol výstup x znamená to, 
+					že pred posunom bolo x v bite 0 registra, v čase T-1 (pred dvomi posunmi)
+					bolo x v bite 1 registra, v čase T-2 bolo x v bite 2 registra atď. 
+					Ak mame postupnost 8 bitov k0,k1,..,k7, potom vieme že v čase t=0 sa 
+					register nachádzal v stave k7,k6,..k0. Ak mame 9 bitov k0,k1,..k8, 
+					potom v čase t=0 bol stav registra k7,k6,..k0 a v nasledujúcom kroku 
+					prešiel do stavu k8,k7,..k1. Teda f(k7,k6,..k0) = k8. Pri ďaľšom 
+					posune bude f(k8,k7,..k1) = k9. Takto je možne zostaviť 8 linerárnych 
+					rovníc a ich riešením v poli Z2 (modulo 2) dostaneme hľadané koeficienty.
+				</p></div>
+
+			</div>
+
+			<div class="cvicenie" id="sieste">
+				<h3 id="feistell">Šifry Feistellovho typu</h3>
+				<div class="uloha">
+					Naprogramujte vlastnú šifru Feistllovho typu a pokúste sa urobiť jej 
+					kryptoanalýzu.
+				</div>
+				<div class="navod">
+					Šifra Feistellovho typu je iteračná šifra, ktorá pozostáva z niekoľkých 
+					kôl.
+					<div class="image"><img src="5II117,%205II217%20-%20Kryptografia%20a%20bezpe%C4%8Dnos%C5%A5_files/iteracna.png"></div>
+					Každé kolo predstavuje Feistellova funkcia, pričom funkcia <tt>f</tt>
+					nemá vplyv na funkčnosť algoritmu len na jeho kryptografické vlastnosti.
+					<div class="image"><img src="5II117,%205II217%20-%20Kryptografia%20a%20bezpe%C4%8Dnos%C5%A5_files/feistell.png"></div>
+					L a R predstavujú ľavú a pravú polovicu šifrovaného bloku, K sú kolové 
+					kľúče vygenerované z tajného kľúča.
+					<p>Zdrojový kód:
+					<a href="http://mayor.fri.uniza.sk/krypto/07/feistell.c">feistell.c</a>
+					</p><p>Príklad:
+					Najznámejšou šifrou Feistellovho typu je DES,
+					jeho úplnú špecifikáciu môžete nájsť vo
+					<a href="http://mayor.fri.uniza.sk/krypto/07/fips46-3.pdf">FIPS46-3</a>.
+				</p></div>
+			</div>
+
+			<div class="cvicenie" id="siedme">
+				<h3 id="idea">Šifra IDEA</h3>
+				<div class="uloha">
+					Naprogramujte mini verziu blokovej šifry IDEA, t.j. všetky operácie
+					budú vykonávané nad 4-bitovými blokmi. Pokúste sa naprogramovať útok 
+					s volenými priamymi textami a dešifrovať správu <a href="http://mayor.fri.uniza.sk/krypto/08/sprava.enc">
+					sprava.enc</a> zašifrovanú pomocou programu <a href="http://mayor.fri.uniza.sk/krypto/08/miniidea">
+					miniidea</a>. Pokúste sa určiť aj použité kľúče.
+				</div>
+				<div class="navod">
+					Šifra IDEA na šifrovanie využíva 3 operácie: XOR, sčítanie modulo 
+					65536 a násobnie modulo 65537 (pričom číslo 0 sa považuje za 65536).
+					V našej mini verzii pôjde o XOR, sčítanie modulo 16 a násobenie modulo
+					17 (0 sa bude považovať za 16). Šifra pozostáva z 8 kôl a výstupnej
+					transformácie, naša mini-verzia bude mať len 2 kolá bez výstupnej 
+					transformácie. IDEA využíva 128 bitový tajný kľúč z ktorého sa vytvorí
+					(8*6 + 4) 16-bitových kľúčov, naša mini-verzia bude potrebovať (2*6) 
+					4-bitových kľúčov, ktoré budú volené priamo.
+					<div class="image"><img src="5II117,%205II217%20-%20Kryptografia%20a%20bezpe%C4%8Dnos%C5%A5_files/mini.png"></div>
+					<p>Zdrojový kód:
+					<a href="http://mayor.fri.uniza.sk/krypto/08/miniidea.c">miniidea.c</a> (!!! nie je zdrojový text
+					k vyššie uvedenej binárke !!!)
+					</p><p>Špecifikácia:
+					Úplný popis šifry IDEA môžete nájsť v tretej
+					kapitole dizertačnej práce jej autora X.Lai-a 
+					<a href="http://mayor.fri.uniza.sk/krypto/08/idea.chap.3.ps.gz">idea.chap.3.ps.gz</a>
+				</p></div>
+			</div>
+
+			<div class="cvicenie" id="osme">
+				<h3 id="numbers">Štúdium vlastností čísel a prvočísel</h3>
+				<div class="uloha">
+					Napíšte program, ktorý vypíše všetky prvočísla menšie ako 1.000.000.
+				</div>
+				<div class="navod">
+					Na určenie prvočísel použite tzv. Eratostenovo sito.
+				</div>
+				<div class="program">
+					<a href="http://mayor.fri.uniza.sk/krypto/09/prvocisla.c">prvocisla.c</a>.
+				</div>
+				<div class="uloha">
+					Naprogramujte generátor veľkých prvočísel využitím pravdepodobnostného 
+					Miller-Rabinovho testu prvočíselnosti.
+				</div>
+				<div class="navod">
+					Martin Stanek: <a href="http://mayor.fri.uniza.sk/krypto/09/rsa.pdf">RSA</a>
+				</div>
+				<div class="program">
+					<a href="http://mayor.fri.uniza.sk/krypto/09/millrab.c">millrab.c</a>
+				</div>
+				<div class="uloha">
+					Naprogramujte rozšírený Euklidov algoritmus a použite ho na výpočet 
+					inverzného prvku v konečnom poli.
+				</div>
+				<div class="program">
+					<a href="http://mayor.fri.uniza.sk/krypto/09/euklidov.ods">euklidov.ods</a>, 
+					<a href="http://mayor.fri.uniza.sk/krypto/09/euklidov.c">euklidov.c</a>
+				</div>
+			</div>
+
+			<div class="cvicenie" id="deviate">
+				<h3 id="rsa">RSA algoritmus</h3>
+				<div class="uloha">
+					Naprogramujte RSA algoritmus pre kľúče s modulom nanajvýš 65536 (16 bitov).
+				</div>
+				<div class="navod">
+					RSA algoritmus šifruje vstupné bloky s číselnou hodnotou nanajvýš (n-1). 
+					Preto sa napr. pri 1024 bitovom kľúči (2^1023 &lt;= n &lt; 2^1024) 
+					šifrujú	1023 bitové bloky (x &lt; 2^1023) a výstup je 1024 bitový blok 
+					(y &lt; 2^1024). 
+					Náš program bude pre jednoduchosť čítať 8-bitový blok 
+					a zapisovať výstup ako 16-bitový blok. Pri dešifrovaní 
+					to potom musí byť naopak.
+				</div>
+				<div class="program">
+					<a href="http://mayor.fri.uniza.sk/krypto/10/rsa.c">rsa.c</a>.
+				</div>
+				<div class="uloha">
+					Dešifrujte správu <a href="http://mayor.fri.uniza.sk/krypto/10/sprava.enc">sprava.enc</a> 
+					zašifrovanú RSA algoritmom použitím verejného kľúča (43811, 7).
+				</div>
+				<div class="navod">
+					Urobte rozklad čísla 43811 na prvočinitele a 
+					určte preň hodnotu Eulerovej funkcie. Pomocou rozšíreného 
+					Euklidovho algoritmu určte súkromný kľúč a potom už správu 
+					ľahko dešifrujete.
+				</div>
+			</div>
+<!--
+
+			<DIV class="cvicenie" id="desiate">
+			</DIV>
+-->
+
+		<div class="zadania" id="zadania">
+
+			<h2>Zadania semestrálnych prác v&nbsp;akademickom roku 2018/2019</h2>
+
+			<h3>Úloha č. 1, Vigenerovská šifra (8 bodov)</h3>
+
+			<p>Dešifrujte <b>všetky</b> nižšie uvedené texty zašifrované vigenerovskou šifrou a určte použité
+			heslá. Šifrujú sa len písmená veľkej telegrafnej abecedy (mod 26), všetky ostatné (väčšinou formátovacie)
+			znaky ignorujte. Heslo je náhodne vygenerované, primerane dlhé (od 20 do 29 znakov vrátane). 
+			Pôvodné (priame texty) môžu byť v slovenskom aj anglickom jazyku!
+				
+			</p><p>Program použitý na zašifrovanie: 
+				<a href="http://mayor.fri.uniza.sk/krypto/2018/u1/vigenere.c">vigenere.c</a>. 
+			
+			</p><p>Zašifrované texty: 
+				<a href="http://mayor.fri.uniza.sk/krypto/2018/u1/text1_enc.txt">text1_enc.txt</a>, 
+				<a href="http://mayor.fri.uniza.sk/krypto/2018/u1/text2_enc.txt">text2_enc.txt</a>, 
+				<a href="http://mayor.fri.uniza.sk/krypto/2018/u1/text3_enc.txt">text3_enc.txt</a> a 
+				<a href="http://mayor.fri.uniza.sk/krypto/2018/u1/text4_enc.txt">text4_enc.txt</a>. 
+
+			</p><h3>Úloha č. 2, Hillovská šifra (6 bodov)</h3>
+
+			<p>Dešifrujte <b>všetky</b> tri nižšie uvedené texty zašifrované pomocou Hillovskej šifry 
+			šifrujúcej trigramy (kľúčom je matica rozmeru 3x3), ak sa priamy text vždy začínal na <tt>"DRAHYJURAJ"</tt>.
+			</p><ol>
+				<li><tt>"BALQTGFGYNFUHVLOIVCGPRZJUTHGWOVWCWAJGWN"</tt></li>
+				<li><tt>"PCPOVZOJYEJXJLVINLJMIAVAVEUKZLERO"</tt></li>
+				<li><tt>"NMUSMRFJGRWSWVKKDJKYTYTNSVMOJW"</tt></li>
+			</ol>
+			
+			<p>Šifrujú sa písmená veľkej telegrafnej abecedy (operácie sú modulo 26). 
+			Matice stačí vypočítať v tabuľkovom procesore (MS Excel, LibreOffice Calc, ...) 
+			alebo v Matlab-e (octave, sage, wolfram alpha, ...) alebo podobnom softvéri. 
+			Nemusíte (ale samozrejme môžete) výpočet naprogramovať. 
+			
+			</p><p>Pozor! Násobenie matíc nie je komutatívne!
+
+			</p><h3>Úloha č. 3, Prúdová šifra (6 bodov)</h3>
+
+			<p> Určte <b>všetky</b> štyri použité kľúče prúdovej šifry 
+			(násadu generátora pseudonáhodných čísel) pre nasledujúce 
+			texty zašifrované pomocou programu 
+			<a href="http://mayor.fri.uniza.sk/krypto/2017/u3/stream.c">stream.c</a>.
+			
+			</p><p>Zašifrované texty: 
+				<a href="http://mayor.fri.uniza.sk/krypto/2017/u3/text1_enc.txt">text1_enc.txt</a>, 
+				<a href="http://mayor.fri.uniza.sk/krypto/2017/u3/text2_enc.txt">text2_enc.txt</a>, 
+				<a href="http://mayor.fri.uniza.sk/krypto/2017/u3/text3_enc.txt">text3_enc.txt</a> a 
+				<a href="http://mayor.fri.uniza.sk/krypto/2017/u3/text4_enc.txt">text4_enc.txt</a>. 
+
+<!--
+
+			<H3>Úloha č. 4, RSA algoritmus (8 bodov)</H3>
+
+			<P> Vypočítajte <B>aspoň 3</B> privátne kľúče algoritmu RSA a dešifrujte správu (číslo):
+			<OL>
+				<LI>n&nbsp;=&nbsp;13169004533; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;6029832903;</LI>
+				<LI>n&nbsp;=&nbsp;1690428486610429; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;22496913456008;</LI>
+				<LI>n&nbsp;=&nbsp;56341958081545199783; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;17014716723435111315;</LI>
+				<LI>n&nbsp;=&nbsp;6120215756887394998931731; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;5077587957348826939798388;</LI>
+				<LI>n&nbsp;=&nbsp;514261067785300163931552303017; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;357341101854457993054768343508;</LI>
+				<LI>n&nbsp;=&nbsp;21259593755515403367535773703117421; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;18829051270422357250395121195166553;</LI>
+				<LI>n&nbsp;=&nbsp;1371108864054663830856429909460283182291; e&nbsp;=&nbsp;65537; y&nbsp;=&nbsp;35962927026249687666434209737424754460;</LI>
+			</OL>
+
+			<P>Ak sú čísla príliš veľké na faktorizáciu hrubou silou, treba si pomôcť 
+			sofistikovaným algoritmom implementovaným v nejakej knižnici alebo napríklad
+			aj Wolfram Alpha.
+
+			<H3>Úloha č. 5, Autentifikácia heslom (6 bodov)</H3>
+
+			<P>Pokúste sa určiť heslá niekoľkých používateľov systému, z ktorého sa 
+			podarilo skopírovať tabuľku s prihlasovacími údajmi. Tabuľka v textovej 
+			podobe obsahuje prihlasovacie meno, soľ a odtlačok hesla (so soľou). Odtlačok
+			sa počíta algoritmom MD5, ktorého výsledok je konvertovaný na String pomocou
+			Base64Encoding. 
+			
+			<P>Vzorová implementácia funkcie na výpočet odtlačku v jazyku C# je v súbore
+			<A href="./2017/u5/Program.cs.txt">Program.cs</A> a v jazyku Python v súbore 
+			<A href="./2017/u5/crypt.py.txt">crypt.py</A>.
+
+			<P>Ako slabé heslá mohli byť použité:
+			<UL>
+				<LI>krstné mená podľa slovenského kalendára alebo ich zdrobneniny, pričom môžu obsahovať najviac jedno veľké písmeno kdekoľvek v slove (napríklad zuzana, Zuzana, zuZana, zUzka, zuzkA, ...),</LI>
+				<LI>heslá s počtom znakov 6 alebo 7, pozostávajúce len z malých písmen (napríklad asdfgh, utywmk, klnrtus, ...),</LI>
+				<LI>heslá s malým počtom znakov 4 alebo 5 pozostávajúce z malých a veľkých písmen a číslic (napríklad w7H5, WnU8a, ...).</LI>
+			</UL>
+			
+			<P>Malo by sa vám podariť prelomiť v každom súbore aspoň po jednom hesle z každej kategórie. Súbory s prihlasovacími údajmi si môžete stiahnuť tu:
+			  
+			<UL>
+				<LI><A href="./2017/u5/shadow1.txt">shadow1.txt</A></LI>
+				<LI><A href="./2017/u5/shadow2.txt">shadow2.txt</A></LI>
+				<LI><A href="./2017/u5/shadow3.txt">shadow3.txt</A></LI>
+				<LI><A href="./2017/u5/shadow4.txt">shadow4.txt</A></LI>
+			</UL>
+			
+			<P>Na oddelenie jednotlivých položiek bol použitý znak ":",
+			každý riadok je teda v tvare "login:soľ:odtlačok".
+
+			<H3>Úloha č. 6, Podpisovanie e-mailov pomocou PGP (6 bodov)</H3>
+
+			<P>V systéme OpenPGP si pomocou ľuboľného softvéru alebo pluginu 
+			vytvorte dvojicu verejného a privátneho kľúča. Verejný kľúč
+			mi pošlite e-mailom zašifrovaný pomocou môjho verejného kľúča 
+			<A href="./2017/u6/0xD93F5170.asc">0xD93F5170.asc</A> na adresu 
+			<A href="mailto:tomas.majer@fri.uniza.sk">tomas.majer@fri.uniza.sk</A>. 
+			Fingerprint môjho kľúča je <TT>4D5C 4BD8 3100 7741 6953 D209 4F3A D031 D93F 5170</TT>, 
+			do tela mailu mi napíšte fingerprint Vášho kľúča.
+			
+			<P>Ako odpoveď na tento mail Vám pošlem zašifrovaný e-mail 
+			s ďalšími pokynmi.
+-->
+			</p></div>
+
+		</div></div></td>
+	</tr>
+</tbody></table>
+
+
+</body></html>

@@ -1,0 +1,165 @@
+
+BODY 
+{
+	font: normal 12pt sans-serif;
+	color: #000000;
+	background-color: #ffead3; 
+	max-width: 1000px;
+	margin: auto;
+	border: 0px;
+	padding: 0px;
+}
+
+
+TABLE.doc 
+{
+	width: 100%;
+	height: 100%;
+}
+
+TR.title 
+{
+	height: 10%;
+}
+
+TD.logo
+{
+	background-color: #dda36f;
+	padding: 0px;
+	vertical-align: middle;
+}
+
+DIV.logo 
+{
+	text-align: center;
+	padding: 10px;
+}
+
+TD.title 
+{
+	background-color: #eeb37f;
+	vertical-align: middle;
+}
+
+DIV.title 
+{
+	font: bold 24pt sans-serif;
+	padding: 10px;
+}
+
+TR.main 
+{
+	height: 90%;
+}
+
+TD.menu
+{
+	width: 20%;
+	background-color: #ffd39f;
+	vertical-align: top;
+}
+
+DIV.menu 
+{
+	text-align: left;
+	font-size: 10pt;
+	padding: 10px;
+}
+
+DIV.menu UL
+{
+	margin: 10px 10px 10px 20px;
+	padding: 0px;
+}
+
+DIV.menu UL LI
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+DIV.menu A 
+{
+	text-decoration: none;
+}
+
+DIV.menu A:hover 
+{
+	text-decoration: underline;
+}
+
+TD.main
+{
+	width: 80%;
+	background-color: #ffead3;
+	vertical-align: top;
+}
+
+DIV.vscroll
+{
+	height: 800px;
+    overflow-y: scroll;
+}
+
+DIV.main 
+{
+	text-align: left;
+	padding: 10px;
+}
+
+P.upozornenie
+{
+	margin: 5px;
+	border-left: 20px solid yellow;
+	padding: 10px;
+}
+
+DIV.cvicenie
+{
+	margin: 5px;
+	border-top: 3px solid black;
+	padding: 10px;
+}
+
+DIV.image {
+	text-align: center;
+	padding: 10px;
+}
+
+TD.numb {
+	text-align: right;
+	padding: 3px 10px;
+}
+
+DIV.uloha {
+	margin-left: 0px;
+	border-left: 5px solid orange;
+	padding: 10px 20px;
+}
+
+DIV.uloha::before {
+	content: "Úloha:";
+	font-weight: bold;
+}
+
+DIV.navod {
+	margin-left: 0px;
+	border-left: 5px solid green;
+	padding: 10px 20px;
+}
+
+DIV.navod::before {
+	content: "Návod:";
+	font-weight: bold;
+}
+
+DIV.program {
+	margin-left: 0px;
+	border-left: 5px solid yellow;
+	padding: 10px 20px;
+}
+
+DIV.program::before {
+	content: "Ukážka programu:";
+	font-weight: bold;
+}

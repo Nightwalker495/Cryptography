@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# Author: Milan Ondrasovic <milan.ondrasovic@gmail.com>
+# Vigenere cipher decryption
+#
+# This file is path of CryptoTools (Encryption/Decryption Tools)
+# related to the cryptography classes.
+
 import unittest
 
 from vigenere import TextStripper
@@ -120,7 +127,8 @@ class ItemProbabilityCalcTest(unittest.TestCase):
                                         text.count(letter) / float(len(text)))
 
     def __given_text(self, text):
-        self.__item_prob_calc_inst = ItemProbabilityCalc.init_from_text(text)
+        self.__item_prob_calc_inst =\
+            ItemProbabilityCalc.init_from_iterable(text)
 
     def __then_item_probability_is(self, item, expected_probability):
         self.assertAlmostEqual(self.__item_prob_calc_inst[item],
