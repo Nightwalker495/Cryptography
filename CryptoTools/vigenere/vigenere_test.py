@@ -47,7 +47,7 @@ class TextStripperTest(unittest.TestCase):
 
     def __then_stripped_text_equals(self, expected_stripped_text):
         stripped_text = TextStripper.strip_non_alpha(self.__text)
-        self.assertEquals(stripped_text, expected_stripped_text)
+        self.assertEqual(stripped_text, expected_stripped_text)
 
 
 class VigenereCipherTest(unittest.TestCase):
@@ -56,6 +56,14 @@ class VigenereCipherTest(unittest.TestCase):
         super().__init__(*args, **kwargs)
         self.__text = None
         self.__password = None
+
+    def test_encrypt_char_lowercase(self):
+        self.__given_text_and_password('a', 'b')
+        self.__then_encrypted_char_equals('b')
+
+    def test_encrypt_char_uupercase(self):
+        self.__given_text_and_password('Y', 'D')
+        self.__then_encrypted_char_equals('B')
 
     def test_one_char_password_uppercase(self):
         self.__given_text_and_password('BBBB', 'B')
@@ -91,7 +99,12 @@ class VigenereCipherTest(unittest.TestCase):
 
     def __then_decrypted_text_equals(self, expected_decrypted_text):
         decrypted_text = VigenereCipher.decrypt(self.__text, self.__password)
-        self.assertEquals(decrypted_text, expected_decrypted_text)
+        self.assertEqual(decrypted_text, expected_decrypted_text)
+
+    def __then_encrypted_char_equals(self, expected_encrypted_char):
+        encrypted_char = VigenereCipher.encrypt_char(self.__text,
+                                                     self.__password)
+        self.assertEqual(encrypted_char, expected_encrypted_char)
 
     def __then_exception_is_raised_for_decryption(self, expected_exception):
         self.assertRaises(expected_exception, VigenereCipher.decrypt,

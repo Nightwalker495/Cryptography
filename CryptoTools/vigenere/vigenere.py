@@ -85,24 +85,47 @@ class VigenereCipher:
             decrypted_char = char
             if char.isalpha():
                 decrypted_char = VigenereCipher.\
-                    __decrypt_char(char, password[password_pos])
+                    decrypt_char(char, password[password_pos])
                 password_pos = (password_pos + 1) % len(password)
             output += decrypted_char
 
         return output
 
     @staticmethod
-    def __decrypt_char(char_text, char_password):
+    def find_single_letter_password(plain_letter, cipher_letter):
+        for password in range(ord('A'), ord('Z') + 1):
+            password_letter = chr(password)
+            if VigenereCipher.encrypt_char(plain_letter, password_letter) == \
+                    cipher_letter:
+                return password_letter
+        raise ValueError('impossible parameters for the encryption')
+
+    @staticmethod
+    def encrypt_char(char, password):
+        def transform(char_num, password_num):
+            return char_num + password_num
+        return VigenereCipher.__transform_char_by_password(char, password,
+                                                           transform)
+
+    @staticmethod
+    def decrypt_char(char, password):
+        def transform(char_num, password_num):
+            return char_num + (26 - password_num)
+        return VigenereCipher.__transform_char_by_password(char, password,
+                                                           transform)
+
+    @staticmethod
+    def __transform_char_by_password(char, password, transform_func):
         char_shift, password_shift = ord('A'), ord('A')
 
-        if char_text.islower():
+        if char.islower():
             char_shift = ord('a')
-        if char_password.islower():
+        if password.islower():
             password_shift = ord('a')
 
-        char_num = ord(char_text) - char_shift
-        password_num = ord(char_password) - password_shift
-        res_num = (char_num + (26 - password_num)) % 26
+        char_num = ord(char) - char_shift
+        password_num = ord(password) - password_shift
+        res_num = transform_func(char_num, password_num) % 26
 
         return chr(res_num + char_shift)
 
@@ -163,8 +186,8 @@ class InvalidCmdArgsError(Exception):
 
 class LangInfoProvider:
 
-    __SUPPORTED_LANGS = {'en': './resources/en_letter_probabilities.txt',
-                         'sk': './resources/sk_letter_probabilities.txt'}
+    __SUPPORTED_LANGS = {'en': '../resources/en_letter_probabilities.txt',
+                         'sk': '../resources/sk_letter_probabilities.txt'}
 
     @staticmethod
     def get_supported_langs():
@@ -178,15 +201,14 @@ class LangInfoProvider:
         raise ValueError('unsupported language')
 
 
-def check_cmd_args_validity(brute_force, password, password_len_range):
-    if brute_force is None:
-        if password is None:
-            raise InvalidCmdArgsError('brute force or decryption mode '
-                                      'must be activated')
-    else:
-        if password_len_range is None:
-            raise InvalidCmdArgsError('password length range must be specified '
-                                      'in brute force mode')
+def check_cmd_args_validity(brute_force, password, expected_content_file_path):
+    if (brute_force is None) and (password is None) and\
+            (expected_content_file_path is None):
+            raise InvalidCmdArgsError('brute force, decryption or password '
+                                      'correction mode must be activated')
+    if (expected_content_file_path is not None) and (password is None):
+        raise InvalidCmdArgsError('password must be specified in '
+                                  'correction mode')
 
 
 def process_decryption(text, password):
@@ -206,9 +228,8 @@ def process_brute_force(text, min_password_len, max_password_len):
     if min_password_len > max_password_len:
         min_password_len, max_password_len = max_password_len, min_password_len
 
+    sep = ''
     for lang in LangInfoProvider.get_supported_langs():
-        print('### LANGUAGE = {}'.format(lang))
-
         theoretical_letter_prob = ItemProbabilityCalc.init_from_item_prob_file(
             LangInfoProvider.get_theoretical_prob_file_for_lang(lang))
 
@@ -217,33 +238,60 @@ def process_brute_force(text, min_password_len, max_password_len):
                 VigenereCipherBruteForceEngine(text, password_len,
                                                theoretical_letter_prob)
             password = brute_force_engine.run()
-            print('*** Brute force: [password = \'{}\'; length = {}]'.format(
-                password, password_len))
+            print(sep, end='')
+            print('\t[PASSWORD = \'{}\' | LENGTH = {} | LANGUAGE = {}]'.format(
+                password, password_len, lang))
             print(VigenereCipher.decrypt(text, password))
+            sep = ('#' * 80) + '\n'
+
+
+def process_password_correction(text_decrypted, text_expected, password):
+    corrected_password = list(password)
+    pos = 0
+
+    for src_char, dst_char in zip(text_decrypted, text_expected):
+        if pos >= len(password):
+            break
+
+        if src_char.isalpha() and dst_char.isalpha():
+            corrected_password[pos] = VigenereCipher.\
+                find_single_letter_password(src_char, dst_char)
+        elif not src_char.isalpha and not dst_char.isalpha():
+            continue
+        else:
+            raise ValueError('decrypted and expected texts do not match '
+                             'in terms of letter positions')
+        pos += 1
+
+    print('### Corrected password: {}'.format(''.join(corrected_password)))
 
 
 @click.command()
-@click.argument('input_file_path')
-@click.option('--brute-force', is_flag=True, help='activates brute-force mode')
+@click.option('--brute-force', help='brute-force mode for password length '
+                                    'range in format a,b')
 @click.option('--password', help='decrypts the text using this password')
-@click.option('--password-len-range',
-              help='password length range in format a,b')
-def main(input_file_path, brute_force, password, password_len_range):
+@click.option('--expected-content-file-path',
+              help='expected content file (this mode repairs the password)')
+def main(brute_force, password, expected_content_file_path):
     try:
-        check_cmd_args_validity(brute_force, password, password_len_range)
+        check_cmd_args_validity(brute_force, password,
+                                expected_content_file_path)
     except InvalidCmdArgsError as e:
         print('error: {}'.format(str(e)), file=sys.stderr)
         return 1
 
-    with open(input_file_path) as in_file:
-        text = in_file.read()
+    text = sys.stdin.read()
 
-        if password is not None:
-            process_decryption(text, password)
+    if password is not None:
+        process_decryption(text, password)
 
-        if brute_force is not None:
-            min_len, max_len = parse_password_len_range(password_len_range)
-            process_brute_force(text, min_len, max_len)
+    if brute_force is not None:
+        min_len, max_len = parse_password_len_range(brute_force)
+        process_brute_force(text, min_len, max_len)
+
+    if expected_content_file_path is not None:
+        with open(expected_content_file_path) as in_file:
+            process_password_correction(text, in_file.read(), password)
 
     return 0
 
