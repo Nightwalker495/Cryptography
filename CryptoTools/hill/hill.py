@@ -20,8 +20,21 @@ class TrigramHillCipher:
         self.__plain_text_start = plain_text_start
 
     def decrypt(self, cipher_text):
-        self.__find_encryption_matrix(cipher_text)
-        return cipher_text
+        cipher_text_order_vals = \
+            self.convert_text_to_letter_order_vals(cipher_text)
+        cipher_text_trigrams = list(self.separate_into_groups(
+            cipher_text_order_vals, self.TRIGRAM_SIZE))
+
+        decryption_matrix = self.__find_decryption_matrix(cipher_text_trigrams)
+
+        plain_text_order_vals = []
+        for trigram in cipher_text_trigrams:
+            plain_text = np.matmul(decryption_matrix, trigram)
+            plain_text = np.remainder(plain_text, np.full(plain_text.shape, 26))
+            for p in plain_text:
+                plain_text_order_vals.append(int(p))
+
+        return self.convert_letter_order_vals_to_text(plain_text_order_vals)
 
     @staticmethod
     def convert_text_to_letter_order_vals(text):
@@ -34,7 +47,7 @@ class TrigramHillCipher:
 
     @staticmethod
     def convert_letter_order_vals_to_text(order_vals):
-        return ''.join(chr(ord(val) + ord('A')) for val in order_vals)
+        return ''.join(chr(val + ord('A')) for val in order_vals)
 
     @staticmethod
     def separate_into_groups(data, group_size):
@@ -60,7 +73,7 @@ class TrigramHillCipher:
             a = m - a
         g, x, y = TrigramHillCipher.__egcd(a, m)
         if g != 1:
-            raise Exception('modular inverse does not exist')
+            raise ValueError('modular inverse does not exist')
         return x % m
 
     @staticmethod
@@ -93,22 +106,25 @@ class TrigramHillCipher:
 
         return matrix
 
-    def __find_encryption_matrix(self, cipher_text):
-        cipher_text_order_vals =\
-            self.convert_text_to_letter_order_vals(cipher_text)
-        cipher_text_trigrams = list(self.separate_into_groups(
-            cipher_text_order_vals, self.TRIGRAM_SIZE))
+    def __find_decryption_matrix(self, cipher_text_trigrams):
         cipher_text_matrix = self.__build_matrix_from_ciphertext(
             cipher_text_trigrams[0], cipher_text_trigrams[1],
             cipher_text_trigrams[2])
-        print(cipher_text_matrix)
-        print()
-        inv = self.matrix_mod_inverse(cipher_text_matrix, self.MOD)
-        print(inv)
-        m = np.matmul(cipher_text_matrix, inv)
-        r = np.remainder(m, np.full((9, 9), 26))
-        print()
-        print(r)
+        cipher_text_matrix_inv = self.matrix_mod_inverse(cipher_text_matrix,
+                                                         self.MOD)
+
+        p = self.convert_text_to_letter_order_vals(
+            self.__plain_text_start)
+        plain_text_vector = np.array([p[0], p[1], p[2], p[3], p[4], p[5],
+                                      p[6], p[7], p[8]])
+
+        res_vector = np.matmul(cipher_text_matrix_inv, plain_text_vector)
+        res_matrix = np.array([
+            [res_vector[0], res_vector[1], res_vector[2]],
+            [res_vector[3], res_vector[4], res_vector[5]],
+            [res_vector[6], res_vector[7], res_vector[8]]
+        ])
+        return np.remainder(res_matrix, np.full((3, 3), 26))
 
 
 @click.command()
