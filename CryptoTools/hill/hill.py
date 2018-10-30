@@ -68,6 +68,10 @@ class TrigramHillCipher:
         return np.remainder(matrix_rounded, np.full((size, size), mod))
 
     @staticmethod
+    def matrix_mod(matrix, mod):
+        return np.remainder(matrix, np.full(matrix.shape, mod))
+
+    @staticmethod
     def mod_inv(a, m):
         if a < 0:
             a = m - a
@@ -124,7 +128,7 @@ class TrigramHillCipher:
             [res_vector[3], res_vector[4], res_vector[5]],
             [res_vector[6], res_vector[7], res_vector[8]]
         ])
-        return np.remainder(res_matrix, np.full((3, 3), 26))
+        return TrigramHillCipher.matrix_mod(res_matrix, TrigramHillCipher.MOD)
 
 
 @click.command()
