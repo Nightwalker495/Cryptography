@@ -37,7 +37,7 @@ class HillCipher:
         for block in blocks:
             plain_text_vector = np.matmul(decryption_matrix, block)
             plain_text_vector = self.__matrix_elements_mod(plain_text_vector)
-            
+
             for item in plain_text_vector:
                 plain_text_ord.append(int(item))
 
@@ -118,15 +118,17 @@ class HillCipher:
         res_vector = np.matmul(cipher_text_matrix_inv, plain_text_ord_vector)
         res_matrix = res_vector.reshape((self.__block_size, self.__block_size))
 
-        return HillCipher.__matrix_elements_mod(res_matrix)
+        return self.__matrix_elements_mod(res_matrix)
 
 
 @click.command()
 @click.argument('plain_text_start')
-def main(plain_text_start):
+@click.argument('block_size')
+def main(plain_text_start, block_size):
     for line in sys.stdin.readlines():
         line_stripped = line.strip()
-        hill_cipher = HillCipher(plain_text_start, line_stripped, 3)
+        hill_cipher = HillCipher(plain_text_start, line_stripped,
+                                 int(block_size))
 
         decrypted_text = hill_cipher.decrypt()
         print('"{}" --> "{}"'.format(line_stripped, decrypted_text))
