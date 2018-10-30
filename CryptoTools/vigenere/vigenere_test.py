@@ -56,34 +56,35 @@ class VigenereCipherTest(unittest.TestCase):
         super().__init__(*args, **kwargs)
         self.__text = None
         self.__password = None
+        self.__plain_text = None
 
     def test_encrypt_char_lowercase(self):
         self.__given_text_and_password('a', 'b')
-        self.__then_encrypted_char_equals('b')
+        self.__then_encrypted_char_is('b')
 
     def test_encrypt_char_uupercase(self):
         self.__given_text_and_password('Y', 'D')
-        self.__then_encrypted_char_equals('B')
+        self.__then_encrypted_char_is('B')
 
     def test_one_char_password_uppercase(self):
         self.__given_text_and_password('BBBB', 'B')
-        self.__then_decrypted_text_equals('AAAA')
+        self.__then_decrypted_text_is('AAAA')
 
     def test_two_char_password_uppercase(self):
         self.__given_text_and_password('BCBC', 'BC')
-        self.__then_decrypted_text_equals('AAAA')
+        self.__then_decrypted_text_is('AAAA')
 
     def test_two_char_password_mixedcase(self):
         self.__given_text_and_password('BcBc', 'bC')
-        self.__then_decrypted_text_equals('AaAa')
+        self.__then_decrypted_text_is('AaAa')
 
     def test_no_change(self):
         self.__given_text_and_password('something', 'AAA')
-        self.__then_decrypted_text_equals('something')
+        self.__then_decrypted_text_is('something')
 
     def test_mixedcase_with_spaces_commas_quotes_dots(self):
         self.__given_text_and_password('"I concur", said John...', 'aBc')
-        self.__then_decrypted_text_equals('"I bmnbsr", ryic Hogl...')
+        self.__then_decrypted_text_is('"I bmnbsr", ryic Hogl...')
 
     def test_exception_for_empty_password(self):
         self.__given_text_and_password('nothing special', '')
@@ -93,15 +94,27 @@ class VigenereCipherTest(unittest.TestCase):
         self.__given_text_and_password('nothing special', 'a0b1c2...')
         self.__then_exception_is_raised_for_decryption(ValueError)
 
+    def test_password_finding_lowercase(self):
+        self.__given_encrypted_and_plain_text('b', 'a')
+        self.__then_password_char_is('b')
+
+    def test_password_finding_uppercase(self):
+        self.__given_encrypted_and_plain_text('B', 'Z')
+        self.__then_password_char_is('C')
+
     def __given_text_and_password(self, text, password):
         self.__text = text
         self.__password = password
 
-    def __then_decrypted_text_equals(self, expected_decrypted_text):
+    def __given_encrypted_and_plain_text(self, encrypted_text, plain_text):
+        self.__text = encrypted_text
+        self.__plain_text = plain_text
+
+    def __then_decrypted_text_is(self, expected_decrypted_text):
         decrypted_text = VigenereCipher.decrypt(self.__text, self.__password)
         self.assertEqual(decrypted_text, expected_decrypted_text)
 
-    def __then_encrypted_char_equals(self, expected_encrypted_char):
+    def __then_encrypted_char_is(self, expected_encrypted_char):
         encrypted_char = VigenereCipher.encrypt_char(self.__text,
                                                      self.__password)
         self.assertEqual(encrypted_char, expected_encrypted_char)
@@ -109,6 +122,11 @@ class VigenereCipherTest(unittest.TestCase):
     def __then_exception_is_raised_for_decryption(self, expected_exception):
         self.assertRaises(expected_exception, VigenereCipher.decrypt,
                           self.__text, self.__password)
+
+    def __then_password_char_is(self, expected_password_char):
+        password_char = VigenereCipher.find_single_letter_password(
+            self.__text, self.__plain_text)
+        self.assertEqual(expected_password_char, password_char)
 
 
 class ItemProbabilityCalcTest(unittest.TestCase):

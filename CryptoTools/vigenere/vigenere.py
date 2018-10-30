@@ -92,11 +92,17 @@ class VigenereCipher:
         return output
 
     @staticmethod
-    def find_single_letter_password(plain_letter, cipher_letter):
-        for password in range(ord('A'), ord('Z') + 1):
+    def find_single_letter_password(encrypted_letter,
+                                    expected_decrypted_letter):
+        start, end = ord('A'), ord('Z')
+        if encrypted_letter.islower():
+            start, end = ord('a'), ord('z')
+
+        for password in range(start, end + 1):
             password_letter = chr(password)
-            if VigenereCipher.encrypt_char(plain_letter, password_letter) == \
-                    cipher_letter:
+            if VigenereCipher.decrypt_char(encrypted_letter,
+                                           password_letter) == \
+                    expected_decrypted_letter:
                 return password_letter
         raise ValueError('impossible parameters for the encryption')
 
@@ -245,21 +251,22 @@ def process_brute_force(text, min_password_len, max_password_len):
             sep = ('#' * 80) + '\n'
 
 
-def process_password_correction(text_decrypted, text_expected, password):
+def process_password_correction(encrypted_text, decrypted_text_expected,
+                                password):
     corrected_password = list(password)
     pos = 0
 
-    for src_char, dst_char in zip(text_decrypted, text_expected):
+    for enc_char, decr_char in zip(encrypted_text, decrypted_text_expected):
         if pos >= len(password):
             break
 
-        if src_char.isalpha() and dst_char.isalpha():
+        if enc_char.isalpha() and enc_char.isalpha():
             corrected_password[pos] = VigenereCipher.\
-                find_single_letter_password(src_char, dst_char)
-        elif not src_char.isalpha and not dst_char.isalpha():
+                find_single_letter_password(enc_char, decr_char)
+        elif not enc_char.isalpha() and not decr_char.isalpha():
             continue
         else:
-            raise ValueError('decrypted and expected texts do not match '
+            raise ValueError('encrypted and expected texts do not match '
                              'in terms of letter positions')
         pos += 1
 
@@ -282,7 +289,7 @@ def main(brute_force, password, expected_content_file_path):
 
     text = sys.stdin.read()
 
-    if password is not None:
+    if password is not None and expected_content_file_path is None:
         process_decryption(text, password)
 
     if brute_force is not None:
