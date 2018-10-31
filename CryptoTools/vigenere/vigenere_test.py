@@ -7,9 +7,9 @@
 
 import unittest
 
-from vigenere import TextStripper
-from vigenere import VigenereCipher
-from vigenere import ItemProbabilityCalc
+from vigenere_crack import TextStripper
+from vigenere_crack import VigenereCipher
+from vigenere_crack import ItemProbabilityCalc
 
 
 class TextStripperTest(unittest.TestCase):
@@ -111,7 +111,7 @@ class VigenereCipherTest(unittest.TestCase):
         self.__plain_text = plain_text
 
     def __then_decrypted_text_is(self, expected_decrypted_text):
-        decrypted_text = VigenereCipher.decrypt(self.__text, self.__password)
+        decrypted_text = VigenereCipher.decrypt_brute_force(self.__text, self.__password)
         self.assertEqual(decrypted_text, expected_decrypted_text)
 
     def __then_encrypted_char_is(self, expected_encrypted_char):
@@ -120,7 +120,7 @@ class VigenereCipherTest(unittest.TestCase):
         self.assertEqual(encrypted_char, expected_encrypted_char)
 
     def __then_exception_is_raised_for_decryption(self, expected_exception):
-        self.assertRaises(expected_exception, VigenereCipher.decrypt,
+        self.assertRaises(expected_exception, VigenereCipher.decrypt_brute_force,
                           self.__text, self.__password)
 
     def __then_password_char_is(self, expected_password_char):

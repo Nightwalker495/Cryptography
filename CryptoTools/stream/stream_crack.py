@@ -10,6 +10,7 @@ import math
 import click
 import threading
 import collections
+import multiprocessing
 
 
 class RndGen:
@@ -75,27 +76,73 @@ class CoincidenceIndexCalc:
         return total_count
 
 
+class DecryptionResult:
+
+    def __init__(self, text, coinc_index, rnd_gen_seed):
+        self.__text = text
+        self.__coinc_index = coinc_index
+        self.__rnd_gen_seed = rnd_gen_seed
+
+    @property
+    def coinc_index(self):
+        return self.__coinc_index
+
+    def __str__(self):
+        return '[Coincidence index = {}; Seed = {}]\n{}'.format(
+            self.__coinc_index, self.__rnd_gen_seed, self.__text)
+
+
 class ResultsCollector:
 
     def __init__(self):
         self.__thread_lock = threading.Lock()
         self.__results = []
 
-    def add_result(self, result):
+    def add_result(self, plain_text, coinc_index, seed):
         with self.__thread_lock:
+            result = DecryptionResult(plain_text, coinc_index, seed)
             self.__results.append(result)
 
     def get_top_results(self, target_coinc_index, max_results_no):
         with self.__thread_lock:
-            self.__results.sort(key=lambda t: abs(t[1] - target_coinc_index))
+            self.__results.sort(key=lambda item: abs(
+                item.coinc_index - target_coinc_index))
             count = min(len(self.__results), max_results_no)
 
-            return [item[0] for item in self.__results[:count]]
+            return self.__results[:count]
+
+
+class StreamCipherEngine:
+
+    LETTERS_NO = 26
+
+    @staticmethod
+    def decrypt_text(cipher_text, rnd_gen_seed):
+        plain_text = ''
+        rnd_gen = RndGen(rnd_gen_seed)
+
+        for char in cipher_text:
+            decrypted_char = char
+            if char.isalpha():
+                password_ord = rnd_gen.next_int(0,
+                                                StreamCipherEngine.LETTERS_NO)
+                decrypted_char = StreamCipherEngine.\
+                    __decrypt_letter(char, password_ord)
+            plain_text += decrypted_char
+
+        return plain_text
+
+    @staticmethod
+    def __decrypt_letter(letter, password_ord):
+        shift = ord('A') if letter.isupper() else ord('a')
+        letter_ord = ord(letter) - shift
+        letters_no = StreamCipherEngine.LETTERS_NO
+        decrypted_letter_ord = (letter_ord + (letters_no - password_ord)) % \
+                               letters_no
+        return chr(decrypted_letter_ord + shift)
 
 
 class StreamCipherCrackerThread(threading.Thread):
-
-    LETTERS_NO = 26
 
     def __init__(self, cipher_text, results_collector, seed_min, seed_max):
         super().__init__()
@@ -110,50 +157,29 @@ class StreamCipherCrackerThread(threading.Thread):
 
     def run(self):
         for seed in range(self.__seed_min, self.__seed_max + 1):
-            rnd_gen = RndGen(seed)
-            plain_text = self.__decrypt_text(rnd_gen)
+            plain_text = StreamCipherEngine.decrypt_text(self.__cipher_text,
+                                                         seed)
             coinc_index = CoincidenceIndexCalc.calc_coinc_index(plain_text)
-            self.__results_collector.add_result((plain_text, coinc_index))
-
-    @staticmethod
-    def __decrypt_letter(letter, password_ord):
-        shift = ord('A') if letter.isupper() else ord('a')
-        letter_ord = ord(letter) - shift
-        letters_no = StreamCipherCrackerThread.LETTERS_NO
-        decrypted_letter_ord = (letter_ord + (letters_no - password_ord)) % \
-                               letters_no
-        return chr(decrypted_letter_ord + shift)
-
-    def __decrypt_text(self, rnd_gen):
-        text = ''
-
-        for char in self.__cipher_text:
-            decrypted_char = char
-            if char.isalpha():
-                password_ord = rnd_gen.next_int(0, self.LETTERS_NO)
-                decrypted_char = self.__decrypt_letter(char, password_ord)
-            text += decrypted_char
-
-        return text
+            self.__results_collector.add_result(plain_text, coinc_index, seed)
 
 
 class StreamCipherCracker:
 
-    THREADS_NO = 4
     TARGET_COINC_INDEX = 0.06027
 
-    def __init__(self, cipher_text, best_candidates_no):
+    def __init__(self, cipher_text):
+        self.__cipher_text = cipher_text
+
+    def decrypt_brute_force(self, best_candidates_no=100):
         if best_candidates_no < 0:
             raise ValueError('no. of best candidates must not be negative')
-
-        self.__cipher_text = cipher_text
-        self.__best_candidates_no = best_candidates_no
-
-    def decrypt(self):
         results_collector = ResultsCollector()
         self.__brute_force_possible_seeds(results_collector)
         return results_collector.get_top_results(self.TARGET_COINC_INDEX,
-                                                 self.__best_candidates_no)
+                                                 best_candidates_no)
+
+    def decrypt_for_seed(self, seed):
+        return StreamCipherEngine.decrypt_text(self.__cipher_text, seed)
 
     @staticmethod
     def build_intervals(min_val, max_val, intervals_no):
@@ -167,8 +193,9 @@ class StreamCipherCracker:
     def __brute_force_possible_seeds(self, results_collector):
         threads = []
 
+        threads_num = multiprocessing.cpu_count()
         for min_seed, max_seed in self.build_intervals(0, RndGen.get_max_seed(),
-                                                       self.THREADS_NO):
+                                                       threads_num):
             thread = StreamCipherCrackerThread(self.__cipher_text,
                                                results_collector,
                                                min_seed, max_seed)
@@ -182,16 +209,22 @@ class StreamCipherCracker:
 
 
 @click.command()
-@click.argument('best_candidates_no')
-def main(best_candidates_no):
+@click.option('--best-candidates-no', default='200',
+              help='no. of best candidates to show (brute force mode)')
+@click.option('--seed', help='decrypts the text using seed (no brute force)')
+def main(best_candidates_no, seed):
     cipher_text = sys.stdin.read()
-    cipher_cracker = StreamCipherCracker(cipher_text, int(best_candidates_no))
+    cipher_cracker = StreamCipherCracker(cipher_text)
 
-    sep = ''
-    for result in cipher_cracker.decrypt():
-        print(sep, end='')
-        print(result)
-        sep = ('*' * 80) + '\n'
+    if seed is not None:
+        print(cipher_cracker.decrypt_for_seed(int(seed)))
+    else:
+        sep = ''
+        results = cipher_cracker.decrypt_brute_force(int(best_candidates_no))
+        for result in results:
+            print(sep, end='')
+            print(result)
+            sep = ('*' * 80) + '\n'
 
     return 0
 
