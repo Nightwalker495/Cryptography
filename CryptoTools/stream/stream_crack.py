@@ -88,7 +88,7 @@ class DecryptionResult:
         return self.__coinc_index
 
     def __str__(self):
-        return '[Coincidence index = {}; Seed = {}]\n{}'.format(
+        return '[Coincidence index = {0:.8f}; Seed = {1}]\n{2}'.format(
             self.__coinc_index, self.__rnd_gen_seed, self.__text)
 
 
