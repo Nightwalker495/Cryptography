@@ -21,7 +21,7 @@ class Md5Decrypter:
     def __init__(self, password_hash_base64, salt,
                  password_len_min, password_len_max,
                  use_alpha_lower=False,
-                 use_alpha_upper=False, use_digits=False, wordlist_path=None):
+                 use_alpha_upper=False, use_digits=False, wordlist=None):
         self.__target_password_hash = self.__base64_str_to_int(
             password_hash_base64)
         self.__salt_encoded = salt.encode('utf-8')
@@ -33,11 +33,11 @@ class Md5Decrypter:
         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,
                                                                use_alpha_upper,
                                                                use_digits)
-        self.__wordlist_path = wordlist_path
+        self.__wordlist = wordlist
 
     def decrypt_brute_force(self):
         password = None
-        if self.__wordlist_path is not None:
+        if self.__wordlist is not None:
             password = self.__decrypt_brute_force_wordlist()
             if password is not None:
                 return password
@@ -101,7 +101,10 @@ class Md5Decrypter:
         return None
 
     def __decrypt_brute_force_wordlist(self):
-        raise NotImplemented()
+        for word in self.__wordlist:
+            if self.__is_password_valid(word):
+                return word
+        return None
 
     def __is_password_valid(self, password):
         return self.__md5_hash(password) == self.__target_password_hash
@@ -114,28 +117,60 @@ class Md5Decrypter:
         return int.from_bytes(md5_digest, 'big')
 
 
-def parse_password_len_range(password_len_range):
-    sep_pos = password_len_range.index(',')
-    if sep_pos < 0:
-        raise ValueError('password length range not in format A,B')
-    return int(password_len_range[:sep_pos].strip()),\
-           int(password_len_range[sep_pos + 1:].strip())
+class LoginRecord:
+
+    def __init__(self, login, password_hash_base64, salt):
+        self.login = login
+        self.password_hash_base64 = password_hash_base64
+        self.salt = salt
+
+    def __str__(self):
+        return '{} [{} | {}]'.format(self.login, self.password_hash_base64,
+                                     self.salt)
+
+    @staticmethod
+    def build_from_str(str_description):
+        tokens = str_description.split(':')
+
+        login = tokens[0].strip()
+        salt = tokens[1].strip()
+        password_hash_base64 = tokens[2].strip()
+
+        return LoginRecord(login, password_hash_base64, salt)
+
+
+def build_wordlist(wordlist_path):
+    with open(wordlist_path, 'r') as in_file:
+        return [line.strip() for line in in_file.readlines() if len(line) > 0]
+
+
+def read_input_as_login_records():
+    for line in sys.stdin.readlines():
+        if len(line.strip()) == 0:
+            continue
+        yield LoginRecord.build_from_str(line)
+
+
+def brute_force_login_record(login_record, wordlist=None):
+    return 'not yet implemented'
 
 
 @click.command()
-@click.argument('login')
-@click.argument('salt')
-@click.argument('md5_base64_digest')
-@click.option('--passwd-len', help='password length range in format A,B')
-@click.option('--alpha-lower', is_flag=True, default=False,
-              help='use lowercase letters')
-@click.option('--alpha-upper', is_flag=True, default=False,
-              help='use uppercase letters')
-@click.option('--digits', is_flag=True, default=False, help='use digits')
 @click.option('--wordlist-path', default=None,
               help='path to text file (line = password)')
-def main(login, salt, md5_base64_digest, passwd_len, alpha_lower, alpha_upper,
-         digits, wordlist_path):
+def main(wordlist_path):
+    wordlist = None
+    if wordlist_path is not None:
+        wordlist = build_wordlist(wordlist_path)
+
+    for login_record in read_input_as_login_records():
+        password = 'PASSWORD NOT FOUND'
+        try:
+            password = brute_force_login_record(login_record, wordlist)
+        except PasswordNotFoundException as e:
+            pass
+        print('{} --> {}'.format(login_record, password))
+
     return os.EX_OK
 
 
