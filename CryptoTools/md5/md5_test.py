@@ -49,6 +49,22 @@ class Md5DecrypterTest(unittest.TestCase):
         self.__given_use_digits()
         self.__then_orig_password_is('1')
 
+    def test_5(self):
+        self.__given_password_hash_base64_and_salt('+pMb8xJ8o8xJjvMbgddQRA==',
+                                                   '37tisic995')
+        self.__given_password_len_range(3, 4)
+        self.__given_use_alpha_lower()
+        self.__then_orig_password_is('sona')
+
+    def test_6(self):
+        self.__given_password_hash_base64_and_salt('xz3L+7+AfvxNGDNdASUkWQ==',
+                                                   '1aB2')
+        self.__given_password_len_range(4, 4)
+        self.__given_use_alpha_lower()
+        self.__given_use_alpha_upper()
+        self.__given_use_digits()
+        self.__then_orig_password_is('1aB2')
+
     def __given_password_hash_base64_and_salt(self, password_hash_base64, salt):
         self.__password_hash_base64 = password_hash_base64
         self.__salt = salt
@@ -64,7 +80,7 @@ class Md5DecrypterTest(unittest.TestCase):
         self.__use_alpha_upper = True
 
     def __given_use_digits(self):
-        self.__use_alpha_digits = True
+        self.__use_digits = True
 
     def __then_orig_password_is(self, expected_password):
         decrypter = Md5Decrypter(self.__password_hash_base64, self.__salt,
@@ -72,6 +88,6 @@ class Md5DecrypterTest(unittest.TestCase):
                                  self.__max_password_len,
                                  self.__use_alpha_lower,
                                  self.__use_alpha_upper,
-                                 self.__use_alpha_digits)
+                                 self.__use_digits)
         password = decrypter.decrypt_brute_force()
         self.assertEqual(password, expected_password)

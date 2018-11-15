@@ -24,7 +24,7 @@ class Md5Decrypter:
                  use_alpha_upper=False, use_digits=False, wordlist_path=None):
         self.__target_password_hash = self.__base64_str_to_int(
             password_hash_base64)
-        self.__salt = salt
+        self.__salt_encoded = salt.encode('utf-8')
 
         self.__password_len_min = password_len_min
         self.__password_len_max = password_len_max
@@ -109,7 +109,7 @@ class Md5Decrypter:
     def __md5_hash(self, password):
         md5_hasher = hashlib.md5()
         md5_hasher.update(password.encode('utf-8'))
-        md5_hasher.update(self.__salt.encode('utf-8'))
+        md5_hasher.update(self.__salt_encoded)
         md5_digest = md5_hasher.digest()
         return int.from_bytes(md5_digest, 'big')
 

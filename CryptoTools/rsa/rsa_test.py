@@ -12,9 +12,7 @@ from rsa_crack import RsaCracker
 
 class RsaCrackerTest(unittest.TestCase):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
+    def setUp(self):
         self.__e_coef = None
         self.__n_coef = None
         self.__cipher_msg = None
