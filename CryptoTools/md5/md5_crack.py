@@ -12,10 +12,6 @@ import base64
 import hashlib
 
 
-class PasswordNotFoundException(Exception):
-    pass
-
-
 class Md5Decrypter:
 
     def __init__(self, password_hash_base64, salt,
@@ -45,8 +41,6 @@ class Md5Decrypter:
         if len(self.__allowed_chars) > 0:
             password = self.__decrypt_brute_force_all_password_lengths()
 
-        if password is None:
-            raise PasswordNotFoundException()
         return password
 
     @staticmethod
@@ -141,7 +135,9 @@ class LoginRecord:
 
 def build_wordlist(wordlist_path):
     with open(wordlist_path, 'r') as in_file:
-        return [line.strip() for line in in_file.readlines() if len(line) > 0]
+        return [line.strip()
+                for line in in_file.readlines()
+                if len(line.strip()) > 0]
 
 
 def read_input_as_login_records():
@@ -152,7 +148,16 @@ def read_input_as_login_records():
 
 
 def brute_force_login_record(login_record, wordlist=None):
-    return 'not yet implemented'
+    md5_decrypter = Md5Decrypter(login_record.password_hash_base64,
+                                 login_record.salt, 4, 5, True, True, True,
+                                 wordlist)
+    password = md5_decrypter.decrypt_brute_force()
+    if password is not None:
+        return password
+
+    md5_decrypter = Md5Decrypter(login_record.password_hash_base64,
+                                 login_record.salt, 6, 7, True)
+    return md5_decrypter.decrypt_brute_force()
 
 
 @click.command()
@@ -164,12 +169,9 @@ def main(wordlist_path):
         wordlist = build_wordlist(wordlist_path)
 
     for login_record in read_input_as_login_records():
-        password = 'PASSWORD NOT FOUND'
-        try:
-            password = brute_force_login_record(login_record, wordlist)
-        except PasswordNotFoundException as e:
-            pass
-        print('{} --> {}'.format(login_record, password))
+        password = brute_force_login_record(login_record, wordlist)
+        password_str = password if password is not None else 'NOT FOUND'
+        print('{} --> {}'.format(login_record, password_str))
 
     return os.EX_OK
 
