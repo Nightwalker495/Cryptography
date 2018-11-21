@@ -6,47 +6,43 @@
 # related to the cryptography classes.
 
 import os
+import abc
 import sys
-import click
 import base64
 import hashlib
+import threading
+import itertools
+import multiprocessing
 
 
-class Md5Decrypter:
+class PasswordGenerator(abc.ABC):
 
-    def __init__(self, password_hash_base64, salt,
-                 password_len_min, password_len_max,
-                 use_alpha_lower=False,
-                 use_alpha_upper=False, use_digits=False, wordlist=None):
-        self.__target_password_hash = self.__base64_str_to_int(
-            password_hash_base64)
-        self.__salt_encoded = salt.encode('utf-8')
+    @abc.abstractmethod
+    def __iter__(self):
+        pass
 
-        self.__password_len_min = password_len_min
-        self.__password_len_max = password_len_max
-        self.__validate_password_len()
 
+class WordlistPasswordGenerator(PasswordGenerator):
+
+    def __init__(self, wordlist_file_path):
+        self.__passwords = None
+        with open(wordlist_file_path) as wordlist_file:
+            self.__passwords = [line.strip()
+                                for line in wordlist_file.readlines()
+                                if len(line.strip()) > 0]
+
+    def __iter__(self):
+        return iter(self.__passwords)
+
+
+class StandardPasswordGenerator(PasswordGenerator):
+
+    def __init__(self, password_len, use_alpha_lower=False,
+                 use_alpha_upper=False, use_digits=False):
+        self.__password_len = password_len
         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,
                                                                use_alpha_upper,
                                                                use_digits)
-        self.__wordlist = wordlist
-
-    def decrypt_brute_force(self):
-        password = None
-        if self.__wordlist is not None:
-            password = self.__decrypt_brute_force_wordlist()
-            if password is not None:
-                return password
-
-        if len(self.__allowed_chars) > 0:
-            password = self.__decrypt_brute_force_all_password_lengths()
-
-        return password
-
-    @staticmethod
-    def __base64_str_to_int(base64_str):
-        b64_bytes = base64.b64decode(base64_str)
-        return int.from_bytes(b64_bytes, 'big')
 
     @staticmethod
     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
@@ -65,113 +61,141 @@ class Md5Decrypter:
 
         return allowed_chars
 
-    def __validate_password_len(self):
-        if self.__password_len_min > self.__password_len_max:
-            self.__password_len_min, self.__password_len_max = \
-                self.__password_len_max, self.__password_len_min
+    def __iter__(self):
+        return map(lambda x: ''.join(x),
+                   itertools.product(self.__allowed_chars,
+                                     repeat=self.__password_len))
 
-    def __decrypt_brute_force_all_password_lengths(self):
-        for password_len in range(self.__password_len_min,
-                                  self.__password_len_max + 1):
-            prev_password = [0 for _ in range(password_len)]
-            password = self.__decrypt_brute_force_chars(0, prev_password)
-            if password is not None:
-                return password
 
-        return None
+class LoginInstance:
 
-    def __decrypt_brute_force_chars(self, curr_password_pos, password_list):
-        for curr_char in self.__allowed_chars:
-            password_list[curr_password_pos] = curr_char
-            if curr_password_pos == len(password_list) - 1:
-                password = ''.join(password_list)
-                if self.__is_password_valid(password):
-                    return password
-            else:
-                password = self.__decrypt_brute_force_chars(
-                    curr_password_pos + 1, password_list)
-                if password is not None:
-                    return password
-        return None
+    def __init__(self, login, password_hash_base64, salt):
+        self.__login = login
+        self.__password_hash_base64 = password_hash_base64
+        self.__salt = salt
 
-    def __decrypt_brute_force_wordlist(self):
-        for word in self.__wordlist:
-            if self.__is_password_valid(word):
-                return word
-        return None
+        self.__salt_encoded = self.__salt.encode('utf-8')
+        self.__password_hash = self.__base64_str_to_int(password_hash_base64)
+        self.__plain_password = None
+
+    def __str__(self):
+        password_str = 'password not known'\
+            if self.__plain_password is None else self.__plain_password
+        return '{} [{} | {}] --> {}'.format(self.__login,
+                                            self.__password_hash_base64,
+                                            self.__salt, password_str)
+
+    @property
+    def plain_password(self):
+        return self.__plain_password
+
+    @staticmethod
+    def build_from_str(description_str):
+        tokens = [token.strip() for token in description_str.split(':')]
+
+        login = tokens[0]
+        salt = tokens[1]
+        password_hash_base64 = tokens[2]
+
+        return LoginInstance(login, password_hash_base64, salt)
+
+    @staticmethod
+    def __base64_str_to_int(base64_str):
+        return int.from_bytes(base64.b64decode(base64_str), 'big')
+
+    def update_plain_password_if_valid(self, password):
+        if self.__is_password_valid(password):
+            self.__plain_password = password
+            return True
+        return False
 
     def __is_password_valid(self, password):
-        return self.__md5_hash(password) == self.__target_password_hash
+        return self.__md5_hash(password) == self.__password_hash
 
     def __md5_hash(self, password):
         md5_hasher = hashlib.md5()
         md5_hasher.update(password.encode('utf-8'))
         md5_hasher.update(self.__salt_encoded)
-        md5_digest = md5_hasher.digest()
-        return int.from_bytes(md5_digest, 'big')
+        return int.from_bytes(md5_hasher.digest(), 'big')
 
 
-class LoginRecord:
+class Md5BatchDecrypter:
 
-    def __init__(self, login, password_hash_base64, salt):
-        self.login = login
-        self.password_hash_base64 = password_hash_base64
-        self.salt = salt
+    def __init__(self):
+        self.__password_generators = []
+        self.__login_instances = []
 
-    def __str__(self):
-        return '{} [{} | {}]'.format(self.login, self.password_hash_base64,
-                                     self.salt)
+    def add_password_generator(self, password_generator):
+        self.__password_generators.append(password_generator)
 
-    @staticmethod
-    def build_from_str(str_description):
-        tokens = str_description.split(':')
+    def add_login_inst(self, login_inst):
+        self.__login_instances.append(login_inst)
 
-        login = tokens[0].strip()
-        salt = tokens[1].strip()
-        password_hash_base64 = tokens[2].strip()
+    def run_brute_force(self):
+        unprocessed_login_instances = list(self.__login_instances)
 
-        return LoginRecord(login, password_hash_base64, salt)
+        for password_gen in self.__password_generators:
+            for password in password_gen:
+                if len(unprocessed_login_instances) == 0:
+                    break
 
+                password_found_positions = []
+                for i, login_inst in enumerate(unprocessed_login_instances):
+                    if login_inst.update_plain_password_if_valid(password):
+                        password_found_positions.append(i)
 
-def build_wordlist(wordlist_path):
-    with open(wordlist_path, 'r') as in_file:
-        return [line.strip()
-                for line in in_file.readlines()
-                if len(line.strip()) > 0]
-
-
-def read_input_as_login_records():
-    for line in sys.stdin.readlines():
-        if len(line.strip()) == 0:
-            continue
-        yield LoginRecord.build_from_str(line)
+                for pos in password_found_positions:
+                    del unprocessed_login_instances[pos]
 
 
-def brute_force_login_record(login_record, wordlist=None):
-    md5_decrypter = Md5Decrypter(login_record.password_hash_base64,
-                                 login_record.salt, 4, 5, True, True, True,
-                                 wordlist)
-    password = md5_decrypter.decrypt_brute_force()
-    if password is not None:
-        return password
-
-    md5_decrypter = Md5Decrypter(login_record.password_hash_base64,
-                                 login_record.salt, 6, 7, True)
-    return md5_decrypter.decrypt_brute_force()
+def read_input_as_login_instances():
+    return map(lambda x: LoginInstance.build_from_str(x),
+               filter(lambda x: len(x.strip()) > 0, sys.stdin))
 
 
-@click.command()
-@click.option('--wordlist-path', default=None,
-              help='path to text file (line = password)')
-def main(wordlist_path):
-    wordlist = None
-    if wordlist_path is not None:
-        wordlist = build_wordlist(wordlist_path)
+def add_test_password_settings(md5_batch_decrypter):
+    gen = StandardPasswordGenerator(4, True, True, True)
+    md5_batch_decrypter.add_password_generator(gen)
 
-    for login_record in read_input_as_login_records():
-        password = brute_force_login_record(login_record, wordlist)
-        password_str = password if password is not None else 'NOT FOUND'
-        print('{} --> {}'.format(login_record, password_str))
+
+def add_sem_project_password_settings(md5_batch_decrypter):
+    gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
+    md5_batch_decrypter.add_password_generator(gen)
+
+    gen = StandardPasswordGenerator(4, True, True, True)
+    md5_batch_decrypter.add_password_generator(gen)
+
+    gen = StandardPasswordGenerator(6, True)
+    md5_batch_decrypter.add_password_generator(gen)
+
+    gen = StandardPasswordGenerator(5, True, True, True)
+    md5_batch_decrypter.add_password_generator(gen)
+
+    gen = StandardPasswordGenerator(7, True)
+    md5_batch_decrypter.add_password_generator(gen)
+
+
+def print_login_instances(login_instances, status):
+    print('Status: {}'.format(status))
+    for login_inst in login_instances:
+        print(login_inst)
+
+
+def main():
+    md5_batch_decrypter = Md5BatchDecrypter()
+    login_instances = []
+    for login_inst in read_input_as_login_instances():
+        login_instances.append(login_inst)
+        md5_batch_decrypter.add_login_inst(login_inst)
+
+    add_test_password_settings(md5_batch_decrypter)
+    #add_sem_project_password_settings(md5_batch_decrypter)
+
+    md5_batch_decrypter.run_brute_force()
+    print_login_instances(filter(lambda x: x.plain_password is not None,
+                                 login_instances), 'SUCCESS')
+    print_login_instances(filter(lambda x: x.plain_password is None,
+                                 login_instances), 'FAILURE')
 
     return os.EX_OK
 
