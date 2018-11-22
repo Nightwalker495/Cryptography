@@ -118,7 +118,7 @@ class LoginInstance:
         return int.from_bytes(md5_hasher.digest(), 'big')
 
 
-class Md5DecrypterThread(multiprocessing.Process):
+class Md5DecrypterProcess(multiprocessing.Process):
 
     def __init__(self, password_generators, login_instances):
         super().__init__()
@@ -168,15 +168,15 @@ class Md5BatchDecrypter:
         login_inst_chunks = self.__separate_list_into_max_n_chunks(
             self.__login_instances, threads_no)
 
-        threads = [Md5DecrypterThread(self.__password_generators,
-                                      login_inst_chunk)
-                   for login_inst_chunk in login_inst_chunks]
+        processes = [Md5DecrypterProcess(self.__password_generators,
+                                         login_inst_chunk)
+                     for login_inst_chunk in login_inst_chunks]
 
-        for thread in threads:
-            thread.start()
+        for process in processes:
+            process.start()
 
-        for thread in threads:
-            thread.join()
+        for process in processes:
+            process.join()
 
 
 def read_input_as_login_instances():
