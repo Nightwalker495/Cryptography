@@ -10,7 +10,6 @@ import abc
 import sys
 import base64
 import hashlib
-import threading
 import itertools
 import multiprocessing
 
@@ -119,19 +118,15 @@ class LoginInstance:
         return int.from_bytes(md5_hasher.digest(), 'big')
 
 
-class Md5BatchDecrypter:
+class Md5DecrypterThread(multiprocessing.Process):
 
-    def __init__(self):
-        self.__password_generators = []
-        self.__login_instances = []
+    def __init__(self, password_generators, login_instances):
+        super().__init__()
 
-    def add_password_generator(self, password_generator):
-        self.__password_generators.append(password_generator)
+        self.__password_generators = password_generators
+        self.__login_instances = login_instances
 
-    def add_login_inst(self, login_inst):
-        self.__login_instances.append(login_inst)
-
-    def run_brute_force(self):
+    def run(self):
         unprocessed_login_instances = list(self.__login_instances)
 
         for password_gen in self.__password_generators:
@@ -146,6 +141,42 @@ class Md5BatchDecrypter:
 
                 for pos in password_found_positions:
                     del unprocessed_login_instances[pos]
+
+
+class Md5BatchDecrypter:
+
+    def __init__(self):
+        self.__password_generators = []
+        self.__login_instances = []
+
+    @staticmethod
+    def __separate_list_into_max_n_chunks(values, max_chunks_num):
+        return [sublist
+                for sublist in
+                ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+                if len(sublist) > 0]
+
+    def add_password_generator(self, password_generator):
+        self.__password_generators.append(password_generator)
+
+    def add_login_inst(self, login_inst):
+        self.__login_instances.append(login_inst)
+
+    def run_brute_force(self):
+        threads_no = min(multiprocessing.cpu_count(),
+                         len(self.__login_instances))
+        login_inst_chunks = self.__separate_list_into_max_n_chunks(
+            self.__login_instances, threads_no)
+
+        threads = [Md5DecrypterThread(self.__password_generators,
+                                      login_inst_chunk)
+                   for login_inst_chunk in login_inst_chunks]
+
+        for thread in threads:
+            thread.start()
+
+        for thread in threads:
+            thread.join()
 
 
 def read_input_as_login_instances():
