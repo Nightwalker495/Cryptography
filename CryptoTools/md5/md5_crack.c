@@ -817,8 +817,10 @@ static const char *__pyx_f[] = {
 
 /*--- Type declarations ---*/
 struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct____iter__;
+struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks;
+struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr;
 
-/* "md5/md5_crack.py":64
+/* "md5/md5_crack.py":63
  *         return allowed_chars
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -829,6 +831,37 @@ struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct____iter__ {
   PyObject_HEAD
   PyObject *__pyx_v_password;
   PyObject *__pyx_v_self;
+  PyObject *__pyx_t_0;
+  Py_ssize_t __pyx_t_1;
+  PyObject *(*__pyx_t_2)(PyObject *);
+};
+
+
+/* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks {
+  PyObject_HEAD
+  PyObject *__pyx_v_max_chunks_num;
+  PyObject *__pyx_v_values;
+};
+
+
+/* "md5/md5_crack.py":156
+ *         return [sublist
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))             # <<<<<<<<<<<<<<
+ *                 if len(sublist) > 0]
+ * 
+ */
+struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr {
+  PyObject_HEAD
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *__pyx_outer_scope;
+  PyObject *__pyx_v_i;
   PyObject *__pyx_t_0;
   Py_ssize_t __pyx_t_1;
   PyObject *(*__pyx_t_2)(PyObject *);
@@ -1218,6 +1251,14 @@ static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
 static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
                                                      int is_list, int wraparound, int boundscheck);
 
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace);
+#else
+#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace)\
+    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
+#endif
+
 /* ListAppend.proto */
 #if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
 static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
@@ -1235,6 +1276,16 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
 
+/* None.proto */
+static CYTHON_INLINE void __Pyx_RaiseClosureNameError(const char *varname);
+
+/* ObjectGetItem.proto */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key);
+#else
+#define __Pyx_PyObject_GetItem(obj, key)  PyObject_GetItem(obj, key)
+#endif
+
 /* PyObjectGetMethod.proto */
 static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method);
 
@@ -1243,14 +1294,6 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
 
 /* append.proto */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
-
-/* PyIntBinop.proto */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace);
-#else
-#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace)\
-    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
-#endif
 
 /* IncludeStringH.proto */
 #include <string.h>
@@ -1284,6 +1327,9 @@ static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases,
                                            PyObject *mkw, PyObject *modname, PyObject *doc);
 static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases, PyObject *dict,
                                       PyObject *mkw, int calculate_metaclass, int allow_py2_metaclass);
+
+/* CyFunctionClassCell.proto */
+static int __Pyx_CyFunction_InitClassCell(PyObject *cyfunctions, PyObject *classobj);
 
 /* BytesEquals.proto */
 static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals);
@@ -1451,6 +1497,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from 'md5.md5_crack' */
 static PyTypeObject *__pyx_ptype_3md5_9md5_crack___pyx_scope_struct____iter__ = 0;
+static PyTypeObject *__pyx_ptype_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks = 0;
+static PyTypeObject *__pyx_ptype_3md5_9md5_crack___pyx_scope_struct_2_genexpr = 0;
 #define __Pyx_MODULE_NAME "md5.md5_crack"
 extern int __pyx_module_is_main_md5__md5_crack;
 int __pyx_module_is_main_md5__md5_crack = 0;
@@ -1462,6 +1510,7 @@ static PyObject *__pyx_builtin_open;
 static PyObject *__pyx_builtin_map;
 static PyObject *__pyx_builtin_chr;
 static PyObject *__pyx_builtin_range;
+static PyObject *__pyx_builtin_super;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_filter;
 static const char __pyx_k_0[] = "0";
@@ -1485,6 +1534,7 @@ static const char __pyx_k_gen[] = "gen";
 static const char __pyx_k_map[] = "map";
 static const char __pyx_k_md5[] = "md5";
 static const char __pyx_k_pos[] = "pos";
+static const char __pyx_k_run[] = "run";
 static const char __pyx_k_str[] = "__str__";
 static const char __pyx_k_sys[] = "sys";
 static const char __pyx_k_args[] = "args";
@@ -1508,8 +1558,10 @@ static const char __pyx_k_login[] = "login";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_split[] = "split";
+static const char __pyx_k_start[] = "start";
 static const char __pyx_k_stdin[] = "stdin";
 static const char __pyx_k_strip[] = "strip";
+static const char __pyx_k_super[] = "super";
 static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_token[] = "token";
 static const char __pyx_k_utf_8[] = "utf-8";
@@ -1528,11 +1580,16 @@ static const char __pyx_k_repeat[] = "repeat";
 static const char __pyx_k_status[] = "status";
 static const char __pyx_k_tokens[] = "tokens";
 static const char __pyx_k_update[] = "update";
+static const char __pyx_k_values[] = "values";
 static const char __pyx_k_FAILURE[] = "FAILURE";
+static const char __pyx_k_Process[] = "Process";
 static const char __pyx_k_SUCCESS[] = "SUCCESS";
+static const char __pyx_k_genexpr[] = "genexpr";
 static const char __pyx_k_hashlib[] = "hashlib";
 static const char __pyx_k_prepare[] = "__prepare__";
+static const char __pyx_k_process[] = "process";
 static const char __pyx_k_product[] = "product";
+static const char __pyx_k_sublist[] = "sublist";
 static const char __pyx_k_max_char[] = "max_char";
 static const char __pyx_k_md5_hash[] = "__md5_hash";
 static const char __pyx_k_min_char[] = "min_char";
@@ -1540,15 +1597,17 @@ static const char __pyx_k_password[] = "password";
 static const char __pyx_k_property[] = "property";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_b64decode[] = "b64decode";
+static const char __pyx_k_cpu_count[] = "cpu_count";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_itertools[] = "itertools";
 static const char __pyx_k_metaclass[] = "__metaclass__";
+static const char __pyx_k_processes[] = "processes";
 static const char __pyx_k_readlines[] = "readlines";
-static const char __pyx_k_threading[] = "threading";
 static const char __pyx_k_base64_str[] = "base64_str";
 static const char __pyx_k_from_bytes[] = "from_bytes";
 static const char __pyx_k_login_inst[] = "login_inst";
 static const char __pyx_k_md5_hasher[] = "md5_hasher";
+static const char __pyx_k_threads_no[] = "threads_no";
 static const char __pyx_k_use_digits[] = "use_digits";
 static const char __pyx_k_chars_range[] = "chars_range";
 static const char __pyx_k_md5_crack_py[] = "md5_crack.py";
@@ -1563,6 +1622,7 @@ static const char __pyx_k_wordlist_file[] = "wordlist_file";
 static const char __pyx_k_abstractmethod[] = "abstractmethod";
 static const char __pyx_k_add_login_inst[] = "add_login_inst";
 static const char __pyx_k_build_from_str[] = "build_from_str";
+static const char __pyx_k_max_chunks_num[] = "max_chunks_num";
 static const char __pyx_k_plain_password[] = "plain_password";
 static const char __pyx_k_description_str[] = "description_str";
 static const char __pyx_k_login_instances[] = "login_instances";
@@ -1570,10 +1630,12 @@ static const char __pyx_k_multiprocessing[] = "multiprocessing";
 static const char __pyx_k_run_brute_force[] = "run_brute_force";
 static const char __pyx_k_use_alpha_lower[] = "use_alpha_lower";
 static const char __pyx_k_use_alpha_upper[] = "use_alpha_upper";
+static const char __pyx_k_login_inst_chunk[] = "login_inst_chunk";
 static const char __pyx_k_Md5BatchDecrypter[] = "Md5BatchDecrypter";
 static const char __pyx_k_PasswordGenerator[] = "PasswordGenerator";
 static const char __pyx_k_base64_str_to_int[] = "__base64_str_to_int";
 static const char __pyx_k_is_password_valid[] = "__is_password_valid";
+static const char __pyx_k_login_inst_chunks[] = "login_inst_chunks";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_main_locals_lambda[] = "main.<locals>.<lambda>";
 static const char __pyx_k_password_generator[] = "password_generator";
@@ -1581,13 +1643,16 @@ static const char __pyx_k_password_not_known[] = "password not known";
 static const char __pyx_k_wordlist_file_path[] = "wordlist_file_path";
 static const char __pyx_k_LoginInstance___str[] = "LoginInstance.__str__";
 static const char __pyx_k_LoginInstance__salt[] = "_LoginInstance__salt";
+static const char __pyx_k_Md5DecrypterProcess[] = "Md5DecrypterProcess";
 static const char __pyx_k_md5_batch_decrypter[] = "md5_batch_decrypter";
+static const char __pyx_k_password_generators[] = "password_generators";
 static const char __pyx_k_LoginInstance___init[] = "LoginInstance.__init__";
 static const char __pyx_k_LoginInstance__login[] = "_LoginInstance__login";
 static const char __pyx_k_password_hash_base64[] = "password_hash_base64";
 static const char __pyx_k_print_login_instances[] = "print_login_instances";
 static const char __pyx_k_add_password_generator[] = "add_password_generator";
 static const char __pyx_k_LoginInstance__md5_hash[] = "_LoginInstance__md5_hash";
+static const char __pyx_k_Md5DecrypterProcess_run[] = "Md5DecrypterProcess.run";
 static const char __pyx_k_LoginInstance___md5_hash[] = "LoginInstance.__md5_hash";
 static const char __pyx_k_Md5BatchDecrypter___init[] = "Md5BatchDecrypter.__init__";
 static const char __pyx_k_PasswordGenerator___iter[] = "PasswordGenerator.__iter__";
@@ -1595,6 +1660,7 @@ static const char __pyx_k_build_allowed_chars_list[] = "__build_allowed_chars_li
 static const char __pyx_k_password_found_positions[] = "password_found_positions";
 static const char __pyx_k_StandardPasswordGenerator[] = "StandardPasswordGenerator";
 static const char __pyx_k_WordlistPasswordGenerator[] = "WordlistPasswordGenerator";
+static const char __pyx_k_Md5DecrypterProcess___init[] = "Md5DecrypterProcess.__init__";
 static const char __pyx_k_add_test_password_settings[] = "add_test_password_settings";
 static const char __pyx_k_LoginInstance__salt_encoded[] = "_LoginInstance__salt_encoded";
 static const char __pyx_k_unprocessed_login_instances[] = "unprocessed_login_instances";
@@ -1603,12 +1669,16 @@ static const char __pyx_k_LoginInstance_build_from_str[] = "LoginInstance.build_
 static const char __pyx_k_LoginInstance_plain_password[] = "LoginInstance.plain_password";
 static const char __pyx_k_LoginInstance__plain_password[] = "_LoginInstance__plain_password";
 static const char __pyx_k_read_input_as_login_instances[] = "read_input_as_login_instances";
+static const char __pyx_k_separate_list_into_max_n_chunk[] = "__separate_list_into_max_n_chunks";
 static const char __pyx_k_update_plain_password_if_valid[] = "update_plain_password_if_valid";
 static const char __pyx_k_LoginInstance__base64_str_to_in[] = "_LoginInstance__base64_str_to_int";
 static const char __pyx_k_LoginInstance__is_password_vali[] = "_LoginInstance__is_password_valid";
 static const char __pyx_k_LoginInstance__password_hash_ba[] = "_LoginInstance__password_hash_base64";
 static const char __pyx_k_Md5BatchDecrypter__login_instan[] = "_Md5BatchDecrypter__login_instances";
 static const char __pyx_k_Md5BatchDecrypter__password_gen[] = "_Md5BatchDecrypter__password_generators";
+static const char __pyx_k_Md5BatchDecrypter__separate_lis[] = "_Md5BatchDecrypter__separate_list_into_max_n_chunks";
+static const char __pyx_k_Md5DecrypterProcess__login_inst[] = "_Md5DecrypterProcess__login_instances";
+static const char __pyx_k_Md5DecrypterProcess__password_g[] = "_Md5DecrypterProcess__password_generators";
 static const char __pyx_k_StandardPasswordGenerator__allo[] = "_StandardPasswordGenerator__allowed_chars";
 static const char __pyx_k_StandardPasswordGenerator__buil[] = "_StandardPasswordGenerator__build_allowed_chars_list";
 static const char __pyx_k_StandardPasswordGenerator__pass[] = "_StandardPasswordGenerator__password_len";
@@ -1617,6 +1687,7 @@ static const char __pyx_k_resources_sk_names_wordlist_txt[] = "../resources/sk_n
 static const char __pyx_k_LoginInstance___base64_str_to_in[] = "LoginInstance.__base64_str_to_int";
 static const char __pyx_k_LoginInstance___is_password_vali[] = "LoginInstance.__is_password_valid";
 static const char __pyx_k_LoginInstance_update_plain_passw[] = "LoginInstance.update_plain_password_if_valid";
+static const char __pyx_k_Md5BatchDecrypter___separate_lis[] = "Md5BatchDecrypter.__separate_list_into_max_n_chunks.<locals>.genexpr";
 static const char __pyx_k_Md5BatchDecrypter_add_login_inst[] = "Md5BatchDecrypter.add_login_inst";
 static const char __pyx_k_Md5BatchDecrypter_add_password_g[] = "Md5BatchDecrypter.add_password_generator";
 static const char __pyx_k_Md5BatchDecrypter_run_brute_forc[] = "Md5BatchDecrypter.run_brute_force";
@@ -1627,6 +1698,7 @@ static const char __pyx_k_WordlistPasswordGenerator___init[] = "WordlistPassword
 static const char __pyx_k_WordlistPasswordGenerator___iter[] = "WordlistPasswordGenerator.__iter__";
 static const char __pyx_k_add_sem_project_password_setting[] = "add_sem_project_password_settings";
 static const char __pyx_k_read_input_as_login_instances_lo[] = "read_input_as_login_instances.<locals>.<lambda>";
+static const char __pyx_k_Md5BatchDecrypter___separate_lis_2[] = "Md5BatchDecrypter.__separate_list_into_max_n_chunks";
 static const char __pyx_k_StandardPasswordGenerator___buil_2[] = "StandardPasswordGenerator.__build_allowed_chars_list";
 static PyObject *__pyx_kp_s_0;
 static PyObject *__pyx_kp_s_9;
@@ -1654,13 +1726,22 @@ static PyObject *__pyx_n_s_LoginInstance_plain_password;
 static PyObject *__pyx_n_s_LoginInstance_update_plain_passw;
 static PyObject *__pyx_n_s_Md5BatchDecrypter;
 static PyObject *__pyx_n_s_Md5BatchDecrypter___init;
+static PyObject *__pyx_n_s_Md5BatchDecrypter___separate_lis;
+static PyObject *__pyx_n_s_Md5BatchDecrypter___separate_lis_2;
 static PyObject *__pyx_n_s_Md5BatchDecrypter__login_instan;
 static PyObject *__pyx_n_s_Md5BatchDecrypter__password_gen;
+static PyObject *__pyx_n_s_Md5BatchDecrypter__separate_lis;
 static PyObject *__pyx_n_s_Md5BatchDecrypter_add_login_inst;
 static PyObject *__pyx_n_s_Md5BatchDecrypter_add_password_g;
 static PyObject *__pyx_n_s_Md5BatchDecrypter_run_brute_forc;
+static PyObject *__pyx_n_s_Md5DecrypterProcess;
+static PyObject *__pyx_n_s_Md5DecrypterProcess___init;
+static PyObject *__pyx_n_s_Md5DecrypterProcess__login_inst;
+static PyObject *__pyx_n_s_Md5DecrypterProcess__password_g;
+static PyObject *__pyx_n_s_Md5DecrypterProcess_run;
 static PyObject *__pyx_n_s_PasswordGenerator;
 static PyObject *__pyx_n_s_PasswordGenerator___iter;
+static PyObject *__pyx_n_s_Process;
 static PyObject *__pyx_n_s_SUCCESS;
 static PyObject *__pyx_n_s_StandardPasswordGenerator;
 static PyObject *__pyx_n_s_StandardPasswordGenerator___buil;
@@ -1700,6 +1781,7 @@ static PyObject *__pyx_n_s_chars_range;
 static PyObject *__pyx_n_s_chr;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
+static PyObject *__pyx_n_s_cpu_count;
 static PyObject *__pyx_n_s_description_str;
 static PyObject *__pyx_n_s_digest;
 static PyObject *__pyx_n_s_doc;
@@ -1714,6 +1796,7 @@ static PyObject *__pyx_n_s_filter;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_from_bytes;
 static PyObject *__pyx_n_s_gen;
+static PyObject *__pyx_n_s_genexpr;
 static PyObject *__pyx_n_s_hashlib;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
@@ -1725,12 +1808,15 @@ static PyObject *__pyx_n_s_join;
 static PyObject *__pyx_n_s_line;
 static PyObject *__pyx_n_s_login;
 static PyObject *__pyx_n_s_login_inst;
+static PyObject *__pyx_n_s_login_inst_chunk;
+static PyObject *__pyx_n_s_login_inst_chunks;
 static PyObject *__pyx_n_s_login_instances;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_main_2;
 static PyObject *__pyx_n_s_main_locals_lambda;
 static PyObject *__pyx_n_s_map;
 static PyObject *__pyx_n_s_max_char;
+static PyObject *__pyx_n_s_max_chunks_num;
 static PyObject *__pyx_n_s_md5;
 static PyObject *__pyx_n_s_md5_batch_decrypter;
 static PyObject *__pyx_kp_s_md5_crack_py;
@@ -1748,6 +1834,7 @@ static PyObject *__pyx_n_s_password;
 static PyObject *__pyx_n_s_password_found_positions;
 static PyObject *__pyx_n_s_password_gen;
 static PyObject *__pyx_n_s_password_generator;
+static PyObject *__pyx_n_s_password_generators;
 static PyObject *__pyx_n_s_password_hash_base64;
 static PyObject *__pyx_n_s_password_len;
 static PyObject *__pyx_kp_s_password_not_known;
@@ -1757,6 +1844,8 @@ static PyObject *__pyx_n_s_pos;
 static PyObject *__pyx_n_s_prepare;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_print_login_instances;
+static PyObject *__pyx_n_s_process;
+static PyObject *__pyx_n_s_processes;
 static PyObject *__pyx_n_s_product;
 static PyObject *__pyx_n_s_property;
 static PyObject *__pyx_n_s_qualname;
@@ -1766,19 +1855,24 @@ static PyObject *__pyx_n_s_read_input_as_login_instances_lo;
 static PyObject *__pyx_n_s_readlines;
 static PyObject *__pyx_n_s_repeat;
 static PyObject *__pyx_kp_s_resources_sk_names_wordlist_txt;
+static PyObject *__pyx_n_s_run;
 static PyObject *__pyx_n_s_run_brute_force;
 static PyObject *__pyx_n_s_salt;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_send;
+static PyObject *__pyx_n_s_separate_list_into_max_n_chunk;
 static PyObject *__pyx_n_s_split;
+static PyObject *__pyx_n_s_start;
 static PyObject *__pyx_n_s_staticmethod;
 static PyObject *__pyx_n_s_status;
 static PyObject *__pyx_n_s_stdin;
 static PyObject *__pyx_n_s_str;
 static PyObject *__pyx_n_s_strip;
+static PyObject *__pyx_n_s_sublist;
+static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_sys;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_threading;
+static PyObject *__pyx_n_s_threads_no;
 static PyObject *__pyx_n_s_throw;
 static PyObject *__pyx_n_s_token;
 static PyObject *__pyx_n_s_tokens;
@@ -1789,6 +1883,7 @@ static PyObject *__pyx_n_s_use_alpha_lower;
 static PyObject *__pyx_n_s_use_alpha_upper;
 static PyObject *__pyx_n_s_use_digits;
 static PyObject *__pyx_kp_s_utf_8;
+static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_wordlist_file;
 static PyObject *__pyx_n_s_wordlist_file_path;
 static PyObject *__pyx_n_s_z;
@@ -1807,20 +1902,26 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
 static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_password_if_valid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_12__is_password_valid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generators, PyObject *__pyx_v_login_instances); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess_2run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2add_password_generator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generator); /* proto */
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_login_inst(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_login_inst); /* proto */
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6run_brute_force(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_genexpr(PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2__separate_list_into_max_n_chunks(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_max_chunks_num); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_password_generator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generator); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6add_login_inst(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_login_inst); /* proto */
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
+static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_2add_test_password_settings(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_md5_batch_decrypter); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_md5_batch_decrypter); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_login_instances, PyObject *__pyx_v_status); /* proto */
-static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda3(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
+static PyObject *__pyx_lambda_funcdef_lambda4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct____iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_4;
@@ -1853,10 +1954,13 @@ static PyObject *__pyx_tuple__41;
 static PyObject *__pyx_tuple__43;
 static PyObject *__pyx_tuple__45;
 static PyObject *__pyx_tuple__47;
-static PyObject *__pyx_tuple__50;
-static PyObject *__pyx_tuple__52;
-static PyObject *__pyx_tuple__54;
+static PyObject *__pyx_tuple__49;
+static PyObject *__pyx_tuple__51;
+static PyObject *__pyx_tuple__53;
 static PyObject *__pyx_tuple__56;
+static PyObject *__pyx_tuple__58;
+static PyObject *__pyx_tuple__60;
+static PyObject *__pyx_tuple__62;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__13;
@@ -1876,14 +1980,17 @@ static PyObject *__pyx_codeobj__42;
 static PyObject *__pyx_codeobj__44;
 static PyObject *__pyx_codeobj__46;
 static PyObject *__pyx_codeobj__48;
-static PyObject *__pyx_codeobj__49;
-static PyObject *__pyx_codeobj__51;
-static PyObject *__pyx_codeobj__53;
+static PyObject *__pyx_codeobj__50;
+static PyObject *__pyx_codeobj__52;
+static PyObject *__pyx_codeobj__54;
 static PyObject *__pyx_codeobj__55;
 static PyObject *__pyx_codeobj__57;
+static PyObject *__pyx_codeobj__59;
+static PyObject *__pyx_codeobj__61;
+static PyObject *__pyx_codeobj__63;
 /* Late includes */
 
-/* "md5/md5_crack.py":21
+/* "md5/md5_crack.py":20
  * 
  *     @abc.abstractmethod
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -1917,7 +2024,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17PasswordGenerator___iter__(CYTHON_UN
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":27
+/* "md5/md5_crack.py":26
  * class WordlistPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, wordlist_file_path):             # <<<<<<<<<<<<<<
@@ -1957,11 +2064,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25WordlistPasswordGenerator_1__init__(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_wordlist_file_path)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 26, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 26, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1974,7 +2081,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25WordlistPasswordGenerator_1__init__(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 27, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.WordlistPasswordGenerator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2009,16 +2116,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
   int __pyx_t_15;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "md5/md5_crack.py":28
+  /* "md5/md5_crack.py":27
  * 
  *     def __init__(self, wordlist_file_path):
  *         self.__passwords = None             # <<<<<<<<<<<<<<
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass, Py_None) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass, Py_None) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":29
+  /* "md5/md5_crack.py":28
  *     def __init__(self, wordlist_file_path):
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:             # <<<<<<<<<<<<<<
@@ -2026,11 +2133,11 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
  *                                 for line in wordlist_file.readlines()
  */
   /*with:*/ {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_open, __pyx_v_wordlist_file_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_open, __pyx_v_wordlist_file_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L3_error)
+    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2044,7 +2151,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L3_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = __pyx_t_3;
@@ -2062,24 +2169,24 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
           __pyx_v_wordlist_file = __pyx_t_4;
           __pyx_t_4 = 0;
 
-          /* "md5/md5_crack.py":30
+          /* "md5/md5_crack.py":29
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()             # <<<<<<<<<<<<<<
  *                                 for line in wordlist_file.readlines()
  *                                 if len(line.strip()) > 0]
  */
-          __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L7_error)
+          __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_4);
 
-          /* "md5/md5_crack.py":31
+          /* "md5/md5_crack.py":30
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()
  *                                 for line in wordlist_file.readlines()             # <<<<<<<<<<<<<<
  *                                 if len(line.strip()) > 0]
  * 
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wordlist_file, __pyx_n_s_readlines); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wordlist_file, __pyx_n_s_readlines); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_5 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -2093,16 +2200,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
           }
           __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L7_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
             __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3); __pyx_t_9 = 0;
             __pyx_t_10 = NULL;
           } else {
-            __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L7_error)
+            __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 31, __pyx_L7_error)
+            __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 30, __pyx_L7_error)
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           for (;;) {
@@ -2110,17 +2217,17 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
               if (likely(PyList_CheckExact(__pyx_t_3))) {
                 if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_3)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 31, __pyx_L7_error)
+                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 30, __pyx_L7_error)
                 #else
-                __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L7_error)
+                __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L7_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               } else {
                 if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 31, __pyx_L7_error)
+                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 30, __pyx_L7_error)
                 #else
-                __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L7_error)
+                __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L7_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               }
@@ -2130,7 +2237,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 31, __pyx_L7_error)
+                  else __PYX_ERR(0, 30, __pyx_L7_error)
                 }
                 break;
               }
@@ -2139,14 +2246,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
             __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "md5/md5_crack.py":32
+            /* "md5/md5_crack.py":31
  *             self.__passwords = [line.strip()
  *                                 for line in wordlist_file.readlines()
  *                                 if len(line.strip()) > 0]             # <<<<<<<<<<<<<<
  * 
  *     def __iter__(self):
  */
-            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 32, __pyx_L7_error)
+            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_5);
             __pyx_t_11 = NULL;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -2160,22 +2267,22 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
             }
             __pyx_t_1 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L7_error)
+            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-            __pyx_t_12 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 32, __pyx_L7_error)
+            __pyx_t_12 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 31, __pyx_L7_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_13 = ((__pyx_t_12 > 0) != 0);
             if (__pyx_t_13) {
 
-              /* "md5/md5_crack.py":30
+              /* "md5/md5_crack.py":29
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()             # <<<<<<<<<<<<<<
  *                                 for line in wordlist_file.readlines()
  *                                 if len(line.strip()) > 0]
  */
-              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 30, __pyx_L7_error)
+              __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_strip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_5);
               __pyx_t_11 = NULL;
               if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -2189,13 +2296,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
               }
               __pyx_t_1 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L7_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-              if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 30, __pyx_L7_error)
+              if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 29, __pyx_L7_error)
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-              /* "md5/md5_crack.py":32
+              /* "md5/md5_crack.py":31
  *             self.__passwords = [line.strip()
  *                                 for line in wordlist_file.readlines()
  *                                 if len(line.strip()) > 0]             # <<<<<<<<<<<<<<
@@ -2204,7 +2311,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
  */
             }
 
-            /* "md5/md5_crack.py":31
+            /* "md5/md5_crack.py":30
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()
  *                                 for line in wordlist_file.readlines()             # <<<<<<<<<<<<<<
@@ -2214,17 +2321,17 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "md5/md5_crack.py":30
+          /* "md5/md5_crack.py":29
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:
  *             self.__passwords = [line.strip()             # <<<<<<<<<<<<<<
  *                                 for line in wordlist_file.readlines()
  *                                 if len(line.strip()) > 0]
  */
-          if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass, __pyx_t_4) < 0) __PYX_ERR(0, 30, __pyx_L7_error)
+          if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass, __pyx_t_4) < 0) __PYX_ERR(0, 29, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "md5/md5_crack.py":29
+          /* "md5/md5_crack.py":28
  *     def __init__(self, wordlist_file_path):
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:             # <<<<<<<<<<<<<<
@@ -2244,20 +2351,20 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("md5.md5_crack.WordlistPasswordGenerator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 29, __pyx_L9_except_error)
+          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 28, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_4, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L9_except_error)
+          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_4, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 29, __pyx_L9_except_error)
+          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 28, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (__pyx_t_13 < 0) __PYX_ERR(0, 29, __pyx_L9_except_error)
+          if (__pyx_t_13 < 0) __PYX_ERR(0, 28, __pyx_L9_except_error)
           __pyx_t_15 = ((!(__pyx_t_13 != 0)) != 0);
           if (__pyx_t_15) {
             __Pyx_GIVEREF(__pyx_t_4);
@@ -2265,7 +2372,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
             __Pyx_XGIVEREF(__pyx_t_1);
             __Pyx_ErrRestoreWithState(__pyx_t_4, __pyx_t_3, __pyx_t_1);
             __pyx_t_4 = 0; __pyx_t_3 = 0; __pyx_t_1 = 0; 
-            __PYX_ERR(0, 29, __pyx_L9_except_error)
+            __PYX_ERR(0, 28, __pyx_L9_except_error)
           }
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2291,7 +2398,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
         if (__pyx_t_2) {
           __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 29, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -2306,7 +2413,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
     __pyx_L19:;
   }
 
-  /* "md5/md5_crack.py":27
+  /* "md5/md5_crack.py":26
  * class WordlistPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, wordlist_file_path):             # <<<<<<<<<<<<<<
@@ -2333,7 +2440,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator___init__(C
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":34
+/* "md5/md5_crack.py":33
  *                                 if len(line.strip()) > 0]
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -2362,7 +2469,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator_2__iter__(
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("__iter__", 0);
 
-  /* "md5/md5_crack.py":35
+  /* "md5/md5_crack.py":34
  * 
  *     def __iter__(self):
  *         return iter(self.__passwords)             # <<<<<<<<<<<<<<
@@ -2370,16 +2477,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator_2__iter__(
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_WordlistPasswordGenerator__pass); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":34
+  /* "md5/md5_crack.py":33
  *                                 if len(line.strip()) > 0]
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -2399,7 +2506,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25WordlistPasswordGenerator_2__iter__(
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":40
+/* "md5/md5_crack.py":39
  * class StandardPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,             # <<<<<<<<<<<<<<
@@ -2424,7 +2531,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_1__init__(
     PyObject* values[5] = {0,0,0,0,0};
     values[2] = ((PyObject *)((PyObject *)Py_False));
 
-    /* "md5/md5_crack.py":41
+    /* "md5/md5_crack.py":40
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,
  *                  use_alpha_upper=False, use_digits=False):             # <<<<<<<<<<<<<<
@@ -2459,7 +2566,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_1__init__(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password_len)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 5, 1); __PYX_ERR(0, 40, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 5, 1); __PYX_ERR(0, 39, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2481,7 +2588,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_1__init__(
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2505,7 +2612,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_1__init__(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.StandardPasswordGenerator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2513,7 +2620,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_1__init__(
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(__pyx_self, __pyx_v_self, __pyx_v_password_len, __pyx_v_use_alpha_lower, __pyx_v_use_alpha_upper, __pyx_v_use_digits);
 
-  /* "md5/md5_crack.py":40
+  /* "md5/md5_crack.py":39
  * class StandardPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,             # <<<<<<<<<<<<<<
@@ -2536,26 +2643,26 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(C
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "md5/md5_crack.py":42
+  /* "md5/md5_crack.py":41
  *     def __init__(self, password_len, use_alpha_lower=False,
  *                  use_alpha_upper=False, use_digits=False):
  *         self.__password_len = password_len             # <<<<<<<<<<<<<<
  *         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,
  *                                                                use_alpha_upper,
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__pass, __pyx_v_password_len) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__pass, __pyx_v_password_len) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":43
+  /* "md5/md5_crack.py":42
  *                  use_alpha_upper=False, use_digits=False):
  *         self.__password_len = password_len
  *         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,             # <<<<<<<<<<<<<<
  *                                                                use_alpha_upper,
  *                                                                use_digits)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__buil); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__buil); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "md5/md5_crack.py":45
+  /* "md5/md5_crack.py":44
  *         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,
  *                                                                use_alpha_upper,
  *                                                                use_digits)             # <<<<<<<<<<<<<<
@@ -2577,7 +2684,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(C
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_use_alpha_lower, __pyx_v_use_alpha_upper, __pyx_v_use_digits};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -2585,13 +2692,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(C
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_use_alpha_lower, __pyx_v_use_alpha_upper, __pyx_v_use_digits};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -2605,23 +2712,23 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(C
     __Pyx_INCREF(__pyx_v_use_digits);
     __Pyx_GIVEREF(__pyx_v_use_digits);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_4, __pyx_v_use_digits);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":43
+  /* "md5/md5_crack.py":42
  *                  use_alpha_upper=False, use_digits=False):
  *         self.__password_len = password_len
  *         self.__allowed_chars = self.__build_allowed_chars_list(use_alpha_lower,             # <<<<<<<<<<<<<<
  *                                                                use_alpha_upper,
  *                                                                use_digits)
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__allo, __pyx_t_1) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__allo, __pyx_t_1) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":40
+  /* "md5/md5_crack.py":39
  * class StandardPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,             # <<<<<<<<<<<<<<
@@ -2645,7 +2752,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator___init__(C
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":48
+/* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
@@ -2669,7 +2776,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_3__build_a
     values[0] = ((PyObject *)((PyObject *)Py_False));
     values[1] = ((PyObject *)((PyObject *)Py_False));
 
-    /* "md5/md5_crack.py":49
+    /* "md5/md5_crack.py":48
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):             # <<<<<<<<<<<<<<
@@ -2711,7 +2818,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_3__build_a
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__build_allowed_chars_list") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__build_allowed_chars_list") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2731,7 +2838,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_3__build_a
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__build_allowed_chars_list", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__build_allowed_chars_list", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.StandardPasswordGenerator.__build_allowed_chars_list", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2739,7 +2846,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_3__build_a
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_allowed_chars_list(__pyx_self, __pyx_v_use_alpha_lower, __pyx_v_use_alpha_upper, __pyx_v_use_digits);
 
-  /* "md5/md5_crack.py":48
+  /* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
@@ -2752,7 +2859,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_3__build_a
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":50
+/* "md5/md5_crack.py":49
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):             # <<<<<<<<<<<<<<
@@ -2792,11 +2899,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_max_char)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("chars_range", 1, 2, 2, 1); __PYX_ERR(0, 50, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("chars_range", 1, 2, 2, 1); __PYX_ERR(0, 49, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chars_range") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chars_range") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2809,7 +2916,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("chars_range", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("chars_range", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 49, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.StandardPasswordGenerator.__build_allowed_chars_list.chars_range", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2831,7 +2938,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("chars_range", 0);
 
-  /* "md5/md5_crack.py":51
+  /* "md5/md5_crack.py":50
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):
  *             return map(chr, range(ord(min_char), ord(max_char) + 1))             # <<<<<<<<<<<<<<
@@ -2839,13 +2946,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
  *         allowed_chars = []
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_Ord(__pyx_v_min_char); if (unlikely(__pyx_t_1 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Ord(__pyx_v_min_char); if (unlikely(__pyx_t_1 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_Ord(__pyx_v_max_char); if (unlikely(__pyx_t_1 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_t_1 + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Ord(__pyx_v_max_char); if (unlikely(__pyx_t_1 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_t_1 + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -2853,10 +2960,10 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_builtin_chr);
   __Pyx_GIVEREF(__pyx_builtin_chr);
@@ -2864,14 +2971,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":50
+  /* "md5/md5_crack.py":49
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):             # <<<<<<<<<<<<<<
@@ -2892,7 +2999,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":48
+/* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
@@ -2910,56 +3017,56 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__build_allowed_chars_list", 0);
 
-  /* "md5/md5_crack.py":50
+  /* "md5/md5_crack.py":49
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):             # <<<<<<<<<<<<<<
  *             return map(chr, range(ord(min_char), ord(max_char) + 1))
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_1chars_range, 0, __pyx_n_s_StandardPasswordGenerator___buil, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_1chars_range, 0, __pyx_n_s_StandardPasswordGenerator___buil, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_chars_range = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":53
+  /* "md5/md5_crack.py":52
  *             return map(chr, range(ord(min_char), ord(max_char) + 1))
  * 
  *         allowed_chars = []             # <<<<<<<<<<<<<<
  * 
  *         if use_alpha_lower:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_allowed_chars = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":55
+  /* "md5/md5_crack.py":54
  *         allowed_chars = []
  * 
  *         if use_alpha_lower:             # <<<<<<<<<<<<<<
  *             allowed_chars += chars_range('a', 'z')
  *         if use_alpha_upper:
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_alpha_lower); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_alpha_lower); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "md5/md5_crack.py":56
+    /* "md5/md5_crack.py":55
  * 
  *         if use_alpha_lower:
  *             allowed_chars += chars_range('a', 'z')             # <<<<<<<<<<<<<<
  *         if use_alpha_upper:
  *             allowed_chars += chars_range('A', 'Z')
  */
-    __pyx_t_1 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_n_s_a, __pyx_n_s_z); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_1 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_n_s_a, __pyx_n_s_z); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_allowed_chars, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "md5/md5_crack.py":55
+    /* "md5/md5_crack.py":54
  *         allowed_chars = []
  * 
  *         if use_alpha_lower:             # <<<<<<<<<<<<<<
@@ -2968,32 +3075,32 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
  */
   }
 
-  /* "md5/md5_crack.py":57
+  /* "md5/md5_crack.py":56
  *         if use_alpha_lower:
  *             allowed_chars += chars_range('a', 'z')
  *         if use_alpha_upper:             # <<<<<<<<<<<<<<
  *             allowed_chars += chars_range('A', 'Z')
  *         if use_digits:
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_alpha_upper); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_alpha_upper); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "md5/md5_crack.py":58
+    /* "md5/md5_crack.py":57
  *             allowed_chars += chars_range('a', 'z')
  *         if use_alpha_upper:
  *             allowed_chars += chars_range('A', 'Z')             # <<<<<<<<<<<<<<
  *         if use_digits:
  *             allowed_chars += chars_range('0', '9')
  */
-    __pyx_t_3 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_n_s_A, __pyx_n_s_Z); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_3 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_n_s_A, __pyx_n_s_Z); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_allowed_chars, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "md5/md5_crack.py":57
+    /* "md5/md5_crack.py":56
  *         if use_alpha_lower:
  *             allowed_chars += chars_range('a', 'z')
  *         if use_alpha_upper:             # <<<<<<<<<<<<<<
@@ -3002,32 +3109,32 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
  */
   }
 
-  /* "md5/md5_crack.py":59
+  /* "md5/md5_crack.py":58
  *         if use_alpha_upper:
  *             allowed_chars += chars_range('A', 'Z')
  *         if use_digits:             # <<<<<<<<<<<<<<
  *             allowed_chars += chars_range('0', '9')
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_digits); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_digits); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "md5/md5_crack.py":60
+    /* "md5/md5_crack.py":59
  *             allowed_chars += chars_range('A', 'Z')
  *         if use_digits:
  *             allowed_chars += chars_range('0', '9')             # <<<<<<<<<<<<<<
  * 
  *         return allowed_chars
  */
-    __pyx_t_1 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_kp_s_0, __pyx_kp_s_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_1 = __pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_26__build_allowed_chars_list_chars_range(__pyx_v_chars_range, __pyx_kp_s_0, __pyx_kp_s_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_allowed_chars, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_allowed_chars, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "md5/md5_crack.py":59
+    /* "md5/md5_crack.py":58
  *         if use_alpha_upper:
  *             allowed_chars += chars_range('A', 'Z')
  *         if use_digits:             # <<<<<<<<<<<<<<
@@ -3036,7 +3143,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
  */
   }
 
-  /* "md5/md5_crack.py":62
+  /* "md5/md5_crack.py":61
  *             allowed_chars += chars_range('0', '9')
  * 
  *         return allowed_chars             # <<<<<<<<<<<<<<
@@ -3048,7 +3155,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
   __pyx_r = __pyx_v_allowed_chars;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":48
+  /* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
@@ -3071,7 +3178,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_2__build_a
 }
 static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "md5/md5_crack.py":64
+/* "md5/md5_crack.py":63
  *         return allowed_chars
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -3102,7 +3209,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_4__iter__(
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct____iter__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 64, __pyx_L1_error)
+    __PYX_ERR(0, 63, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3110,7 +3217,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_25StandardPasswordGenerator_4__iter__(
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_StandardPasswordGenerator___iter, __pyx_n_s_md5_md5_crack); if (unlikely(!gen)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_StandardPasswordGenerator___iter, __pyx_n_s_md5_md5_crack); if (unlikely(!gen)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3146,50 +3253,50 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 63, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":65
+  /* "md5/md5_crack.py":64
  * 
  *     def __iter__(self):
  *         for password in itertools.product(self.__allowed_chars,             # <<<<<<<<<<<<<<
  *                                           repeat=self.__password_len):
  *             yield ''.join(password)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itertools); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itertools); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_product); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_product); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__allo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__allo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":66
+  /* "md5/md5_crack.py":65
  *     def __iter__(self):
  *         for password in itertools.product(self.__allowed_chars,
  *                                           repeat=self.__password_len):             # <<<<<<<<<<<<<<
  *             yield ''.join(password)
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__pass); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_StandardPasswordGenerator__pass); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_repeat, __pyx_t_4) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_repeat, __pyx_t_4) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "md5/md5_crack.py":65
+  /* "md5/md5_crack.py":64
  * 
  *     def __iter__(self):
  *         for password in itertools.product(self.__allowed_chars,             # <<<<<<<<<<<<<<
  *                                           repeat=self.__password_len):
  *             yield ''.join(password)
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3198,9 +3305,9 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
     __pyx_t_1 = __pyx_t_4; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   for (;;) {
@@ -3208,17 +3315,17 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -3228,7 +3335,7 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 65, __pyx_L1_error)
+          else __PYX_ERR(0, 64, __pyx_L1_error)
         }
         break;
       }
@@ -3239,14 +3346,14 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "md5/md5_crack.py":67
+    /* "md5/md5_crack.py":66
  *         for password in itertools.product(self.__allowed_chars,
  *                                           repeat=self.__password_len):
  *             yield ''.join(password)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__5, __pyx_cur_scope->__pyx_v_password); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__5, __pyx_cur_scope->__pyx_v_password); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -3266,9 +3373,9 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
     __Pyx_XGOTREF(__pyx_t_1);
     __pyx_t_5 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_6 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 67, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 66, __pyx_L1_error)
 
-    /* "md5/md5_crack.py":65
+    /* "md5/md5_crack.py":64
  * 
  *     def __iter__(self):
  *         for password in itertools.product(self.__allowed_chars,             # <<<<<<<<<<<<<<
@@ -3279,7 +3386,7 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "md5/md5_crack.py":64
+  /* "md5/md5_crack.py":63
  *         return allowed_chars
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -3307,7 +3414,7 @@ static PyObject *__pyx_gb_3md5_9md5_crack_25StandardPasswordGenerator_6generator
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":72
+/* "md5/md5_crack.py":71
  * class LoginInstance:
  * 
  *     def __init__(self, login, password_hash_base64, salt):             # <<<<<<<<<<<<<<
@@ -3353,23 +3460,23 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_1__init__(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_login)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 71, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password_hash_base64)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 71, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_salt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 71, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 71, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -3386,7 +3493,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_1__init__(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 72, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 71, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.LoginInstance.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3407,43 +3514,43 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance___init__(CYTHON_UNUSED
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "md5/md5_crack.py":73
+  /* "md5/md5_crack.py":72
  * 
  *     def __init__(self, login, password_hash_base64, salt):
  *         self.__login = login             # <<<<<<<<<<<<<<
  *         self.__password_hash_base64 = password_hash_base64
  *         self.__salt = salt
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__login, __pyx_v_login) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__login, __pyx_v_login) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":74
+  /* "md5/md5_crack.py":73
  *     def __init__(self, login, password_hash_base64, salt):
  *         self.__login = login
  *         self.__password_hash_base64 = password_hash_base64             # <<<<<<<<<<<<<<
  *         self.__salt = salt
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash_ba, __pyx_v_password_hash_base64) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash_ba, __pyx_v_password_hash_base64) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":75
+  /* "md5/md5_crack.py":74
  *         self.__login = login
  *         self.__password_hash_base64 = password_hash_base64
  *         self.__salt = salt             # <<<<<<<<<<<<<<
  * 
  *         self.__salt_encoded = self.__salt.encode('utf-8')
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt, __pyx_v_salt) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt, __pyx_v_salt) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":77
+  /* "md5/md5_crack.py":76
  *         self.__salt = salt
  * 
  *         self.__salt_encoded = self.__salt.encode('utf-8')             # <<<<<<<<<<<<<<
  *         self.__password_hash = self.__base64_str_to_int(password_hash_base64)
  *         self.__plain_password = None
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3458,20 +3565,20 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance___init__(CYTHON_UNUSED
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_kp_s_utf_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_kp_s_utf_8);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt_encoded, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt_encoded, __pyx_t_1) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":78
+  /* "md5/md5_crack.py":77
  * 
  *         self.__salt_encoded = self.__salt.encode('utf-8')
  *         self.__password_hash = self.__base64_str_to_int(password_hash_base64)             # <<<<<<<<<<<<<<
  *         self.__plain_password = None
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__base64_str_to_in); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__base64_str_to_in); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3485,22 +3592,22 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance___init__(CYTHON_UNUSED
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_password_hash_base64) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_password_hash_base64);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash, __pyx_t_1) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":79
+  /* "md5/md5_crack.py":78
  *         self.__salt_encoded = self.__salt.encode('utf-8')
  *         self.__password_hash = self.__base64_str_to_int(password_hash_base64)
  *         self.__plain_password = None             # <<<<<<<<<<<<<<
  * 
  *     def __str__(self):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password, Py_None) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password, Py_None) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":72
+  /* "md5/md5_crack.py":71
  * class LoginInstance:
  * 
  *     def __init__(self, login, password_hash_base64, salt):             # <<<<<<<<<<<<<<
@@ -3523,7 +3630,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance___init__(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":81
+/* "md5/md5_crack.py":80
  *         self.__plain_password = None
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -3560,14 +3667,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "md5/md5_crack.py":83
+  /* "md5/md5_crack.py":82
  *     def __str__(self):
  *         password_str = 'password not known'\
  *             if self.__plain_password is None else self.__plain_password             # <<<<<<<<<<<<<<
  *         return '{} [{} | {}] --> {}'.format(self.__login,
  *                                             self.__password_hash_base64,
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = (__pyx_t_2 == Py_None);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3575,7 +3682,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
     __Pyx_INCREF(__pyx_kp_s_password_not_known);
     __pyx_t_1 = __pyx_kp_s_password_not_known;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -3583,7 +3690,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   __pyx_v_password_str = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":84
+  /* "md5/md5_crack.py":83
  *         password_str = 'password not known'\
  *             if self.__plain_password is None else self.__plain_password
  *         return '{} [{} | {}] --> {}'.format(self.__login,             # <<<<<<<<<<<<<<
@@ -3591,29 +3698,29 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
  *                                             self.__salt, password_str)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__6, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__6, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__login); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__login); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "md5/md5_crack.py":85
+  /* "md5/md5_crack.py":84
  *             if self.__plain_password is None else self.__plain_password
  *         return '{} [{} | {}] --> {}'.format(self.__login,
  *                                             self.__password_hash_base64,             # <<<<<<<<<<<<<<
  *                                             self.__salt, password_str)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash_ba); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash_ba); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "md5/md5_crack.py":86
+  /* "md5/md5_crack.py":85
  *         return '{} [{} | {}] --> {}'.format(self.__login,
  *                                             self.__password_hash_base64,
  *                                             self.__salt, password_str)             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -3630,7 +3737,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_v_password_str};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3641,7 +3748,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_v_password_str};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3650,7 +3757,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -3667,7 +3774,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -3676,7 +3783,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":81
+  /* "md5/md5_crack.py":80
  *         self.__plain_password = None
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -3702,7 +3809,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_2__str__(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":89
+/* "md5/md5_crack.py":88
  * 
  *     @property
  *     def plain_password(self):             # <<<<<<<<<<<<<<
@@ -3730,7 +3837,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_4plain_password(CYTHON
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("plain_password", 0);
 
-  /* "md5/md5_crack.py":90
+  /* "md5/md5_crack.py":89
  *     @property
  *     def plain_password(self):
  *         return self.__plain_password             # <<<<<<<<<<<<<<
@@ -3738,13 +3845,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_4plain_password(CYTHON
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":89
+  /* "md5/md5_crack.py":88
  * 
  *     @property
  *     def plain_password(self):             # <<<<<<<<<<<<<<
@@ -3763,7 +3870,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_4plain_password(CYTHON
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":93
+/* "md5/md5_crack.py":92
  * 
  *     @staticmethod
  *     def build_from_str(description_str):             # <<<<<<<<<<<<<<
@@ -3803,16 +3910,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("build_from_str", 0);
 
-  /* "md5/md5_crack.py":94
+  /* "md5/md5_crack.py":93
  *     @staticmethod
  *     def build_from_str(description_str):
  *         tokens = [token.strip() for token in description_str.split(':')]             # <<<<<<<<<<<<<<
  * 
  *         login = tokens[0]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_description_str, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_description_str, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3826,16 +3933,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   }
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_kp_s__7) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_kp_s__7);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
     __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 93, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -3843,17 +3950,17 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -3863,7 +3970,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 94, __pyx_L1_error)
+          else __PYX_ERR(0, 93, __pyx_L1_error)
         }
         break;
       }
@@ -3871,7 +3978,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
     }
     __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_strip); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_strip); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3885,53 +3992,53 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
     }
     __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 94, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_tokens = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":96
+  /* "md5/md5_crack.py":95
  *         tokens = [token.strip() for token in description_str.split(':')]
  * 
  *         login = tokens[0]             # <<<<<<<<<<<<<<
  *         salt = tokens[1]
  *         password_hash_base64 = tokens[2]
  */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_login = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":97
+  /* "md5/md5_crack.py":96
  * 
  *         login = tokens[0]
  *         salt = tokens[1]             # <<<<<<<<<<<<<<
  *         password_hash_base64 = tokens[2]
  * 
  */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_salt = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":98
+  /* "md5/md5_crack.py":97
  *         login = tokens[0]
  *         salt = tokens[1]
  *         password_hash_base64 = tokens[2]             # <<<<<<<<<<<<<<
  * 
  *         return LoginInstance(login, password_hash_base64, salt)
  */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 2, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_tokens, 2, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_password_hash_base64 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":100
+  /* "md5/md5_crack.py":99
  *         password_hash_base64 = tokens[2]
  * 
  *         return LoginInstance(login, password_hash_base64, salt)             # <<<<<<<<<<<<<<
@@ -3939,7 +4046,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LoginInstance); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_LoginInstance); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_8 = 0;
@@ -3956,7 +4063,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_login, __pyx_v_password_hash_base64, __pyx_v_salt};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -3964,13 +4071,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_login, __pyx_v_password_hash_base64, __pyx_v_salt};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -3984,7 +4091,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
     __Pyx_INCREF(__pyx_v_salt);
     __Pyx_GIVEREF(__pyx_v_salt);
     PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_8, __pyx_v_salt);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -3993,7 +4100,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":93
+  /* "md5/md5_crack.py":92
  * 
  *     @staticmethod
  *     def build_from_str(description_str):             # <<<<<<<<<<<<<<
@@ -4021,7 +4128,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_6build_from_str(CYTHON
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":103
+/* "md5/md5_crack.py":102
  * 
  *     @staticmethod
  *     def __base64_str_to_int(base64_str):             # <<<<<<<<<<<<<<
@@ -4054,7 +4161,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   int __pyx_t_6;
   __Pyx_RefNannySetupContext("__base64_str_to_int", 0);
 
-  /* "md5/md5_crack.py":104
+  /* "md5/md5_crack.py":103
  *     @staticmethod
  *     def __base64_str_to_int(base64_str):
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')             # <<<<<<<<<<<<<<
@@ -4062,11 +4169,11 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
  *     def update_plain_password_if_valid(self, password):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyInt_Type)), __pyx_n_s_from_bytes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyInt_Type)), __pyx_n_s_from_bytes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_base64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_base64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_b64decode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_b64decode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -4081,7 +4188,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   }
   __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_v_base64_str) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_base64_str);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -4099,7 +4206,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_3, __pyx_n_s_big};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4108,14 +4215,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_3, __pyx_n_s_big};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -4126,7 +4233,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
     __Pyx_GIVEREF(__pyx_n_s_big);
     PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_6, __pyx_n_s_big);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -4135,7 +4242,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":103
+  /* "md5/md5_crack.py":102
  * 
  *     @staticmethod
  *     def __base64_str_to_int(base64_str):             # <<<<<<<<<<<<<<
@@ -4158,7 +4265,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_8__base64_str_to_int(C
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":106
+/* "md5/md5_crack.py":105
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  *     def update_plain_password_if_valid(self, password):             # <<<<<<<<<<<<<<
@@ -4198,11 +4305,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_11update_plain_passwor
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_plain_password_if_valid", 1, 2, 2, 1); __PYX_ERR(0, 106, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_plain_password_if_valid", 1, 2, 2, 1); __PYX_ERR(0, 105, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_plain_password_if_valid") < 0)) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_plain_password_if_valid") < 0)) __PYX_ERR(0, 105, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4215,7 +4322,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_11update_plain_passwor
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_plain_password_if_valid", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 106, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_plain_password_if_valid", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 105, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.LoginInstance.update_plain_password_if_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4237,14 +4344,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("update_plain_password_if_valid", 0);
 
-  /* "md5/md5_crack.py":107
+  /* "md5/md5_crack.py":106
  * 
  *     def update_plain_password_if_valid(self, password):
  *         if self.__is_password_valid(password):             # <<<<<<<<<<<<<<
  *             self.__plain_password = password
  *             return True
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__is_password_vali); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__is_password_vali); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4258,23 +4365,23 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_password) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_password);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_4) {
 
-    /* "md5/md5_crack.py":108
+    /* "md5/md5_crack.py":107
  *     def update_plain_password_if_valid(self, password):
  *         if self.__is_password_valid(password):
  *             self.__plain_password = password             # <<<<<<<<<<<<<<
  *             return True
  *         return False
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password, __pyx_v_password) < 0) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__plain_password, __pyx_v_password) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
 
-    /* "md5/md5_crack.py":109
+    /* "md5/md5_crack.py":108
  *         if self.__is_password_valid(password):
  *             self.__plain_password = password
  *             return True             # <<<<<<<<<<<<<<
@@ -4286,7 +4393,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
     __pyx_r = Py_True;
     goto __pyx_L0;
 
-    /* "md5/md5_crack.py":107
+    /* "md5/md5_crack.py":106
  * 
  *     def update_plain_password_if_valid(self, password):
  *         if self.__is_password_valid(password):             # <<<<<<<<<<<<<<
@@ -4295,7 +4402,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
  */
   }
 
-  /* "md5/md5_crack.py":110
+  /* "md5/md5_crack.py":109
  *             self.__plain_password = password
  *             return True
  *         return False             # <<<<<<<<<<<<<<
@@ -4307,7 +4414,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
   __pyx_r = Py_False;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":106
+  /* "md5/md5_crack.py":105
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  *     def update_plain_password_if_valid(self, password):             # <<<<<<<<<<<<<<
@@ -4328,7 +4435,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_10update_plain_passwor
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":112
+/* "md5/md5_crack.py":111
  *         return False
  * 
  *     def __is_password_valid(self, password):             # <<<<<<<<<<<<<<
@@ -4368,11 +4475,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_13__is_password_valid(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__is_password_valid", 1, 2, 2, 1); __PYX_ERR(0, 112, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__is_password_valid", 1, 2, 2, 1); __PYX_ERR(0, 111, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__is_password_valid") < 0)) __PYX_ERR(0, 112, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__is_password_valid") < 0)) __PYX_ERR(0, 111, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4385,7 +4492,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_13__is_password_valid(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__is_password_valid", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 112, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__is_password_valid", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 111, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.LoginInstance.__is_password_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4406,7 +4513,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_12__is_password_valid(
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__is_password_valid", 0);
 
-  /* "md5/md5_crack.py":113
+  /* "md5/md5_crack.py":112
  * 
  *     def __is_password_valid(self, password):
  *         return self.__md5_hash(password) == self.__password_hash             # <<<<<<<<<<<<<<
@@ -4414,7 +4521,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_12__is_password_valid(
  *     def __md5_hash(self, password):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__md5_hash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__md5_hash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4428,19 +4535,19 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_12__is_password_valid(
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_password) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_password);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__password_hash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":112
+  /* "md5/md5_crack.py":111
  *         return False
  * 
  *     def __is_password_valid(self, password):             # <<<<<<<<<<<<<<
@@ -4461,7 +4568,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_12__is_password_valid(
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":115
+/* "md5/md5_crack.py":114
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  *     def __md5_hash(self, password):             # <<<<<<<<<<<<<<
@@ -4501,11 +4608,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_15__md5_hash(PyObject 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__md5_hash", 1, 2, 2, 1); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__md5_hash", 1, 2, 2, 1); __PYX_ERR(0, 114, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__md5_hash") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__md5_hash") < 0)) __PYX_ERR(0, 114, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4518,7 +4625,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_13LoginInstance_15__md5_hash(PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__md5_hash", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 115, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__md5_hash", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 114, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.LoginInstance.__md5_hash", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4543,16 +4650,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   int __pyx_t_6;
   __Pyx_RefNannySetupContext("__md5_hash", 0);
 
-  /* "md5/md5_crack.py":116
+  /* "md5/md5_crack.py":115
  * 
  *     def __md5_hash(self, password):
  *         md5_hasher = hashlib.md5()             # <<<<<<<<<<<<<<
  *         md5_hasher.update(password.encode('utf-8'))
  *         md5_hasher.update(self.__salt_encoded)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_hashlib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_hashlib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_md5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_md5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -4567,22 +4674,22 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_md5_hasher = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":117
+  /* "md5/md5_crack.py":116
  *     def __md5_hash(self, password):
  *         md5_hasher = hashlib.md5()
  *         md5_hasher.update(password.encode('utf-8'))             # <<<<<<<<<<<<<<
  *         md5_hasher.update(self.__salt_encoded)
  *         return int.from_bytes(md5_hasher.digest(), 'big')
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_password, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_password, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4596,9 +4703,38 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   }
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_kp_s_utf_8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s_utf_8);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":117
+ *         md5_hasher = hashlib.md5()
+ *         md5_hasher.update(password.encode('utf-8'))
+ *         md5_hasher.update(self.__salt_encoded)             # <<<<<<<<<<<<<<
+ *         return int.from_bytes(md5_hasher.digest(), 'big')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt_encoded); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
     __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
@@ -4618,35 +4754,6 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "md5/md5_crack.py":118
- *         md5_hasher = hashlib.md5()
- *         md5_hasher.update(password.encode('utf-8'))
- *         md5_hasher.update(self.__salt_encoded)             # <<<<<<<<<<<<<<
- *         return int.from_bytes(md5_hasher.digest(), 'big')
- * 
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_LoginInstance__salt_encoded); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "md5/md5_crack.py":119
  *         md5_hasher.update(password.encode('utf-8'))
  *         md5_hasher.update(self.__salt_encoded)
  *         return int.from_bytes(md5_hasher.digest(), 'big')             # <<<<<<<<<<<<<<
@@ -4654,9 +4761,9 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyInt_Type)), __pyx_n_s_from_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyInt_Type)), __pyx_n_s_from_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_digest); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_hasher, __pyx_n_s_digest); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4670,7 +4777,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   }
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -4688,7 +4795,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_n_s_big};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4697,14 +4804,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_n_s_big};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4715,7 +4822,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
     __Pyx_GIVEREF(__pyx_n_s_big);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_n_s_big);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -4724,7 +4831,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":115
+  /* "md5/md5_crack.py":114
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  *     def __md5_hash(self, password):             # <<<<<<<<<<<<<<
@@ -4748,7 +4855,561 @@ static PyObject *__pyx_pf_3md5_9md5_crack_13LoginInstance_14__md5_hash(CYTHON_UN
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":124
+/* "md5/md5_crack.py":123
+ * class Md5DecrypterProcess(multiprocessing.Process):
+ * 
+ *     def __init__(self, password_generators, login_instances):             # <<<<<<<<<<<<<<
+ *         super().__init__()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_19Md5DecrypterProcess_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_password_generators = 0;
+  PyObject *__pyx_v_login_instances = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_password_generators,&__pyx_n_s_login_instances,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password_generators)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 123, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_login_instances)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 123, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 123, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_password_generators = values[1];
+    __pyx_v_login_instances = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 123, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("md5.md5_crack.Md5DecrypterProcess.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess___init__(__pyx_self, __pyx_v_self, __pyx_v_password_generators, __pyx_v_login_instances);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generators, PyObject *__pyx_v_login_instances) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("__init__", 0);
+
+  /* "md5/md5_crack.py":124
+ * 
+ *     def __init__(self, password_generators, login_instances):
+ *         super().__init__()             # <<<<<<<<<<<<<<
+ * 
+ *         self.__password_generators = password_generators
+ */
+  __pyx_t_2 = __Pyx_CyFunction_GetClassObj(__pyx_self);
+  if (!__pyx_t_2) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(0, 124, __pyx_L1_error) }
+  __Pyx_INCREF(__pyx_t_2);
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
+  __Pyx_INCREF(__pyx_v_self);
+  __Pyx_GIVEREF(__pyx_v_self);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_self);
+  __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":126
+ *         super().__init__()
+ * 
+ *         self.__password_generators = password_generators             # <<<<<<<<<<<<<<
+ *         self.__login_instances = login_instances
+ * 
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5DecrypterProcess__password_g, __pyx_v_password_generators) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+
+  /* "md5/md5_crack.py":127
+ * 
+ *         self.__password_generators = password_generators
+ *         self.__login_instances = login_instances             # <<<<<<<<<<<<<<
+ * 
+ *     def run(self):
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5DecrypterProcess__login_inst, __pyx_v_login_instances) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+
+  /* "md5/md5_crack.py":123
+ * class Md5DecrypterProcess(multiprocessing.Process):
+ * 
+ *     def __init__(self, password_generators, login_instances):             # <<<<<<<<<<<<<<
+ *         super().__init__()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("md5.md5_crack.Md5DecrypterProcess.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":129
+ *         self.__login_instances = login_instances
+ * 
+ *     def run(self):             # <<<<<<<<<<<<<<
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_3run(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_19Md5DecrypterProcess_3run = {"run", (PyCFunction)__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_3run, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_19Md5DecrypterProcess_3run(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("run (wrapper)", 0);
+  __pyx_r = __pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess_2run(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3md5_9md5_crack_19Md5DecrypterProcess_2run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_v_unprocessed_login_instances = NULL;
+  PyObject *__pyx_v_password_gen = NULL;
+  PyObject *__pyx_v_password = NULL;
+  PyObject *__pyx_v_password_found_positions = NULL;
+  PyObject *__pyx_v_i = NULL;
+  PyObject *__pyx_v_login_inst = NULL;
+  PyObject *__pyx_v_pos = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_3;
+  PyObject *(*__pyx_t_4)(PyObject *);
+  Py_ssize_t __pyx_t_5;
+  PyObject *(*__pyx_t_6)(PyObject *);
+  PyObject *__pyx_t_7 = NULL;
+  Py_ssize_t __pyx_t_8;
+  int __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  int __pyx_t_14;
+  __Pyx_RefNannySetupContext("run", 0);
+
+  /* "md5/md5_crack.py":130
+ * 
+ *     def run(self):
+ *         unprocessed_login_instances = list(self.__login_instances)             # <<<<<<<<<<<<<<
+ * 
+ *         for password_gen in self.__password_generators:
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5DecrypterProcess__login_inst); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_unprocessed_login_instances = ((PyObject*)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "md5/md5_crack.py":132
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ *         for password_gen in self.__password_generators:             # <<<<<<<<<<<<<<
+ *             for password in password_gen:
+ *                 if len(unprocessed_login_instances) == 0:
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5DecrypterProcess__password_g); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
+    __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_3 = 0;
+    __pyx_t_4 = NULL;
+  } else {
+    __pyx_t_3 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_4)) {
+      if (likely(PyList_CheckExact(__pyx_t_1))) {
+        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_1)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_2); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+        #else
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        #endif
+      } else {
+        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_2); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+        #else
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        #endif
+      }
+    } else {
+      __pyx_t_2 = __pyx_t_4(__pyx_t_1);
+      if (unlikely(!__pyx_t_2)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 132, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_2);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_password_gen, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "md5/md5_crack.py":133
+ * 
+ *         for password_gen in self.__password_generators:
+ *             for password in password_gen:             # <<<<<<<<<<<<<<
+ *                 if len(unprocessed_login_instances) == 0:
+ *                     break
+ */
+    if (likely(PyList_CheckExact(__pyx_v_password_gen)) || PyTuple_CheckExact(__pyx_v_password_gen)) {
+      __pyx_t_2 = __pyx_v_password_gen; __Pyx_INCREF(__pyx_t_2); __pyx_t_5 = 0;
+      __pyx_t_6 = NULL;
+    } else {
+      __pyx_t_5 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_password_gen); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 133, __pyx_L1_error)
+    }
+    for (;;) {
+      if (likely(!__pyx_t_6)) {
+        if (likely(PyList_CheckExact(__pyx_t_2))) {
+          if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        } else {
+          if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        }
+      } else {
+        __pyx_t_7 = __pyx_t_6(__pyx_t_2);
+        if (unlikely(!__pyx_t_7)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 133, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_7);
+      }
+      __Pyx_XDECREF_SET(__pyx_v_password, __pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "md5/md5_crack.py":134
+ *         for password_gen in self.__password_generators:
+ *             for password in password_gen:
+ *                 if len(unprocessed_login_instances) == 0:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+ */
+      __pyx_t_8 = PyList_GET_SIZE(__pyx_v_unprocessed_login_instances); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_9 = ((__pyx_t_8 == 0) != 0);
+      if (__pyx_t_9) {
+
+        /* "md5/md5_crack.py":135
+ *             for password in password_gen:
+ *                 if len(unprocessed_login_instances) == 0:
+ *                     break             # <<<<<<<<<<<<<<
+ * 
+ *                 password_found_positions = []
+ */
+        goto __pyx_L6_break;
+
+        /* "md5/md5_crack.py":134
+ *         for password_gen in self.__password_generators:
+ *             for password in password_gen:
+ *                 if len(unprocessed_login_instances) == 0:             # <<<<<<<<<<<<<<
+ *                     break
+ * 
+ */
+      }
+
+      /* "md5/md5_crack.py":137
+ *                     break
+ * 
+ *                 password_found_positions = []             # <<<<<<<<<<<<<<
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):
+ *                     if login_inst.update_plain_password_if_valid(password):
+ */
+      __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 137, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_XDECREF_SET(__pyx_v_password_found_positions, ((PyObject*)__pyx_t_7));
+      __pyx_t_7 = 0;
+
+      /* "md5/md5_crack.py":138
+ * 
+ *                 password_found_positions = []
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):             # <<<<<<<<<<<<<<
+ *                     if login_inst.update_plain_password_if_valid(password):
+ *                         password_found_positions.append(i)
+ */
+      __Pyx_INCREF(__pyx_int_0);
+      __pyx_t_7 = __pyx_int_0;
+      __pyx_t_10 = __pyx_v_unprocessed_login_instances; __Pyx_INCREF(__pyx_t_10); __pyx_t_8 = 0;
+      for (;;) {
+        if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_10)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_8); __Pyx_INCREF(__pyx_t_11); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
+        #else
+        __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        #endif
+        __Pyx_XDECREF_SET(__pyx_v_login_inst, __pyx_t_11);
+        __pyx_t_11 = 0;
+        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
+        __pyx_t_11 = __Pyx_PyInt_AddObjC(__pyx_t_7, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_DECREF(__pyx_t_7);
+        __pyx_t_7 = __pyx_t_11;
+        __pyx_t_11 = 0;
+
+        /* "md5/md5_crack.py":139
+ *                 password_found_positions = []
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):
+ *                     if login_inst.update_plain_password_if_valid(password):             # <<<<<<<<<<<<<<
+ *                         password_found_positions.append(i)
+ * 
+ */
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_login_inst, __pyx_n_s_update_plain_password_if_valid); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 139, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_13 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+          __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_12);
+          if (likely(__pyx_t_13)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
+            __Pyx_INCREF(__pyx_t_13);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_12, function);
+          }
+        }
+        __pyx_t_11 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_13, __pyx_v_password) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_password);
+        __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 139, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        if (__pyx_t_9) {
+
+          /* "md5/md5_crack.py":140
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):
+ *                     if login_inst.update_plain_password_if_valid(password):
+ *                         password_found_positions.append(i)             # <<<<<<<<<<<<<<
+ * 
+ *                 for pos in password_found_positions:
+ */
+          __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_password_found_positions, __pyx_v_i); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 140, __pyx_L1_error)
+
+          /* "md5/md5_crack.py":139
+ *                 password_found_positions = []
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):
+ *                     if login_inst.update_plain_password_if_valid(password):             # <<<<<<<<<<<<<<
+ *                         password_found_positions.append(i)
+ * 
+ */
+        }
+
+        /* "md5/md5_crack.py":138
+ * 
+ *                 password_found_positions = []
+ *                 for i, login_inst in enumerate(unprocessed_login_instances):             # <<<<<<<<<<<<<<
+ *                     if login_inst.update_plain_password_if_valid(password):
+ *                         password_found_positions.append(i)
+ */
+      }
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+      /* "md5/md5_crack.py":142
+ *                         password_found_positions.append(i)
+ * 
+ *                 for pos in password_found_positions:             # <<<<<<<<<<<<<<
+ *                     del unprocessed_login_instances[pos]
+ * 
+ */
+      __pyx_t_7 = __pyx_v_password_found_positions; __Pyx_INCREF(__pyx_t_7); __pyx_t_8 = 0;
+      for (;;) {
+        if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_7)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
+        #else
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        #endif
+        __Pyx_XDECREF_SET(__pyx_v_pos, __pyx_t_10);
+        __pyx_t_10 = 0;
+
+        /* "md5/md5_crack.py":143
+ * 
+ *                 for pos in password_found_positions:
+ *                     del unprocessed_login_instances[pos]             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+        if (unlikely(PyObject_DelItem(__pyx_v_unprocessed_login_instances, __pyx_v_pos) < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
+
+        /* "md5/md5_crack.py":142
+ *                         password_found_positions.append(i)
+ * 
+ *                 for pos in password_found_positions:             # <<<<<<<<<<<<<<
+ *                     del unprocessed_login_instances[pos]
+ * 
+ */
+      }
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+      /* "md5/md5_crack.py":133
+ * 
+ *         for password_gen in self.__password_generators:
+ *             for password in password_gen:             # <<<<<<<<<<<<<<
+ *                 if len(unprocessed_login_instances) == 0:
+ *                     break
+ */
+    }
+    __pyx_L6_break:;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "md5/md5_crack.py":132
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ *         for password_gen in self.__password_generators:             # <<<<<<<<<<<<<<
+ *             for password in password_gen:
+ *                 if len(unprocessed_login_instances) == 0:
+ */
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":129
+ *         self.__login_instances = login_instances
+ * 
+ *     def run(self):             # <<<<<<<<<<<<<<
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_AddTraceback("md5.md5_crack.Md5DecrypterProcess.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_unprocessed_login_instances);
+  __Pyx_XDECREF(__pyx_v_password_gen);
+  __Pyx_XDECREF(__pyx_v_password);
+  __Pyx_XDECREF(__pyx_v_password_found_positions);
+  __Pyx_XDECREF(__pyx_v_i);
+  __Pyx_XDECREF(__pyx_v_login_inst);
+  __Pyx_XDECREF(__pyx_v_pos);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":148
  * class Md5BatchDecrypter:
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -4776,31 +5437,31 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter___init__(CYTHON_UN
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "md5/md5_crack.py":125
+  /* "md5/md5_crack.py":149
  * 
  *     def __init__(self):
  *         self.__password_generators = []             # <<<<<<<<<<<<<<
  *         self.__login_instances = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen, __pyx_t_1) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen, __pyx_t_1) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":126
+  /* "md5/md5_crack.py":150
  *     def __init__(self):
  *         self.__password_generators = []
  *         self.__login_instances = []             # <<<<<<<<<<<<<<
  * 
- *     def add_password_generator(self, password_generator):
+ *     @staticmethod
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan, __pyx_t_1) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan, __pyx_t_1) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":124
+  /* "md5/md5_crack.py":148
  * class Md5BatchDecrypter:
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -4821,8 +5482,400 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter___init__(CYTHON_UN
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":128
- *         self.__login_instances = []
+/* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3__separate_list_into_max_n_chunks(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_3__separate_list_into_max_n_chunks = {"__separate_list_into_max_n_chunks", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3__separate_list_into_max_n_chunks, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3__separate_list_into_max_n_chunks(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_values = 0;
+  PyObject *__pyx_v_max_chunks_num = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__separate_list_into_max_n_chunks (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_values,&__pyx_n_s_max_chunks_num,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_max_chunks_num)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__separate_list_into_max_n_chunks", 1, 2, 2, 1); __PYX_ERR(0, 153, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__separate_list_into_max_n_chunks") < 0)) __PYX_ERR(0, 153, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_values = values[0];
+    __pyx_v_max_chunks_num = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__separate_list_into_max_n_chunks", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 153, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.__separate_list_into_max_n_chunks", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2__separate_list_into_max_n_chunks(__pyx_self, __pyx_v_values, __pyx_v_max_chunks_num);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+static PyObject *__pyx_gb_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+
+/* "md5/md5_crack.py":156
+ *         return [sublist
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))             # <<<<<<<<<<<<<<
+ *                 if len(sublist) > 0]
+ * 
+ */
+
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_genexpr(PyObject *__pyx_self) {
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *__pyx_cur_scope;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  __pyx_cur_scope = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_2_genexpr(__pyx_ptype_3md5_9md5_crack___pyx_scope_struct_2_genexpr, __pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __pyx_cur_scope = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)Py_None);
+    __Pyx_INCREF(Py_None);
+    __PYX_ERR(0, 156, __pyx_L1_error)
+  } else {
+    __Pyx_GOTREF(__pyx_cur_scope);
+  }
+  __pyx_cur_scope->__pyx_outer_scope = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *) __pyx_self;
+  __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
+  {
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_Md5BatchDecrypter___separate_lis, __pyx_n_s_md5_md5_crack); if (unlikely(!gen)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_cur_scope);
+    __Pyx_RefNannyFinishContext();
+    return (PyObject *) gen;
+  }
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.__separate_list_into_max_n_chunks.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_gb_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+{
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *__pyx_cur_scope = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)__pyx_generator->closure);
+  PyObject *__pyx_r = NULL;
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_3;
+  PyObject *(*__pyx_t_4)(PyObject *);
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  switch (__pyx_generator->resume_label) {
+    case 0: goto __pyx_L3_first_run;
+    case 1: goto __pyx_L6_resume_from_yield;
+    default: /* CPython raises the right error here */
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __pyx_L3_first_run:;
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_max_chunks_num)) { __Pyx_RaiseClosureNameError("max_chunks_num"); __PYX_ERR(0, 156, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_max_chunks_num); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
+    __pyx_t_4 = NULL;
+  } else {
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_4)) {
+      if (likely(PyList_CheckExact(__pyx_t_2))) {
+        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      } else {
+        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      }
+    } else {
+      __pyx_t_1 = __pyx_t_4(__pyx_t_2);
+      if (unlikely(!__pyx_t_1)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 156, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_i);
+    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_i, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_1);
+    __pyx_t_1 = 0;
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_values)) { __Pyx_RaiseClosureNameError("values"); __PYX_ERR(0, 156, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_max_chunks_num)) { __Pyx_RaiseClosureNameError("max_chunks_num"); __PYX_ERR(0, 156, __pyx_L1_error) }
+    __pyx_t_1 = PySlice_New(__pyx_cur_scope->__pyx_v_i, Py_None, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_max_chunks_num); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_values, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
+    __Pyx_XGIVEREF(__pyx_t_2);
+    __pyx_cur_scope->__pyx_t_0 = __pyx_t_2;
+    __pyx_cur_scope->__pyx_t_1 = __pyx_t_3;
+    __pyx_cur_scope->__pyx_t_2 = __pyx_t_4;
+    __Pyx_XGIVEREF(__pyx_r);
+    __Pyx_RefNannyFinishContext();
+    __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+    /* return from generator, yielding value */
+    __pyx_generator->resume_label = 1;
+    return __pyx_r;
+    __pyx_L6_resume_from_yield:;
+    __pyx_t_2 = __pyx_cur_scope->__pyx_t_0;
+    __pyx_cur_scope->__pyx_t_0 = 0;
+    __Pyx_XGOTREF(__pyx_t_2);
+    __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
+    __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 156, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
+
+  /* function exit code */
+  PyErr_SetNone(PyExc_StopIteration);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_r); __pyx_r = 0;
+  #if !CYTHON_USE_EXC_INFO_STACK
+  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+  #endif
+  __pyx_generator->resume_label = -1;
+  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2__separate_list_into_max_n_chunks(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_max_chunks_num) {
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *__pyx_cur_scope;
+  PyObject *__pyx_v_sublist = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  Py_ssize_t __pyx_t_4;
+  PyObject *(*__pyx_t_5)(PyObject *);
+  Py_ssize_t __pyx_t_6;
+  int __pyx_t_7;
+  __Pyx_RefNannySetupContext("__separate_list_into_max_n_chunks", 0);
+  __pyx_cur_scope = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(__pyx_ptype_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks, __pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __pyx_cur_scope = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)Py_None);
+    __Pyx_INCREF(Py_None);
+    __PYX_ERR(0, 153, __pyx_L1_error)
+  } else {
+    __Pyx_GOTREF(__pyx_cur_scope);
+  }
+  __pyx_cur_scope->__pyx_v_values = __pyx_v_values;
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_values);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_values);
+  __pyx_cur_scope->__pyx_v_max_chunks_num = __pyx_v_max_chunks_num;
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_max_chunks_num);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_max_chunks_num);
+
+  /* "md5/md5_crack.py":154
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):
+ *         return [sublist             # <<<<<<<<<<<<<<
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "md5/md5_crack.py":156
+ *         return [sublist
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))             # <<<<<<<<<<<<<<
+ *                 if len(sublist) > 0]
+ * 
+ */
+  __pyx_t_2 = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_33__separate_list_into_max_n_chunks_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
+    __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
+    __pyx_t_5 = NULL;
+  } else {
+    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_5)) {
+      if (likely(PyList_CheckExact(__pyx_t_3))) {
+        if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+        #else
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        #endif
+      } else {
+        if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+        #else
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        #endif
+      }
+    } else {
+      __pyx_t_2 = __pyx_t_5(__pyx_t_3);
+      if (unlikely(!__pyx_t_2)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 156, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_2);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_sublist, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "md5/md5_crack.py":157
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+ *                 if len(sublist) > 0]             # <<<<<<<<<<<<<<
+ * 
+ *     def add_password_generator(self, password_generator):
+ */
+    __pyx_t_6 = PyObject_Length(__pyx_v_sublist); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 157, __pyx_L1_error)
+    __pyx_t_7 = ((__pyx_t_6 > 0) != 0);
+    if (__pyx_t_7) {
+
+      /* "md5/md5_crack.py":154
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):
+ *         return [sublist             # <<<<<<<<<<<<<<
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+ */
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_v_sublist))) __PYX_ERR(0, 154, __pyx_L1_error)
+
+      /* "md5/md5_crack.py":157
+ *                 for sublist in
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+ *                 if len(sublist) > 0]             # <<<<<<<<<<<<<<
+ * 
+ *     def add_password_generator(self, password_generator):
+ */
+    }
+
+    /* "md5/md5_crack.py":155
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):
+ *         return [sublist
+ *                 for sublist in             # <<<<<<<<<<<<<<
+ *                 ((values[i::max_chunks_num] for i in range(max_chunks_num)))
+ *                 if len(sublist) > 0]
+ */
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.__separate_list_into_max_n_chunks", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_sublist);
+  __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":159
+ *                 if len(sublist) > 0]
  * 
  *     def add_password_generator(self, password_generator):             # <<<<<<<<<<<<<<
  *         self.__password_generators.append(password_generator)
@@ -4830,9 +5883,9 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter___init__(CYTHON_UN
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_generator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_generator = {"add_password_generator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_generator, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_generator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_password_generator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_5add_password_generator = {"add_password_generator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_password_generator, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_password_generator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_password_generator = 0;
   PyObject *__pyx_r = 0;
@@ -4861,11 +5914,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_gene
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_password_generator)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_password_generator", 1, 2, 2, 1); __PYX_ERR(0, 128, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_password_generator", 1, 2, 2, 1); __PYX_ERR(0, 159, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_password_generator") < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_password_generator") < 0)) __PYX_ERR(0, 159, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4878,40 +5931,40 @@ static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_gene
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_password_generator", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 128, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_password_generator", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 159, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.add_password_generator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2add_password_generator(__pyx_self, __pyx_v_self, __pyx_v_password_generator);
+  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_password_generator(__pyx_self, __pyx_v_self, __pyx_v_password_generator);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2add_password_generator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generator) {
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_password_generator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_password_generator) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("add_password_generator", 0);
 
-  /* "md5/md5_crack.py":129
+  /* "md5/md5_crack.py":160
  * 
  *     def add_password_generator(self, password_generator):
  *         self.__password_generators.append(password_generator)             # <<<<<<<<<<<<<<
  * 
  *     def add_login_inst(self, login_inst):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_v_password_generator); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_v_password_generator); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":128
- *         self.__login_instances = []
+  /* "md5/md5_crack.py":159
+ *                 if len(sublist) > 0]
  * 
  *     def add_password_generator(self, password_generator):             # <<<<<<<<<<<<<<
  *         self.__password_generators.append(password_generator)
@@ -4931,7 +5984,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2add_password_gene
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":131
+/* "md5/md5_crack.py":162
  *         self.__password_generators.append(password_generator)
  * 
  *     def add_login_inst(self, login_inst):             # <<<<<<<<<<<<<<
@@ -4940,9 +5993,9 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_2add_password_gene
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst = {"add_login_inst", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7add_login_inst(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_7add_login_inst = {"add_login_inst", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7add_login_inst, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7add_login_inst(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_login_inst = 0;
   PyObject *__pyx_r = 0;
@@ -4971,11 +6024,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_login_inst)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_login_inst", 1, 2, 2, 1); __PYX_ERR(0, 131, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_login_inst", 1, 2, 2, 1); __PYX_ERR(0, 162, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_login_inst") < 0)) __PYX_ERR(0, 131, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_login_inst") < 0)) __PYX_ERR(0, 162, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4988,39 +6041,39 @@ static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_login_inst", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_login_inst", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 162, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.add_login_inst", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_login_inst(__pyx_self, __pyx_v_self, __pyx_v_login_inst);
+  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6add_login_inst(__pyx_self, __pyx_v_self, __pyx_v_login_inst);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_login_inst(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_login_inst) {
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6add_login_inst(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_login_inst) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("add_login_inst", 0);
 
-  /* "md5/md5_crack.py":132
+  /* "md5/md5_crack.py":163
  * 
  *     def add_login_inst(self, login_inst):
  *         self.__login_instances.append(login_inst)             # <<<<<<<<<<<<<<
  * 
  *     def run_brute_force(self):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_v_login_inst); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_v_login_inst); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":131
+  /* "md5/md5_crack.py":162
  *         self.__password_generators.append(password_generator)
  * 
  *     def add_login_inst(self, login_inst):             # <<<<<<<<<<<<<<
@@ -5041,361 +6094,443 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_4add_login_inst(CY
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":134
+/* "md5/md5_crack.py":165
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         unprocessed_login_instances = list(self.__login_instances)
- * 
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7run_brute_force(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_7run_brute_force = {"run_brute_force", (PyCFunction)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7run_brute_force, METH_O, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_7run_brute_force(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force = {"run_brute_force", (PyCFunction)__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("run_brute_force (wrapper)", 0);
-  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6run_brute_force(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6run_brute_force(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
-  PyObject *__pyx_v_unprocessed_login_instances = NULL;
-  PyObject *__pyx_v_password_gen = NULL;
-  PyObject *__pyx_v_password = NULL;
-  PyObject *__pyx_v_password_found_positions = NULL;
-  PyObject *__pyx_v_i = NULL;
-  PyObject *__pyx_v_login_inst = NULL;
-  PyObject *__pyx_v_pos = NULL;
+static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_v_threads_no = NULL;
+  PyObject *__pyx_v_login_inst_chunks = NULL;
+  PyObject *__pyx_v_processes = NULL;
+  PyObject *__pyx_v_process = NULL;
+  PyObject *__pyx_v_login_inst_chunk = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
-  PyObject *(*__pyx_t_4)(PyObject *);
-  Py_ssize_t __pyx_t_5;
-  PyObject *(*__pyx_t_6)(PyObject *);
-  PyObject *__pyx_t_7 = NULL;
-  Py_ssize_t __pyx_t_8;
-  int __pyx_t_9;
+  Py_ssize_t __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *(*__pyx_t_9)(PyObject *);
   PyObject *__pyx_t_10 = NULL;
   PyObject *__pyx_t_11 = NULL;
-  PyObject *__pyx_t_12 = NULL;
-  PyObject *__pyx_t_13 = NULL;
-  int __pyx_t_14;
   __Pyx_RefNannySetupContext("run_brute_force", 0);
 
-  /* "md5/md5_crack.py":135
+  /* "md5/md5_crack.py":167
+ *     def run_brute_force(self):
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))             # <<<<<<<<<<<<<<
+ *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
+ *             self.__login_instances, threads_no)
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":166
  * 
  *     def run_brute_force(self):
- *         unprocessed_login_instances = list(self.__login_instances)             # <<<<<<<<<<<<<<
- * 
- *         for password_gen in self.__password_generators:
+ *         threads_no = min(multiprocessing.cpu_count(),             # <<<<<<<<<<<<<<
+ *                          len(self.__login_instances))
+ *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_unprocessed_login_instances = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "md5/md5_crack.py":137
- *         unprocessed_login_instances = list(self.__login_instances)
- * 
- *         for password_gen in self.__password_generators:             # <<<<<<<<<<<<<<
- *             for password in password_gen:
- *                 if len(unprocessed_login_instances) == 0:
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
-    __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_3 = 0;
-    __pyx_t_4 = NULL;
-  } else {
-    __pyx_t_3 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_multiprocessing); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cpu_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "md5/md5_crack.py":167
+ *     def run_brute_force(self):
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))             # <<<<<<<<<<<<<<
+ *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
+ *             self.__login_instances, threads_no)
+ */
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__pyx_t_6) {
+    __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = __pyx_t_5;
+    __pyx_t_5 = 0;
+  } else {
+    __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_4 = __pyx_t_1;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __pyx_t_4;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_threads_no = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":168
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))
+ *         login_inst_chunks = self.__separate_list_into_max_n_chunks(             # <<<<<<<<<<<<<<
+ *             self.__login_instances, threads_no)
+ * 
+ */
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__separate_lis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+
+  /* "md5/md5_crack.py":169
+ *                          len(self.__login_instances))
+ *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
+ *             self.__login_instances, threads_no)             # <<<<<<<<<<<<<<
+ * 
+ *         processes = [Md5DecrypterProcess(self.__password_generators,
+ */
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_7 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_4)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_threads_no};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_threads_no};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__pyx_t_3) {
+      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3); __pyx_t_3 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_t_5);
+    __Pyx_INCREF(__pyx_v_threads_no);
+    __Pyx_GIVEREF(__pyx_v_threads_no);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_threads_no);
+    __pyx_t_5 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_login_inst_chunks = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":171
+ *             self.__login_instances, threads_no)
+ * 
+ *         processes = [Md5DecrypterProcess(self.__password_generators,             # <<<<<<<<<<<<<<
+ *                                          login_inst_chunk)
+ *                      for login_inst_chunk in login_inst_chunks]
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "md5/md5_crack.py":173
+ *         processes = [Md5DecrypterProcess(self.__password_generators,
+ *                                          login_inst_chunk)
+ *                      for login_inst_chunk in login_inst_chunks]             # <<<<<<<<<<<<<<
+ * 
+ *         for process in processes:
+ */
+  if (likely(PyList_CheckExact(__pyx_v_login_inst_chunks)) || PyTuple_CheckExact(__pyx_v_login_inst_chunks)) {
+    __pyx_t_4 = __pyx_v_login_inst_chunks; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
+    __pyx_t_9 = NULL;
+  } else {
+    __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_login_inst_chunks); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 173, __pyx_L1_error)
+  }
   for (;;) {
-    if (likely(!__pyx_t_4)) {
-      if (likely(PyList_CheckExact(__pyx_t_1))) {
-        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    if (likely(!__pyx_t_9)) {
+      if (likely(PyList_CheckExact(__pyx_t_4))) {
+        if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_2); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_8); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 173, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         #endif
       } else {
-        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
+        if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_2); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_8); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 173, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
         #endif
       }
     } else {
-      __pyx_t_2 = __pyx_t_4(__pyx_t_1);
-      if (unlikely(!__pyx_t_2)) {
+      __pyx_t_8 = __pyx_t_9(__pyx_t_4);
+      if (unlikely(!__pyx_t_8)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 137, __pyx_L1_error)
+          else __PYX_ERR(0, 173, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_GOTREF(__pyx_t_8);
     }
-    __Pyx_XDECREF_SET(__pyx_v_password_gen, __pyx_t_2);
-    __pyx_t_2 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_login_inst_chunk, __pyx_t_8);
+    __pyx_t_8 = 0;
 
-    /* "md5/md5_crack.py":138
+    /* "md5/md5_crack.py":171
+ *             self.__login_instances, threads_no)
  * 
- *         for password_gen in self.__password_generators:
- *             for password in password_gen:             # <<<<<<<<<<<<<<
- *                 if len(unprocessed_login_instances) == 0:
- *                     break
+ *         processes = [Md5DecrypterProcess(self.__password_generators,             # <<<<<<<<<<<<<<
+ *                                          login_inst_chunk)
+ *                      for login_inst_chunk in login_inst_chunks]
  */
-    if (likely(PyList_CheckExact(__pyx_v_password_gen)) || PyTuple_CheckExact(__pyx_v_password_gen)) {
-      __pyx_t_2 = __pyx_v_password_gen; __Pyx_INCREF(__pyx_t_2); __pyx_t_5 = 0;
-      __pyx_t_6 = NULL;
-    } else {
-      __pyx_t_5 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_password_gen); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Md5DecrypterProcess); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__password_gen); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+
+    /* "md5/md5_crack.py":172
+ * 
+ *         processes = [Md5DecrypterProcess(self.__password_generators,
+ *                                          login_inst_chunk)             # <<<<<<<<<<<<<<
+ *                      for login_inst_chunk in login_inst_chunks]
+ * 
+ */
+    __pyx_t_10 = NULL;
+    __pyx_t_7 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_10)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_10);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+        __pyx_t_7 = 1;
+      }
     }
-    for (;;) {
-      if (likely(!__pyx_t_6)) {
-        if (likely(PyList_CheckExact(__pyx_t_2))) {
-          if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
-          #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          #endif
-        } else {
-          if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
-          #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          #endif
-        }
-      } else {
-        __pyx_t_7 = __pyx_t_6(__pyx_t_2);
-        if (unlikely(!__pyx_t_7)) {
-          PyObject* exc_type = PyErr_Occurred();
-          if (exc_type) {
-            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 138, __pyx_L1_error)
-          }
-          break;
-        }
-        __Pyx_GOTREF(__pyx_t_7);
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_3, __pyx_v_login_inst_chunk};
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_3, __pyx_v_login_inst_chunk};
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_11 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      if (__pyx_t_10) {
+        __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10); __pyx_t_10 = NULL;
       }
-      __Pyx_XDECREF_SET(__pyx_v_password, __pyx_t_7);
-      __pyx_t_7 = 0;
-
-      /* "md5/md5_crack.py":139
- *         for password_gen in self.__password_generators:
- *             for password in password_gen:
- *                 if len(unprocessed_login_instances) == 0:             # <<<<<<<<<<<<<<
- *                     break
- * 
- */
-      __pyx_t_8 = PyList_GET_SIZE(__pyx_v_unprocessed_login_instances); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 139, __pyx_L1_error)
-      __pyx_t_9 = ((__pyx_t_8 == 0) != 0);
-      if (__pyx_t_9) {
-
-        /* "md5/md5_crack.py":140
- *             for password in password_gen:
- *                 if len(unprocessed_login_instances) == 0:
- *                     break             # <<<<<<<<<<<<<<
- * 
- *                 password_found_positions = []
- */
-        goto __pyx_L6_break;
-
-        /* "md5/md5_crack.py":139
- *         for password_gen in self.__password_generators:
- *             for password in password_gen:
- *                 if len(unprocessed_login_instances) == 0:             # <<<<<<<<<<<<<<
- *                     break
- * 
- */
-      }
-
-      /* "md5/md5_crack.py":142
- *                     break
- * 
- *                 password_found_positions = []             # <<<<<<<<<<<<<<
- *                 for i, login_inst in enumerate(unprocessed_login_instances):
- *                     if login_inst.update_plain_password_if_valid(password):
- */
-      __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_XDECREF_SET(__pyx_v_password_found_positions, ((PyObject*)__pyx_t_7));
-      __pyx_t_7 = 0;
-
-      /* "md5/md5_crack.py":143
- * 
- *                 password_found_positions = []
- *                 for i, login_inst in enumerate(unprocessed_login_instances):             # <<<<<<<<<<<<<<
- *                     if login_inst.update_plain_password_if_valid(password):
- *                         password_found_positions.append(i)
- */
-      __Pyx_INCREF(__pyx_int_0);
-      __pyx_t_7 = __pyx_int_0;
-      __pyx_t_10 = __pyx_v_unprocessed_login_instances; __Pyx_INCREF(__pyx_t_10); __pyx_t_8 = 0;
-      for (;;) {
-        if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_10)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_8); __Pyx_INCREF(__pyx_t_11); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
-        #else
-        __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        #endif
-        __Pyx_XDECREF_SET(__pyx_v_login_inst, __pyx_t_11);
-        __pyx_t_11 = 0;
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
-        __pyx_t_11 = __Pyx_PyInt_AddObjC(__pyx_t_7, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_7);
-        __pyx_t_7 = __pyx_t_11;
-        __pyx_t_11 = 0;
-
-        /* "md5/md5_crack.py":144
- *                 password_found_positions = []
- *                 for i, login_inst in enumerate(unprocessed_login_instances):
- *                     if login_inst.update_plain_password_if_valid(password):             # <<<<<<<<<<<<<<
- *                         password_found_positions.append(i)
- * 
- */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_login_inst, __pyx_n_s_update_plain_password_if_valid); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 144, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_13 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
-          __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_12);
-          if (likely(__pyx_t_13)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
-            __Pyx_INCREF(__pyx_t_13);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_12, function);
-          }
-        }
-        __pyx_t_11 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_13, __pyx_v_password) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_password);
-        __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 144, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 144, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (__pyx_t_9) {
-
-          /* "md5/md5_crack.py":145
- *                 for i, login_inst in enumerate(unprocessed_login_instances):
- *                     if login_inst.update_plain_password_if_valid(password):
- *                         password_found_positions.append(i)             # <<<<<<<<<<<<<<
- * 
- *                 for pos in password_found_positions:
- */
-          __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_password_found_positions, __pyx_v_i); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 145, __pyx_L1_error)
-
-          /* "md5/md5_crack.py":144
- *                 password_found_positions = []
- *                 for i, login_inst in enumerate(unprocessed_login_instances):
- *                     if login_inst.update_plain_password_if_valid(password):             # <<<<<<<<<<<<<<
- *                         password_found_positions.append(i)
- * 
- */
-        }
-
-        /* "md5/md5_crack.py":143
- * 
- *                 password_found_positions = []
- *                 for i, login_inst in enumerate(unprocessed_login_instances):             # <<<<<<<<<<<<<<
- *                     if login_inst.update_plain_password_if_valid(password):
- *                         password_found_positions.append(i)
- */
-      }
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-      /* "md5/md5_crack.py":147
- *                         password_found_positions.append(i)
- * 
- *                 for pos in password_found_positions:             # <<<<<<<<<<<<<<
- *                     del unprocessed_login_instances[pos]
- * 
- */
-      __pyx_t_7 = __pyx_v_password_found_positions; __Pyx_INCREF(__pyx_t_7); __pyx_t_8 = 0;
-      for (;;) {
-        if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_7)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
-        #else
-        __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 147, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        #endif
-        __Pyx_XDECREF_SET(__pyx_v_pos, __pyx_t_10);
-        __pyx_t_10 = 0;
-
-        /* "md5/md5_crack.py":148
- * 
- *                 for pos in password_found_positions:
- *                     del unprocessed_login_instances[pos]             # <<<<<<<<<<<<<<
- * 
- * 
- */
-        if (unlikely(PyObject_DelItem(__pyx_v_unprocessed_login_instances, __pyx_v_pos) < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
-
-        /* "md5/md5_crack.py":147
- *                         password_found_positions.append(i)
- * 
- *                 for pos in password_found_positions:             # <<<<<<<<<<<<<<
- *                     del unprocessed_login_instances[pos]
- * 
- */
-      }
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-      /* "md5/md5_crack.py":138
- * 
- *         for password_gen in self.__password_generators:
- *             for password in password_gen:             # <<<<<<<<<<<<<<
- *                 if len(unprocessed_login_instances) == 0:
- *                     break
- */
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_7, __pyx_t_3);
+      __Pyx_INCREF(__pyx_v_login_inst_chunk);
+      __Pyx_GIVEREF(__pyx_v_login_inst_chunk);
+      PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_7, __pyx_v_login_inst_chunk);
+      __pyx_t_3 = 0;
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
-    __pyx_L6_break:;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 171, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "md5/md5_crack.py":137
- *         unprocessed_login_instances = list(self.__login_instances)
+    /* "md5/md5_crack.py":173
+ *         processes = [Md5DecrypterProcess(self.__password_generators,
+ *                                          login_inst_chunk)
+ *                      for login_inst_chunk in login_inst_chunks]             # <<<<<<<<<<<<<<
  * 
- *         for password_gen in self.__password_generators:             # <<<<<<<<<<<<<<
- *             for password in password_gen:
- *                 if len(unprocessed_login_instances) == 0:
+ *         for process in processes:
+ */
+  }
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_processes = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":175
+ *                      for login_inst_chunk in login_inst_chunks]
+ * 
+ *         for process in processes:             # <<<<<<<<<<<<<<
+ *             process.start()
+ * 
+ */
+  __pyx_t_1 = __pyx_v_processes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
+  for (;;) {
+    if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+    #else
+    __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    #endif
+    __Pyx_XDECREF_SET(__pyx_v_process, __pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "md5/md5_crack.py":176
+ * 
+ *         for process in processes:
+ *             process.start()             # <<<<<<<<<<<<<<
+ * 
+ *         for process in processes:
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_process, __pyx_n_s_start); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "md5/md5_crack.py":175
+ *                      for login_inst_chunk in login_inst_chunks]
+ * 
+ *         for process in processes:             # <<<<<<<<<<<<<<
+ *             process.start()
+ * 
  */
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":134
+  /* "md5/md5_crack.py":178
+ *             process.start()
+ * 
+ *         for process in processes:             # <<<<<<<<<<<<<<
+ *             process.join()
+ * 
+ */
+  __pyx_t_1 = __pyx_v_processes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
+  for (;;) {
+    if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 178, __pyx_L1_error)
+    #else
+    __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    #endif
+    __Pyx_XDECREF_SET(__pyx_v_process, __pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "md5/md5_crack.py":179
+ * 
+ *         for process in processes:
+ *             process.join()             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_process, __pyx_n_s_join); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "md5/md5_crack.py":178
+ *             process.start()
+ * 
+ *         for process in processes:             # <<<<<<<<<<<<<<
+ *             process.join()
+ * 
+ */
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":165
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         unprocessed_login_instances = list(self.__login_instances)
- * 
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))
  */
 
   /* function exit code */
@@ -5403,28 +6538,26 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6run_brute_force(C
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_XDECREF(__pyx_t_13);
   __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.run_brute_force", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_unprocessed_login_instances);
-  __Pyx_XDECREF(__pyx_v_password_gen);
-  __Pyx_XDECREF(__pyx_v_password);
-  __Pyx_XDECREF(__pyx_v_password_found_positions);
-  __Pyx_XDECREF(__pyx_v_i);
-  __Pyx_XDECREF(__pyx_v_login_inst);
-  __Pyx_XDECREF(__pyx_v_pos);
+  __Pyx_XDECREF(__pyx_v_threads_no);
+  __Pyx_XDECREF(__pyx_v_login_inst_chunks);
+  __Pyx_XDECREF(__pyx_v_processes);
+  __Pyx_XDECREF(__pyx_v_process);
+  __Pyx_XDECREF(__pyx_v_login_inst_chunk);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":151
+/* "md5/md5_crack.py":182
  * 
  * 
  * def read_input_as_login_instances():             # <<<<<<<<<<<<<<
@@ -5446,7 +6579,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_1read_input_as_login_instances(PyObjec
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":152
+/* "md5/md5_crack.py":183
  * 
  * def read_input_as_login_instances():
  *     return map(lambda x: LoginInstance.build_from_str(x),             # <<<<<<<<<<<<<<
@@ -5455,76 +6588,9 @@ static PyObject *__pyx_pw_3md5_9md5_crack_1read_input_as_login_instances(PyObjec
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_lambda = {"lambda", (PyCFunction)__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda, METH_O, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda(PyObject *__pyx_self, PyObject *__pyx_v_x) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("lambda (wrapper)", 0);
-  __pyx_r = __pyx_lambda_funcdef_lambda(__pyx_self, ((PyObject *)__pyx_v_x));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_RefNannySetupContext("lambda", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_LoginInstance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_build_from_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_x) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_x);
-  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("md5.md5_crack.read_input_as_login_instances.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "md5/md5_crack.py":153
- * def read_input_as_login_instances():
- *     return map(lambda x: LoginInstance.build_from_str(x),
- *                filter(lambda x: len(x.strip()) > 0, sys.stdin))             # <<<<<<<<<<<<<<
- * 
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_1lambda1 = {"lambda1", (PyCFunction)__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda1, METH_O, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_lambda1 = {"lambda1", (PyCFunction)__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda1, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lambda1 (wrapper)", 0);
@@ -5541,30 +6607,28 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  Py_ssize_t __pyx_t_4;
   __Pyx_RefNannySetupContext("lambda1", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_LoginInstance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_build_from_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_x) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_x);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 153, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_t_4 > 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
@@ -5582,7 +6646,76 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":151
+/* "md5/md5_crack.py":184
+ * def read_input_as_login_instances():
+ *     return map(lambda x: LoginInstance.build_from_str(x),
+ *                filter(lambda x: len(x.strip()) > 0, sys.stdin))             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_1lambda2 = {"lambda2", (PyCFunction)__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda2, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_29read_input_as_login_instances_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lambda2 (wrapper)", 0);
+  __pyx_r = __pyx_lambda_funcdef_lambda2(__pyx_self, ((PyObject *)__pyx_v_x));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  Py_ssize_t __pyx_t_4;
+  __Pyx_RefNannySetupContext("lambda2", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_t_4 > 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("md5.md5_crack.read_input_as_login_instances.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":182
  * 
  * 
  * def read_input_as_login_instances():             # <<<<<<<<<<<<<<
@@ -5599,7 +6732,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_U
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("read_input_as_login_instances", 0);
 
-  /* "md5/md5_crack.py":152
+  /* "md5/md5_crack.py":183
  * 
  * def read_input_as_login_instances():
  *     return map(lambda x: LoginInstance.build_from_str(x),             # <<<<<<<<<<<<<<
@@ -5607,24 +6740,24 @@ static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_U
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_lambda, 0, __pyx_n_s_read_input_as_login_instances_lo, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_lambda1, 0, __pyx_n_s_read_input_as_login_instances_lo, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "md5/md5_crack.py":153
+  /* "md5/md5_crack.py":184
  * def read_input_as_login_instances():
  *     return map(lambda x: LoginInstance.build_from_str(x),
  *                filter(lambda x: len(x.strip()) > 0, sys.stdin))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_1lambda1, 0, __pyx_n_s_read_input_as_login_instances_lo, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_29read_input_as_login_instances_1lambda2, 0, __pyx_n_s_read_input_as_login_instances_lo, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_stdin); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_stdin); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
@@ -5632,18 +6765,18 @@ static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_U
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":152
+  /* "md5/md5_crack.py":183
  * 
  * def read_input_as_login_instances():
  *     return map(lambda x: LoginInstance.build_from_str(x),             # <<<<<<<<<<<<<<
  *                filter(lambda x: len(x.strip()) > 0, sys.stdin))
  * 
  */
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -5651,14 +6784,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_U
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":151
+  /* "md5/md5_crack.py":182
  * 
  * 
  * def read_input_as_login_instances():             # <<<<<<<<<<<<<<
@@ -5680,7 +6813,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_read_input_as_login_instances(CYTHON_U
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":156
+/* "md5/md5_crack.py":187
  * 
  * 
  * def add_test_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
@@ -5711,29 +6844,29 @@ static PyObject *__pyx_pf_3md5_9md5_crack_2add_test_password_settings(CYTHON_UNU
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("add_test_password_settings", 0);
 
-  /* "md5/md5_crack.py":157
+  /* "md5/md5_crack.py":188
  * 
  * def add_test_password_settings(md5_batch_decrypter):
  *     gen = StandardPasswordGenerator(4, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_gen = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":158
+  /* "md5/md5_crack.py":189
  * def add_test_password_settings(md5_batch_decrypter):
  *     gen = StandardPasswordGenerator(4, True, True, True)
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -5747,12 +6880,12 @@ static PyObject *__pyx_pf_3md5_9md5_crack_2add_test_password_settings(CYTHON_UNU
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":156
+  /* "md5/md5_crack.py":187
  * 
  * 
  * def add_test_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
@@ -5776,7 +6909,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_2add_test_password_settings(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":161
+/* "md5/md5_crack.py":192
  * 
  * 
  * def add_sem_project_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
@@ -5807,14 +6940,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("add_sem_project_password_settings", 0);
 
-  /* "md5/md5_crack.py":162
+  /* "md5/md5_crack.py":193
  * 
  * def add_sem_project_password_settings(md5_batch_decrypter):
  *     gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_WordlistPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_WordlistPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -5828,20 +6961,20 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s_resources_sk_names_wordlist_txt) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s_resources_sk_names_wordlist_txt);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_gen = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":163
+  /* "md5/md5_crack.py":194
  * def add_sem_project_password_settings(md5_batch_decrypter):
  *     gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  *     gen = StandardPasswordGenerator(4, True, True, True)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5855,34 +6988,34 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":165
+  /* "md5/md5_crack.py":196
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(4, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_gen, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":166
+  /* "md5/md5_crack.py":197
  * 
  *     gen = StandardPasswordGenerator(4, True, True, True)
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  *     gen = StandardPasswordGenerator(6, True)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -5896,34 +7029,34 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":168
+  /* "md5/md5_crack.py":199
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(6, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_gen, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":169
+  /* "md5/md5_crack.py":200
  * 
  *     gen = StandardPasswordGenerator(6, True)
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  *     gen = StandardPasswordGenerator(5, True, True, True)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5937,34 +7070,34 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":171
+  /* "md5/md5_crack.py":202
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(5, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_gen, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":172
+  /* "md5/md5_crack.py":203
  * 
  *     gen = StandardPasswordGenerator(5, True, True, True)
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  *     gen = StandardPasswordGenerator(7, True)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -5978,34 +7111,34 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":174
+  /* "md5/md5_crack.py":205
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(7, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_gen, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":175
+  /* "md5/md5_crack.py":206
  * 
  *     gen = StandardPasswordGenerator(7, True)
  *     md5_batch_decrypter.add_password_generator(gen)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_password_generator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6019,12 +7152,12 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_gen) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_gen);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":161
+  /* "md5/md5_crack.py":192
  * 
  * 
  * def add_sem_project_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
@@ -6048,7 +7181,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_4add_sem_project_password_settings(CYT
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":178
+/* "md5/md5_crack.py":209
  * 
  * 
  * def print_login_instances(login_instances, status):             # <<<<<<<<<<<<<<
@@ -6088,11 +7221,11 @@ static PyObject *__pyx_pw_3md5_9md5_crack_7print_login_instances(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_status)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("print_login_instances", 1, 2, 2, 1); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("print_login_instances", 1, 2, 2, 1); __PYX_ERR(0, 209, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "print_login_instances") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "print_login_instances") < 0)) __PYX_ERR(0, 209, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6105,7 +7238,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_7print_login_instances(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("print_login_instances", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 178, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("print_login_instances", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 209, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("md5.md5_crack.print_login_instances", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6129,14 +7262,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
   PyObject *(*__pyx_t_5)(PyObject *);
   __Pyx_RefNannySetupContext("print_login_instances", 0);
 
-  /* "md5/md5_crack.py":179
+  /* "md5/md5_crack.py":210
  * 
  * def print_login_instances(login_instances, status):
  *     print('Status: {}'.format(status))             # <<<<<<<<<<<<<<
  *     for login_inst in login_instances:
  *         print(login_inst)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Status, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Status, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6150,13 +7283,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_status) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_status);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":180
+  /* "md5/md5_crack.py":211
  * def print_login_instances(login_instances, status):
  *     print('Status: {}'.format(status))
  *     for login_inst in login_instances:             # <<<<<<<<<<<<<<
@@ -6167,26 +7300,26 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
     __pyx_t_1 = __pyx_v_login_instances; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 211, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 211, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 211, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -6196,7 +7329,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 180, __pyx_L1_error)
+          else __PYX_ERR(0, 211, __pyx_L1_error)
         }
         break;
       }
@@ -6205,16 +7338,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
     __Pyx_XDECREF_SET(__pyx_v_login_inst, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "md5/md5_crack.py":181
+    /* "md5/md5_crack.py":212
  *     print('Status: {}'.format(status))
  *     for login_inst in login_instances:
  *         print(login_inst)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    if (__Pyx_PrintOne(0, __pyx_v_login_inst) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_v_login_inst) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
 
-    /* "md5/md5_crack.py":180
+    /* "md5/md5_crack.py":211
  * def print_login_instances(login_instances, status):
  *     print('Status: {}'.format(status))
  *     for login_inst in login_instances:             # <<<<<<<<<<<<<<
@@ -6224,7 +7357,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":178
+  /* "md5/md5_crack.py":209
  * 
  * 
  * def print_login_instances(login_instances, status):             # <<<<<<<<<<<<<<
@@ -6248,7 +7381,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_6print_login_instances(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":184
+/* "md5/md5_crack.py":215
  * 
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -6270,7 +7403,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_9main(PyObject *__pyx_self, CYTHON_UNU
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":195
+/* "md5/md5_crack.py":226
  * 
  *     md5_batch_decrypter.run_brute_force()
  *     print_login_instances(filter(lambda x: x.plain_password is not None,             # <<<<<<<<<<<<<<
@@ -6279,59 +7412,9 @@ static PyObject *__pyx_pw_3md5_9md5_crack_9main(PyObject *__pyx_self, CYTHON_UNU
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_4main_lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_4main_lambda2 = {"lambda2", (PyCFunction)__pyx_pw_3md5_9md5_crack_4main_lambda2, METH_O, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_4main_lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("lambda2 (wrapper)", 0);
-  __pyx_r = __pyx_lambda_funcdef_lambda2(__pyx_self, ((PyObject *)__pyx_v_x));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
-  __Pyx_RefNannySetupContext("lambda2", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__pyx_t_1 != Py_None);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("md5.md5_crack.main.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "md5/md5_crack.py":197
- *     print_login_instances(filter(lambda x: x.plain_password is not None,
- *                                  login_instances), 'SUCCESS')
- *     print_login_instances(filter(lambda x: x.plain_password is None,             # <<<<<<<<<<<<<<
- *                                  login_instances), 'FAILURE')
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3md5_9md5_crack_4main_1lambda3(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_3md5_9md5_crack_4main_1lambda3 = {"lambda3", (PyCFunction)__pyx_pw_3md5_9md5_crack_4main_1lambda3, METH_O, 0};
-static PyObject *__pyx_pw_3md5_9md5_crack_4main_1lambda3(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pw_3md5_9md5_crack_4main_lambda3(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_4main_lambda3 = {"lambda3", (PyCFunction)__pyx_pw_3md5_9md5_crack_4main_lambda3, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_4main_lambda3(PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lambda3 (wrapper)", 0);
@@ -6349,11 +7432,11 @@ static PyObject *__pyx_lambda_funcdef_lambda3(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("lambda3", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__pyx_t_1 == Py_None);
+  __pyx_t_2 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6370,7 +7453,57 @@ static PyObject *__pyx_lambda_funcdef_lambda3(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "md5/md5_crack.py":184
+/* "md5/md5_crack.py":228
+ *     print_login_instances(filter(lambda x: x.plain_password is not None,
+ *                                  login_instances), 'SUCCESS')
+ *     print_login_instances(filter(lambda x: x.plain_password is None,             # <<<<<<<<<<<<<<
+ *                                  login_instances), 'FAILURE')
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3md5_9md5_crack_4main_1lambda4(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_3md5_9md5_crack_4main_1lambda4 = {"lambda4", (PyCFunction)__pyx_pw_3md5_9md5_crack_4main_1lambda4, METH_O, 0};
+static PyObject *__pyx_pw_3md5_9md5_crack_4main_1lambda4(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("lambda4 (wrapper)", 0);
+  __pyx_r = __pyx_lambda_funcdef_lambda4(__pyx_self, ((PyObject *)__pyx_v_x));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_lambda_funcdef_lambda4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  __Pyx_RefNannySetupContext("lambda4", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_plain_password); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__pyx_t_1 == Py_None);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("md5.md5_crack.main.lambda4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "md5/md5_crack.py":215
  * 
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -6395,14 +7528,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "md5/md5_crack.py":185
+  /* "md5/md5_crack.py":216
  * 
  * def main():
  *     md5_batch_decrypter = Md5BatchDecrypter()             # <<<<<<<<<<<<<<
  *     login_instances = []
  *     for login_inst in read_input_as_login_instances():
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Md5BatchDecrypter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Md5BatchDecrypter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6416,32 +7549,32 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_md5_batch_decrypter = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":186
+  /* "md5/md5_crack.py":217
  * def main():
  *     md5_batch_decrypter = Md5BatchDecrypter()
  *     login_instances = []             # <<<<<<<<<<<<<<
  *     for login_inst in read_input_as_login_instances():
  *         login_instances.append(login_inst)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_login_instances = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":187
+  /* "md5/md5_crack.py":218
  *     md5_batch_decrypter = Md5BatchDecrypter()
  *     login_instances = []
  *     for login_inst in read_input_as_login_instances():             # <<<<<<<<<<<<<<
  *         login_instances.append(login_inst)
  *         md5_batch_decrypter.add_login_inst(login_inst)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_read_input_as_login_instances); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_read_input_as_login_instances); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6455,16 +7588,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -6472,17 +7605,17 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -6492,7 +7625,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 187, __pyx_L1_error)
+          else __PYX_ERR(0, 218, __pyx_L1_error)
         }
         break;
       }
@@ -6501,23 +7634,23 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_login_inst, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "md5/md5_crack.py":188
+    /* "md5/md5_crack.py":219
  *     login_instances = []
  *     for login_inst in read_input_as_login_instances():
  *         login_instances.append(login_inst)             # <<<<<<<<<<<<<<
  *         md5_batch_decrypter.add_login_inst(login_inst)
  * 
  */
-    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_login_instances, __pyx_v_login_inst); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_login_instances, __pyx_v_login_inst); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 219, __pyx_L1_error)
 
-    /* "md5/md5_crack.py":189
+    /* "md5/md5_crack.py":220
  *     for login_inst in read_input_as_login_instances():
  *         login_instances.append(login_inst)
  *         md5_batch_decrypter.add_login_inst(login_inst)             # <<<<<<<<<<<<<<
  * 
  *     add_test_password_settings(md5_batch_decrypter)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_login_inst); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_login_inst); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6531,12 +7664,12 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
     }
     __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_v_login_inst) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_login_inst);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "md5/md5_crack.py":187
+    /* "md5/md5_crack.py":218
  *     md5_batch_decrypter = Md5BatchDecrypter()
  *     login_instances = []
  *     for login_inst in read_input_as_login_instances():             # <<<<<<<<<<<<<<
@@ -6546,14 +7679,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":191
+  /* "md5/md5_crack.py":222
  *         md5_batch_decrypter.add_login_inst(login_inst)
  * 
  *     add_test_password_settings(md5_batch_decrypter)             # <<<<<<<<<<<<<<
  *     #add_sem_project_password_settings(md5_batch_decrypter)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_add_test_password_settings); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_add_test_password_settings); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -6567,19 +7700,19 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_md5_batch_decrypter) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_md5_batch_decrypter);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":194
+  /* "md5/md5_crack.py":225
  *     #add_sem_project_password_settings(md5_batch_decrypter)
  * 
  *     md5_batch_decrypter.run_brute_force()             # <<<<<<<<<<<<<<
  *     print_login_instances(filter(lambda x: x.plain_password is not None,
  *                                  login_instances), 'SUCCESS')
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_run_brute_force); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_run_brute_force); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -6593,31 +7726,31 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":195
+  /* "md5/md5_crack.py":226
  * 
  *     md5_batch_decrypter.run_brute_force()
  *     print_login_instances(filter(lambda x: x.plain_password is not None,             # <<<<<<<<<<<<<<
  *                                  login_instances), 'SUCCESS')
  *     print_login_instances(filter(lambda x: x.plain_password is None,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_print_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_print_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_4main_lambda2, 0, __pyx_n_s_main_locals_lambda, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_4main_lambda3, 0, __pyx_n_s_main_locals_lambda, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "md5/md5_crack.py":196
+  /* "md5/md5_crack.py":227
  *     md5_batch_decrypter.run_brute_force()
  *     print_login_instances(filter(lambda x: x.plain_password is not None,
  *                                  login_instances), 'SUCCESS')             # <<<<<<<<<<<<<<
  *     print_login_instances(filter(lambda x: x.plain_password is None,
  *                                  login_instances), 'FAILURE')
  */
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3);
@@ -6626,14 +7759,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_login_instances);
   __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":195
+  /* "md5/md5_crack.py":226
  * 
  *     md5_batch_decrypter.run_brute_force()
  *     print_login_instances(filter(lambda x: x.plain_password is not None,             # <<<<<<<<<<<<<<
  *                                  login_instances), 'SUCCESS')
  *     print_login_instances(filter(lambda x: x.plain_password is None,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -6651,7 +7784,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_3, __pyx_n_s_SUCCESS};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6660,14 +7793,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_3, __pyx_n_s_SUCCESS};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -6678,33 +7811,33 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_GIVEREF(__pyx_n_s_SUCCESS);
     PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_n_s_SUCCESS);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":197
+  /* "md5/md5_crack.py":228
  *     print_login_instances(filter(lambda x: x.plain_password is not None,
  *                                  login_instances), 'SUCCESS')
  *     print_login_instances(filter(lambda x: x.plain_password is None,             # <<<<<<<<<<<<<<
  *                                  login_instances), 'FAILURE')
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_print_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_print_login_instances); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_4main_1lambda3, 0, __pyx_n_s_main_locals_lambda, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_4main_1lambda4, 0, __pyx_n_s_main_locals_lambda, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "md5/md5_crack.py":198
+  /* "md5/md5_crack.py":229
  *                                  login_instances), 'SUCCESS')
  *     print_login_instances(filter(lambda x: x.plain_password is None,
  *                                  login_instances), 'FAILURE')             # <<<<<<<<<<<<<<
  * 
  *     return os.EX_OK
  */
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9);
@@ -6713,14 +7846,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_login_instances);
   __pyx_t_9 = 0;
 
-  /* "md5/md5_crack.py":197
+  /* "md5/md5_crack.py":228
  *     print_login_instances(filter(lambda x: x.plain_password is not None,
  *                                  login_instances), 'SUCCESS')
  *     print_login_instances(filter(lambda x: x.plain_password is None,             # <<<<<<<<<<<<<<
  *                                  login_instances), 'FAILURE')
  * 
  */
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_filter, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -6738,7 +7871,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_9, __pyx_n_s_FAILURE};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -6747,14 +7880,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_9, __pyx_n_s_FAILURE};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6765,14 +7898,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_GIVEREF(__pyx_n_s_FAILURE);
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_n_s_FAILURE);
     __pyx_t_9 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":200
+  /* "md5/md5_crack.py":231
  *                                  login_instances), 'FAILURE')
  * 
  *     return os.EX_OK             # <<<<<<<<<<<<<<
@@ -6780,16 +7913,16 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_EX_OK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_EX_OK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "md5/md5_crack.py":184
+  /* "md5/md5_crack.py":215
  * 
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -6918,6 +8051,220 @@ static PyTypeObject __pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__ = {
   #endif
 };
 
+static struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *__pyx_freelist_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks[8];
+static int __pyx_freecount_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks = 0;
+
+static PyObject *__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  PyObject *o;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks)))) {
+    o = (PyObject*)__pyx_freelist_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks[--__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks];
+    memset(o, 0, sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks));
+    (void) PyObject_INIT(o, t);
+    PyObject_GC_Track(o);
+  } else {
+    o = (*t->tp_alloc)(t, 0);
+    if (unlikely(!o)) return 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(PyObject *o) {
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *p = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)o;
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->__pyx_v_max_chunks_num);
+  Py_CLEAR(p->__pyx_v_values);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks)))) {
+    __pyx_freelist_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks[__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks++] = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)o);
+  } else {
+    (*Py_TYPE(o)->tp_free)(o);
+  }
+}
+
+static int __pyx_tp_traverse_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *p = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)o;
+  if (p->__pyx_v_max_chunks_num) {
+    e = (*v)(p->__pyx_v_max_chunks_num, a); if (e) return e;
+  }
+  if (p->__pyx_v_values) {
+    e = (*v)(p->__pyx_v_values, a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *p = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks *)o;
+  tmp = ((PyObject*)p->__pyx_v_max_chunks_num);
+  p->__pyx_v_max_chunks_num = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_v_values);
+  p->__pyx_v_values = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
+static PyTypeObject __pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "md5.md5_crack.__pyx_scope_struct_1___separate_list_into_max_n_chunks", /*tp_name*/
+  sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks, /*tp_traverse*/
+  __pyx_tp_clear_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  0, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
+
+static struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *__pyx_freelist_3md5_9md5_crack___pyx_scope_struct_2_genexpr[8];
+static int __pyx_freecount_3md5_9md5_crack___pyx_scope_struct_2_genexpr = 0;
+
+static PyObject *__pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_2_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  PyObject *o;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_2_genexpr > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr)))) {
+    o = (PyObject*)__pyx_freelist_3md5_9md5_crack___pyx_scope_struct_2_genexpr[--__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_2_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr));
+    (void) PyObject_INIT(o, t);
+    PyObject_GC_Track(o);
+  } else {
+    o = (*t->tp_alloc)(t, 0);
+    if (unlikely(!o)) return 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_3md5_9md5_crack___pyx_scope_struct_2_genexpr(PyObject *o) {
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)o;
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->__pyx_outer_scope);
+  Py_CLEAR(p->__pyx_v_i);
+  Py_CLEAR(p->__pyx_t_0);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_2_genexpr < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr)))) {
+    __pyx_freelist_3md5_9md5_crack___pyx_scope_struct_2_genexpr[__pyx_freecount_3md5_9md5_crack___pyx_scope_struct_2_genexpr++] = ((struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)o);
+  } else {
+    (*Py_TYPE(o)->tp_free)(o);
+  }
+}
+
+static int __pyx_tp_traverse_3md5_9md5_crack___pyx_scope_struct_2_genexpr(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr *)o;
+  if (p->__pyx_outer_scope) {
+    e = (*v)(((PyObject *)p->__pyx_outer_scope), a); if (e) return e;
+  }
+  if (p->__pyx_v_i) {
+    e = (*v)(p->__pyx_v_i, a); if (e) return e;
+  }
+  if (p->__pyx_t_0) {
+    e = (*v)(p->__pyx_t_0, a); if (e) return e;
+  }
+  return 0;
+}
+
+static PyTypeObject __pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "md5.md5_crack.__pyx_scope_struct_2_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_3md5_9md5_crack___pyx_scope_struct_2_genexpr), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_3md5_9md5_crack___pyx_scope_struct_2_genexpr, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_3md5_9md5_crack___pyx_scope_struct_2_genexpr, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  0, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_3md5_9md5_crack___pyx_scope_struct_2_genexpr, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
+
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
 };
@@ -6990,13 +8337,22 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_LoginInstance_update_plain_passw, __pyx_k_LoginInstance_update_plain_passw, sizeof(__pyx_k_LoginInstance_update_plain_passw), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter, __pyx_k_Md5BatchDecrypter, sizeof(__pyx_k_Md5BatchDecrypter), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter___init, __pyx_k_Md5BatchDecrypter___init, sizeof(__pyx_k_Md5BatchDecrypter___init), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5BatchDecrypter___separate_lis, __pyx_k_Md5BatchDecrypter___separate_lis, sizeof(__pyx_k_Md5BatchDecrypter___separate_lis), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5BatchDecrypter___separate_lis_2, __pyx_k_Md5BatchDecrypter___separate_lis_2, sizeof(__pyx_k_Md5BatchDecrypter___separate_lis_2), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter__login_instan, __pyx_k_Md5BatchDecrypter__login_instan, sizeof(__pyx_k_Md5BatchDecrypter__login_instan), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter__password_gen, __pyx_k_Md5BatchDecrypter__password_gen, sizeof(__pyx_k_Md5BatchDecrypter__password_gen), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5BatchDecrypter__separate_lis, __pyx_k_Md5BatchDecrypter__separate_lis, sizeof(__pyx_k_Md5BatchDecrypter__separate_lis), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter_add_login_inst, __pyx_k_Md5BatchDecrypter_add_login_inst, sizeof(__pyx_k_Md5BatchDecrypter_add_login_inst), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter_add_password_g, __pyx_k_Md5BatchDecrypter_add_password_g, sizeof(__pyx_k_Md5BatchDecrypter_add_password_g), 0, 0, 1, 1},
   {&__pyx_n_s_Md5BatchDecrypter_run_brute_forc, __pyx_k_Md5BatchDecrypter_run_brute_forc, sizeof(__pyx_k_Md5BatchDecrypter_run_brute_forc), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5DecrypterProcess, __pyx_k_Md5DecrypterProcess, sizeof(__pyx_k_Md5DecrypterProcess), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5DecrypterProcess___init, __pyx_k_Md5DecrypterProcess___init, sizeof(__pyx_k_Md5DecrypterProcess___init), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5DecrypterProcess__login_inst, __pyx_k_Md5DecrypterProcess__login_inst, sizeof(__pyx_k_Md5DecrypterProcess__login_inst), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5DecrypterProcess__password_g, __pyx_k_Md5DecrypterProcess__password_g, sizeof(__pyx_k_Md5DecrypterProcess__password_g), 0, 0, 1, 1},
+  {&__pyx_n_s_Md5DecrypterProcess_run, __pyx_k_Md5DecrypterProcess_run, sizeof(__pyx_k_Md5DecrypterProcess_run), 0, 0, 1, 1},
   {&__pyx_n_s_PasswordGenerator, __pyx_k_PasswordGenerator, sizeof(__pyx_k_PasswordGenerator), 0, 0, 1, 1},
   {&__pyx_n_s_PasswordGenerator___iter, __pyx_k_PasswordGenerator___iter, sizeof(__pyx_k_PasswordGenerator___iter), 0, 0, 1, 1},
+  {&__pyx_n_s_Process, __pyx_k_Process, sizeof(__pyx_k_Process), 0, 0, 1, 1},
   {&__pyx_n_s_SUCCESS, __pyx_k_SUCCESS, sizeof(__pyx_k_SUCCESS), 0, 0, 1, 1},
   {&__pyx_n_s_StandardPasswordGenerator, __pyx_k_StandardPasswordGenerator, sizeof(__pyx_k_StandardPasswordGenerator), 0, 0, 1, 1},
   {&__pyx_n_s_StandardPasswordGenerator___buil, __pyx_k_StandardPasswordGenerator___buil, sizeof(__pyx_k_StandardPasswordGenerator___buil), 0, 0, 1, 1},
@@ -7036,6 +8392,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_chr, __pyx_k_chr, sizeof(__pyx_k_chr), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
+  {&__pyx_n_s_cpu_count, __pyx_k_cpu_count, sizeof(__pyx_k_cpu_count), 0, 0, 1, 1},
   {&__pyx_n_s_description_str, __pyx_k_description_str, sizeof(__pyx_k_description_str), 0, 0, 1, 1},
   {&__pyx_n_s_digest, __pyx_k_digest, sizeof(__pyx_k_digest), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
@@ -7050,6 +8407,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_from_bytes, __pyx_k_from_bytes, sizeof(__pyx_k_from_bytes), 0, 0, 1, 1},
   {&__pyx_n_s_gen, __pyx_k_gen, sizeof(__pyx_k_gen), 0, 0, 1, 1},
+  {&__pyx_n_s_genexpr, __pyx_k_genexpr, sizeof(__pyx_k_genexpr), 0, 0, 1, 1},
   {&__pyx_n_s_hashlib, __pyx_k_hashlib, sizeof(__pyx_k_hashlib), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -7061,12 +8419,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
   {&__pyx_n_s_login, __pyx_k_login, sizeof(__pyx_k_login), 0, 0, 1, 1},
   {&__pyx_n_s_login_inst, __pyx_k_login_inst, sizeof(__pyx_k_login_inst), 0, 0, 1, 1},
+  {&__pyx_n_s_login_inst_chunk, __pyx_k_login_inst_chunk, sizeof(__pyx_k_login_inst_chunk), 0, 0, 1, 1},
+  {&__pyx_n_s_login_inst_chunks, __pyx_k_login_inst_chunks, sizeof(__pyx_k_login_inst_chunks), 0, 0, 1, 1},
   {&__pyx_n_s_login_instances, __pyx_k_login_instances, sizeof(__pyx_k_login_instances), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
   {&__pyx_n_s_main_locals_lambda, __pyx_k_main_locals_lambda, sizeof(__pyx_k_main_locals_lambda), 0, 0, 1, 1},
   {&__pyx_n_s_map, __pyx_k_map, sizeof(__pyx_k_map), 0, 0, 1, 1},
   {&__pyx_n_s_max_char, __pyx_k_max_char, sizeof(__pyx_k_max_char), 0, 0, 1, 1},
+  {&__pyx_n_s_max_chunks_num, __pyx_k_max_chunks_num, sizeof(__pyx_k_max_chunks_num), 0, 0, 1, 1},
   {&__pyx_n_s_md5, __pyx_k_md5, sizeof(__pyx_k_md5), 0, 0, 1, 1},
   {&__pyx_n_s_md5_batch_decrypter, __pyx_k_md5_batch_decrypter, sizeof(__pyx_k_md5_batch_decrypter), 0, 0, 1, 1},
   {&__pyx_kp_s_md5_crack_py, __pyx_k_md5_crack_py, sizeof(__pyx_k_md5_crack_py), 0, 0, 1, 0},
@@ -7084,6 +8445,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_password_found_positions, __pyx_k_password_found_positions, sizeof(__pyx_k_password_found_positions), 0, 0, 1, 1},
   {&__pyx_n_s_password_gen, __pyx_k_password_gen, sizeof(__pyx_k_password_gen), 0, 0, 1, 1},
   {&__pyx_n_s_password_generator, __pyx_k_password_generator, sizeof(__pyx_k_password_generator), 0, 0, 1, 1},
+  {&__pyx_n_s_password_generators, __pyx_k_password_generators, sizeof(__pyx_k_password_generators), 0, 0, 1, 1},
   {&__pyx_n_s_password_hash_base64, __pyx_k_password_hash_base64, sizeof(__pyx_k_password_hash_base64), 0, 0, 1, 1},
   {&__pyx_n_s_password_len, __pyx_k_password_len, sizeof(__pyx_k_password_len), 0, 0, 1, 1},
   {&__pyx_kp_s_password_not_known, __pyx_k_password_not_known, sizeof(__pyx_k_password_not_known), 0, 0, 1, 0},
@@ -7093,6 +8455,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_print_login_instances, __pyx_k_print_login_instances, sizeof(__pyx_k_print_login_instances), 0, 0, 1, 1},
+  {&__pyx_n_s_process, __pyx_k_process, sizeof(__pyx_k_process), 0, 0, 1, 1},
+  {&__pyx_n_s_processes, __pyx_k_processes, sizeof(__pyx_k_processes), 0, 0, 1, 1},
   {&__pyx_n_s_product, __pyx_k_product, sizeof(__pyx_k_product), 0, 0, 1, 1},
   {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
@@ -7102,19 +8466,24 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_readlines, __pyx_k_readlines, sizeof(__pyx_k_readlines), 0, 0, 1, 1},
   {&__pyx_n_s_repeat, __pyx_k_repeat, sizeof(__pyx_k_repeat), 0, 0, 1, 1},
   {&__pyx_kp_s_resources_sk_names_wordlist_txt, __pyx_k_resources_sk_names_wordlist_txt, sizeof(__pyx_k_resources_sk_names_wordlist_txt), 0, 0, 1, 0},
+  {&__pyx_n_s_run, __pyx_k_run, sizeof(__pyx_k_run), 0, 0, 1, 1},
   {&__pyx_n_s_run_brute_force, __pyx_k_run_brute_force, sizeof(__pyx_k_run_brute_force), 0, 0, 1, 1},
   {&__pyx_n_s_salt, __pyx_k_salt, sizeof(__pyx_k_salt), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
+  {&__pyx_n_s_separate_list_into_max_n_chunk, __pyx_k_separate_list_into_max_n_chunk, sizeof(__pyx_k_separate_list_into_max_n_chunk), 0, 0, 1, 1},
   {&__pyx_n_s_split, __pyx_k_split, sizeof(__pyx_k_split), 0, 0, 1, 1},
+  {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
   {&__pyx_n_s_staticmethod, __pyx_k_staticmethod, sizeof(__pyx_k_staticmethod), 0, 0, 1, 1},
   {&__pyx_n_s_status, __pyx_k_status, sizeof(__pyx_k_status), 0, 0, 1, 1},
   {&__pyx_n_s_stdin, __pyx_k_stdin, sizeof(__pyx_k_stdin), 0, 0, 1, 1},
   {&__pyx_n_s_str, __pyx_k_str, sizeof(__pyx_k_str), 0, 0, 1, 1},
   {&__pyx_n_s_strip, __pyx_k_strip, sizeof(__pyx_k_strip), 0, 0, 1, 1},
+  {&__pyx_n_s_sublist, __pyx_k_sublist, sizeof(__pyx_k_sublist), 0, 0, 1, 1},
+  {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_threading, __pyx_k_threading, sizeof(__pyx_k_threading), 0, 0, 1, 1},
+  {&__pyx_n_s_threads_no, __pyx_k_threads_no, sizeof(__pyx_k_threads_no), 0, 0, 1, 1},
   {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
   {&__pyx_n_s_token, __pyx_k_token, sizeof(__pyx_k_token), 0, 0, 1, 1},
   {&__pyx_n_s_tokens, __pyx_k_tokens, sizeof(__pyx_k_tokens), 0, 0, 1, 1},
@@ -7125,20 +8494,22 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_use_alpha_upper, __pyx_k_use_alpha_upper, sizeof(__pyx_k_use_alpha_upper), 0, 0, 1, 1},
   {&__pyx_n_s_use_digits, __pyx_k_use_digits, sizeof(__pyx_k_use_digits), 0, 0, 1, 1},
   {&__pyx_kp_s_utf_8, __pyx_k_utf_8, sizeof(__pyx_k_utf_8), 0, 0, 1, 0},
+  {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
   {&__pyx_n_s_wordlist_file, __pyx_k_wordlist_file, sizeof(__pyx_k_wordlist_file), 0, 0, 1, 1},
   {&__pyx_n_s_wordlist_file_path, __pyx_k_wordlist_file_path, sizeof(__pyx_k_wordlist_file_path), 0, 0, 1, 1},
   {&__pyx_n_s_z, __pyx_k_z, sizeof(__pyx_k_z), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 88, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 29, __pyx_L1_error)
-  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_builtin_chr = __Pyx_GetBuiltinName(__pyx_n_s_chr); if (!__pyx_builtin_chr) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 143, __pyx_L1_error)
-  __pyx_builtin_filter = __Pyx_GetBuiltinName(__pyx_n_s_filter); if (!__pyx_builtin_filter) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_builtin_chr = __Pyx_GetBuiltinName(__pyx_n_s_chr); if (!__pyx_builtin_chr) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_builtin_filter = __Pyx_GetBuiltinName(__pyx_n_s_filter); if (!__pyx_builtin_filter) __PYX_ERR(0, 184, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7148,362 +8519,398 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "md5/md5_crack.py":29
+  /* "md5/md5_crack.py":28
  *     def __init__(self, wordlist_file_path):
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:             # <<<<<<<<<<<<<<
  *             self.__passwords = [line.strip()
  *                                 for line in wordlist_file.readlines()
  */
-  __pyx_tuple_ = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "md5/md5_crack.py":50
+  /* "md5/md5_crack.py":49
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):             # <<<<<<<<<<<<<<
  *             return map(chr, range(ord(min_char), ord(max_char) + 1))
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_min_char, __pyx_n_s_max_char); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_min_char, __pyx_n_s_max_char); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_chars_range, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_chars_range, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 49, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":157
+  /* "md5/md5_crack.py":188
  * 
  * def add_test_password_settings(md5_batch_decrypter):
  *     gen = StandardPasswordGenerator(4, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_int_4, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_int_4, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "md5/md5_crack.py":165
+  /* "md5/md5_crack.py":196
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(4, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_int_4, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_int_4, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "md5/md5_crack.py":168
+  /* "md5/md5_crack.py":199
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(6, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_int_6, Py_True); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_int_6, Py_True); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "md5/md5_crack.py":171
+  /* "md5/md5_crack.py":202
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(5, True, True, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __pyx_tuple__10 = PyTuple_Pack(4, __pyx_int_5, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(4, __pyx_int_5, Py_True, Py_True, Py_True); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "md5/md5_crack.py":174
+  /* "md5/md5_crack.py":205
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  *     gen = StandardPasswordGenerator(7, True)             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter.add_password_generator(gen)
  * 
  */
-  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_int_7, Py_True); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_int_7, Py_True); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "md5/md5_crack.py":21
+  /* "md5/md5_crack.py":20
  * 
  *     @abc.abstractmethod
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 21, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 20, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":27
+  /* "md5/md5_crack.py":26
  * class WordlistPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, wordlist_file_path):             # <<<<<<<<<<<<<<
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:
  */
-  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_wordlist_file_path, __pyx_n_s_wordlist_file, __pyx_n_s_line); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_wordlist_file_path, __pyx_n_s_wordlist_file, __pyx_n_s_line); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 26, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 26, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":34
+  /* "md5/md5_crack.py":33
  *                                 if len(line.strip()) > 0]
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         return iter(self.__passwords)
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 33, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":40
+  /* "md5/md5_crack.py":39
  * class StandardPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,             # <<<<<<<<<<<<<<
  *                  use_alpha_upper=False, use_digits=False):
  *         self.__password_len = password_len
  */
-  __pyx_tuple__18 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_password_len, __pyx_n_s_use_alpha_lower, __pyx_n_s_use_alpha_upper, __pyx_n_s_use_digits); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_password_len, __pyx_n_s_use_alpha_lower, __pyx_n_s_use_alpha_upper, __pyx_n_s_use_digits); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __pyx_tuple__20 = PyTuple_Pack(3, ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(3, ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "md5/md5_crack.py":48
+  /* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):
  */
-  __pyx_tuple__21 = PyTuple_Pack(6, __pyx_n_s_use_alpha_lower, __pyx_n_s_use_alpha_upper, __pyx_n_s_use_digits, __pyx_n_s_chars_range, __pyx_n_s_chars_range, __pyx_n_s_allowed_chars); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(6, __pyx_n_s_use_alpha_lower, __pyx_n_s_use_alpha_upper, __pyx_n_s_use_digits, __pyx_n_s_chars_range, __pyx_n_s_chars_range, __pyx_n_s_allowed_chars); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_build_allowed_chars_list, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 48, __pyx_L1_error)
-  __pyx_tuple__23 = PyTuple_Pack(3, ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_build_allowed_chars_list, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(3, ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "md5/md5_crack.py":64
+  /* "md5/md5_crack.py":63
  *         return allowed_chars
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         for password in itertools.product(self.__allowed_chars,
  *                                           repeat=self.__password_len):
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 64, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_iter, 63, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 63, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":72
+  /* "md5/md5_crack.py":71
  * class LoginInstance:
  * 
  *     def __init__(self, login, password_hash_base64, salt):             # <<<<<<<<<<<<<<
  *         self.__login = login
  *         self.__password_hash_base64 = password_hash_base64
  */
-  __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_login, __pyx_n_s_password_hash_base64, __pyx_n_s_salt); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_login, __pyx_n_s_password_hash_base64, __pyx_n_s_salt); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 71, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 71, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":81
+  /* "md5/md5_crack.py":80
  *         self.__plain_password = None
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
  *         password_str = 'password not known'\
  *             if self.__plain_password is None else self.__plain_password
  */
-  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password_str); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password_str); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_str, 81, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_str, 80, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 80, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":89
+  /* "md5/md5_crack.py":88
  * 
  *     @property
  *     def plain_password(self):             # <<<<<<<<<<<<<<
  *         return self.__plain_password
  * 
  */
-  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_plain_password, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_plain_password, 88, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 88, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":93
+  /* "md5/md5_crack.py":92
  * 
  *     @staticmethod
  *     def build_from_str(description_str):             # <<<<<<<<<<<<<<
  *         tokens = [token.strip() for token in description_str.split(':')]
  * 
  */
-  __pyx_tuple__31 = PyTuple_Pack(6, __pyx_n_s_description_str, __pyx_n_s_tokens, __pyx_n_s_login, __pyx_n_s_salt, __pyx_n_s_password_hash_base64, __pyx_n_s_token); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(6, __pyx_n_s_description_str, __pyx_n_s_tokens, __pyx_n_s_login, __pyx_n_s_salt, __pyx_n_s_password_hash_base64, __pyx_n_s_token); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_build_from_str, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_build_from_str, 92, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 92, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":103
+  /* "md5/md5_crack.py":102
  * 
  *     @staticmethod
  *     def __base64_str_to_int(base64_str):             # <<<<<<<<<<<<<<
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_n_s_base64_str); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_n_s_base64_str); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_base64_str_to_int, 103, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_base64_str_to_int, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 102, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":106
+  /* "md5/md5_crack.py":105
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  *     def update_plain_password_if_valid(self, password):             # <<<<<<<<<<<<<<
  *         if self.__is_password_valid(password):
  *             self.__plain_password = password
  */
-  __pyx_tuple__35 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_update_plain_password_if_valid, 106, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_update_plain_password_if_valid, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 105, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":112
+  /* "md5/md5_crack.py":111
  *         return False
  * 
  *     def __is_password_valid(self, password):             # <<<<<<<<<<<<<<
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  */
-  __pyx_tuple__37 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__37);
   __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_is_password_valid, 112, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_is_password_valid, 111, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 111, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":115
+  /* "md5/md5_crack.py":114
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  *     def __md5_hash(self, password):             # <<<<<<<<<<<<<<
  *         md5_hasher = hashlib.md5()
  *         md5_hasher.update(password.encode('utf-8'))
  */
-  __pyx_tuple__39 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_password, __pyx_n_s_md5_hasher); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_password, __pyx_n_s_md5_hasher); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__39);
   __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_md5_hash, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_md5_hash, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 114, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":124
+  /* "md5/md5_crack.py":123
+ * class Md5DecrypterProcess(multiprocessing.Process):
+ * 
+ *     def __init__(self, password_generators, login_instances):             # <<<<<<<<<<<<<<
+ *         super().__init__()
+ * 
+ */
+  __pyx_tuple__41 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_password_generators, __pyx_n_s_login_instances); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 123, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 123, __pyx_L1_error)
+
+  /* "md5/md5_crack.py":129
+ *         self.__login_instances = login_instances
+ * 
+ *     def run(self):             # <<<<<<<<<<<<<<
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ */
+  __pyx_tuple__43 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_unprocessed_login_instances, __pyx_n_s_password_gen, __pyx_n_s_password, __pyx_n_s_password_found_positions, __pyx_n_s_i, __pyx_n_s_login_inst, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_run, 129, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 129, __pyx_L1_error)
+
+  /* "md5/md5_crack.py":148
  * class Md5BatchDecrypter:
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
  *         self.__password_generators = []
  *         self.__login_instances = []
  */
-  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 124, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 124, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_init, 148, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 148, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":128
- *         self.__login_instances = []
+  /* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+  __pyx_tuple__47 = PyTuple_Pack(5, __pyx_n_s_values, __pyx_n_s_max_chunks_num, __pyx_n_s_sublist, __pyx_n_s_genexpr, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_separate_list_into_max_n_chunk, 153, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 153, __pyx_L1_error)
+
+  /* "md5/md5_crack.py":159
+ *                 if len(sublist) > 0]
  * 
  *     def add_password_generator(self, password_generator):             # <<<<<<<<<<<<<<
  *         self.__password_generators.append(password_generator)
  * 
  */
-  __pyx_tuple__43 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password_generator); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_password_generator, 128, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_password_generator); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_password_generator, 159, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 159, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":131
+  /* "md5/md5_crack.py":162
  *         self.__password_generators.append(password_generator)
  * 
  *     def add_login_inst(self, login_inst):             # <<<<<<<<<<<<<<
  *         self.__login_instances.append(login_inst)
  * 
  */
-  __pyx_tuple__45 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 131, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_login_inst, 131, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_login_inst, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 162, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":134
+  /* "md5/md5_crack.py":165
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         unprocessed_login_instances = list(self.__login_instances)
- * 
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))
  */
-  __pyx_tuple__47 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_unprocessed_login_instances, __pyx_n_s_password_gen, __pyx_n_s_password, __pyx_n_s_password_found_positions, __pyx_n_s_i, __pyx_n_s_login_inst, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_run_brute_force, 134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_tuple__53 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_threads_no, __pyx_n_s_login_inst_chunks, __pyx_n_s_processes, __pyx_n_s_process, __pyx_n_s_login_inst_chunk); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__53);
+  __Pyx_GIVEREF(__pyx_tuple__53);
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_run_brute_force, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 165, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":151
+  /* "md5/md5_crack.py":182
  * 
  * 
  * def read_input_as_login_instances():             # <<<<<<<<<<<<<<
  *     return map(lambda x: LoginInstance.build_from_str(x),
  *                filter(lambda x: len(x.strip()) > 0, sys.stdin))
  */
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_read_input_as_login_instances, 151, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_read_input_as_login_instances, 182, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 182, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":156
+  /* "md5/md5_crack.py":187
  * 
  * 
  * def add_test_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
  *     gen = StandardPasswordGenerator(4, True, True, True)
  *     md5_batch_decrypter.add_password_generator(gen)
  */
-  __pyx_tuple__50 = PyTuple_Pack(2, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_gen); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 156, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
-  __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_test_password_settings, 156, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_tuple__56 = PyTuple_Pack(2, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_gen); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__56);
+  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_test_password_settings, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":161
+  /* "md5/md5_crack.py":192
  * 
  * 
  * def add_sem_project_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
  *     gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
  *     md5_batch_decrypter.add_password_generator(gen)
  */
-  __pyx_tuple__52 = PyTuple_Pack(2, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_gen); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 161, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_sem_project_password_setting, 161, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(2, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_gen); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_add_sem_project_password_setting, 192, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 192, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":178
+  /* "md5/md5_crack.py":209
  * 
  * 
  * def print_login_instances(login_instances, status):             # <<<<<<<<<<<<<<
  *     print('Status: {}'.format(status))
  *     for login_inst in login_instances:
  */
-  __pyx_tuple__54 = PyTuple_Pack(3, __pyx_n_s_login_instances, __pyx_n_s_status, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 178, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__54);
-  __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_print_login_instances, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_tuple__60 = PyTuple_Pack(3, __pyx_n_s_login_instances, __pyx_n_s_status, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__60);
+  __Pyx_GIVEREF(__pyx_tuple__60);
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_print_login_instances, 209, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 209, __pyx_L1_error)
 
-  /* "md5/md5_crack.py":184
+  /* "md5/md5_crack.py":215
  * 
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter = Md5BatchDecrypter()
  *     login_instances = []
  */
-  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_login_instances, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 184, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_main_2, 184, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(3, __pyx_n_s_md5_batch_decrypter, __pyx_n_s_login_instances, __pyx_n_s_login_inst); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_main_2, 215, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7560,12 +8967,24 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   __pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__.tp_dictoffset && __pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_3md5_9md5_crack___pyx_scope_struct____iter__ = &__pyx_type_3md5_9md5_crack___pyx_scope_struct____iter__;
+  if (PyType_Ready(&__pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks.tp_dictoffset && __pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  }
+  __pyx_ptype_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks = &__pyx_type_3md5_9md5_crack___pyx_scope_struct_1___separate_list_into_max_n_chunks;
+  if (PyType_Ready(&__pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr.tp_dictoffset && __pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  }
+  __pyx_ptype_3md5_9md5_crack___pyx_scope_struct_2_genexpr = &__pyx_type_3md5_9md5_crack___pyx_scope_struct_2_genexpr;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7841,7 +9260,7 @@ if (!__Pyx_RefNanny) {
  * import sys
  * import base64             # <<<<<<<<<<<<<<
  * import hashlib
- * import threading
+ * import itertools
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_base64, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -7852,8 +9271,8 @@ if (!__Pyx_RefNanny) {
  * import sys
  * import base64
  * import hashlib             # <<<<<<<<<<<<<<
- * import threading
  * import itertools
+ * import multiprocessing
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_hashlib, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -7863,82 +9282,70 @@ if (!__Pyx_RefNanny) {
   /* "md5/md5_crack.py":13
  * import base64
  * import hashlib
- * import threading             # <<<<<<<<<<<<<<
- * import itertools
- * import multiprocessing
- */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_threading, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_threading, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "md5/md5_crack.py":14
- * import hashlib
- * import threading
  * import itertools             # <<<<<<<<<<<<<<
  * import multiprocessing
  * 
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_itertools, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_itertools, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_itertools, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_itertools, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":15
- * import threading
+  /* "md5/md5_crack.py":14
+ * import hashlib
  * import itertools
  * import multiprocessing             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_multiprocessing, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_multiprocessing, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_multiprocessing, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_multiprocessing, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":18
+  /* "md5/md5_crack.py":17
  * 
  * 
  * class PasswordGenerator(abc.ABC):             # <<<<<<<<<<<<<<
  * 
  *     @abc.abstractmethod
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_abc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_abc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ABC); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ABC); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_PasswordGenerator, __pyx_n_s_PasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_PasswordGenerator, __pyx_n_s_PasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "md5/md5_crack.py":20
+  /* "md5/md5_crack.py":19
  * class PasswordGenerator(abc.ABC):
  * 
  *     @abc.abstractmethod             # <<<<<<<<<<<<<<
  *     def __iter__(self):
  *         pass
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_abc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_abc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abstractmethod); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_abstractmethod); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "md5/md5_crack.py":21
+  /* "md5/md5_crack.py":20
  * 
  *     @abc.abstractmethod
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_t_5 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17PasswordGenerator_1__iter__, 0, __pyx_n_s_PasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17PasswordGenerator_1__iter__, 0, __pyx_n_s_PasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -7953,485 +9360,576 @@ if (!__Pyx_RefNanny) {
   __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_4) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_4) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "md5/md5_crack.py":18
+  /* "md5/md5_crack.py":17
  * 
  * 
  * class PasswordGenerator(abc.ABC):             # <<<<<<<<<<<<<<
  * 
  *     @abc.abstractmethod
  */
-  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_PasswordGenerator, __pyx_t_1, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_PasswordGenerator, __pyx_t_1, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PasswordGenerator, __pyx_t_4) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PasswordGenerator, __pyx_t_4) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":25
+  /* "md5/md5_crack.py":24
  * 
  * 
  * class WordlistPasswordGenerator(PasswordGenerator):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, wordlist_file_path):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PasswordGenerator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_2, __pyx_n_s_WordlistPasswordGenerator, __pyx_n_s_WordlistPasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_2, __pyx_n_s_WordlistPasswordGenerator, __pyx_n_s_WordlistPasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "md5/md5_crack.py":27
+  /* "md5/md5_crack.py":26
  * class WordlistPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, wordlist_file_path):             # <<<<<<<<<<<<<<
  *         self.__passwords = None
  *         with open(wordlist_file_path) as wordlist_file:
  */
-  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25WordlistPasswordGenerator_1__init__, 0, __pyx_n_s_WordlistPasswordGenerator___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25WordlistPasswordGenerator_1__init__, 0, __pyx_n_s_WordlistPasswordGenerator___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "md5/md5_crack.py":34
+  /* "md5/md5_crack.py":33
  *                                 if len(line.strip()) > 0]
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         return iter(self.__passwords)
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25WordlistPasswordGenerator_3__iter__, 0, __pyx_n_s_WordlistPasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25WordlistPasswordGenerator_3__iter__, 0, __pyx_n_s_WordlistPasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_4) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "md5/md5_crack.py":25
+  /* "md5/md5_crack.py":24
  * 
  * 
  * class WordlistPasswordGenerator(PasswordGenerator):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, wordlist_file_path):
  */
-  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_WordlistPasswordGenerator, __pyx_t_2, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_WordlistPasswordGenerator, __pyx_t_2, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_WordlistPasswordGenerator, __pyx_t_4) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_WordlistPasswordGenerator, __pyx_t_4) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":38
+  /* "md5/md5_crack.py":37
  * 
  * 
  * class StandardPasswordGenerator(PasswordGenerator):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PasswordGenerator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_StandardPasswordGenerator, __pyx_n_s_StandardPasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_StandardPasswordGenerator, __pyx_n_s_StandardPasswordGenerator, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "md5/md5_crack.py":40
+  /* "md5/md5_crack.py":39
  * class StandardPasswordGenerator(PasswordGenerator):
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,             # <<<<<<<<<<<<<<
  *                  use_alpha_upper=False, use_digits=False):
  *         self.__password_len = password_len
  */
-  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_1__init__, 0, __pyx_n_s_StandardPasswordGenerator___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_1__init__, 0, __pyx_n_s_StandardPasswordGenerator___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__20);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "md5/md5_crack.py":48
+  /* "md5/md5_crack.py":47
  * 
  *     @staticmethod
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,             # <<<<<<<<<<<<<<
  *                                    use_digits=False):
  *         def chars_range(min_char, max_char):
  */
-  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_3__build_allowed_chars_list, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_StandardPasswordGenerator___buil_2, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_3__build_allowed_chars_list, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_StandardPasswordGenerator___buil_2, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__23);
 
-  /* "md5/md5_crack.py":47
+  /* "md5/md5_crack.py":46
  *                                                                use_digits)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def __build_allowed_chars_list(use_alpha_lower=False, use_alpha_upper=False,
  *                                    use_digits=False):
  */
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_StandardPasswordGenerator__buil, __pyx_t_6) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_StandardPasswordGenerator__buil, __pyx_t_6) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "md5/md5_crack.py":64
+  /* "md5/md5_crack.py":63
  *         return allowed_chars
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         for password in itertools.product(self.__allowed_chars,
  *                                           repeat=self.__password_len):
  */
-  __pyx_t_6 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_5__iter__, 0, __pyx_n_s_StandardPasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_25StandardPasswordGenerator_5__iter__, 0, __pyx_n_s_StandardPasswordGenerator___iter, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_6) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_iter, __pyx_t_6) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "md5/md5_crack.py":38
+  /* "md5/md5_crack.py":37
  * 
  * 
  * class StandardPasswordGenerator(PasswordGenerator):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, password_len, use_alpha_lower=False,
  */
-  __pyx_t_6 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator, __pyx_t_1, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_StandardPasswordGenerator, __pyx_t_1, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StandardPasswordGenerator, __pyx_t_6) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StandardPasswordGenerator, __pyx_t_6) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":70
+  /* "md5/md5_crack.py":69
  * 
  * 
  * class LoginInstance:             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, login, password_hash_base64, salt):
  */
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_LoginInstance, __pyx_n_s_LoginInstance, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_LoginInstance, __pyx_n_s_LoginInstance, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "md5/md5_crack.py":72
+  /* "md5/md5_crack.py":71
  * class LoginInstance:
  * 
  *     def __init__(self, login, password_hash_base64, salt):             # <<<<<<<<<<<<<<
  *         self.__login = login
  *         self.__password_hash_base64 = password_hash_base64
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_1__init__, 0, __pyx_n_s_LoginInstance___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_1__init__, 0, __pyx_n_s_LoginInstance___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":81
+  /* "md5/md5_crack.py":80
  *         self.__plain_password = None
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
  *         password_str = 'password not known'\
  *             if self.__plain_password is None else self.__plain_password
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_3__str__, 0, __pyx_n_s_LoginInstance___str, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_3__str__, 0, __pyx_n_s_LoginInstance___str, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_str, __pyx_t_2) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_str, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":89
+  /* "md5/md5_crack.py":88
  * 
  *     @property
  *     def plain_password(self):             # <<<<<<<<<<<<<<
  *         return self.__plain_password
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_5plain_password, 0, __pyx_n_s_LoginInstance_plain_password, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_5plain_password, 0, __pyx_n_s_LoginInstance_plain_password, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "md5/md5_crack.py":88
+  /* "md5/md5_crack.py":87
  *                                             self.__salt, password_str)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def plain_password(self):
  *         return self.__plain_password
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plain_password, __pyx_t_3) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plain_password, __pyx_t_3) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":93
+  /* "md5/md5_crack.py":92
  * 
  *     @staticmethod
  *     def build_from_str(description_str):             # <<<<<<<<<<<<<<
  *         tokens = [token.strip() for token in description_str.split(':')]
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_7build_from_str, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_LoginInstance_build_from_str, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_7build_from_str, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_LoginInstance_build_from_str, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "md5/md5_crack.py":92
+  /* "md5/md5_crack.py":91
  *         return self.__plain_password
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def build_from_str(description_str):
  *         tokens = [token.strip() for token in description_str.split(':')]
  */
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_build_from_str, __pyx_t_2) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_build_from_str, __pyx_t_2) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":103
+  /* "md5/md5_crack.py":102
  * 
  *     @staticmethod
  *     def __base64_str_to_int(base64_str):             # <<<<<<<<<<<<<<
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_9__base64_str_to_int, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_LoginInstance___base64_str_to_in, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_9__base64_str_to_int, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_LoginInstance___base64_str_to_in, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "md5/md5_crack.py":102
+  /* "md5/md5_crack.py":101
  *         return LoginInstance(login, password_hash_base64, salt)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def __base64_str_to_int(base64_str):
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__base64_str_to_in, __pyx_t_3) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__base64_str_to_in, __pyx_t_3) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":106
+  /* "md5/md5_crack.py":105
  *         return int.from_bytes(base64.b64decode(base64_str), 'big')
  * 
  *     def update_plain_password_if_valid(self, password):             # <<<<<<<<<<<<<<
  *         if self.__is_password_valid(password):
  *             self.__plain_password = password
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_11update_plain_password_if_valid, 0, __pyx_n_s_LoginInstance_update_plain_passw, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_11update_plain_password_if_valid, 0, __pyx_n_s_LoginInstance_update_plain_passw, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_update_plain_password_if_valid, __pyx_t_3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_update_plain_password_if_valid, __pyx_t_3) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":112
+  /* "md5/md5_crack.py":111
  *         return False
  * 
  *     def __is_password_valid(self, password):             # <<<<<<<<<<<<<<
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_13__is_password_valid, 0, __pyx_n_s_LoginInstance___is_password_vali, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_13__is_password_valid, 0, __pyx_n_s_LoginInstance___is_password_vali, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__is_password_vali, __pyx_t_3) < 0) __PYX_ERR(0, 112, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__is_password_vali, __pyx_t_3) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":115
+  /* "md5/md5_crack.py":114
  *         return self.__md5_hash(password) == self.__password_hash
  * 
  *     def __md5_hash(self, password):             # <<<<<<<<<<<<<<
  *         md5_hasher = hashlib.md5()
  *         md5_hasher.update(password.encode('utf-8'))
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_15__md5_hash, 0, __pyx_n_s_LoginInstance___md5_hash, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_13LoginInstance_15__md5_hash, 0, __pyx_n_s_LoginInstance___md5_hash, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__md5_hash, __pyx_t_3) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_LoginInstance__md5_hash, __pyx_t_3) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":70
+  /* "md5/md5_crack.py":69
  * 
  * 
  * class LoginInstance:             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, login, password_hash_base64, salt):
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_LoginInstance, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_LoginInstance, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LoginInstance, __pyx_t_3) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LoginInstance, __pyx_t_3) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":122
+  /* "md5/md5_crack.py":121
+ * 
+ * 
+ * class Md5DecrypterProcess(multiprocessing.Process):             # <<<<<<<<<<<<<<
+ * 
+ *     def __init__(self, password_generators, login_instances):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_multiprocessing); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Process); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_3, __pyx_t_1, __pyx_n_s_Md5DecrypterProcess, __pyx_n_s_Md5DecrypterProcess, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+
+  /* "md5/md5_crack.py":123
+ * class Md5DecrypterProcess(multiprocessing.Process):
+ * 
+ *     def __init__(self, password_generators, login_instances):             # <<<<<<<<<<<<<<
+ *         super().__init__()
+ * 
+ */
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_19Md5DecrypterProcess_1__init__, 0, __pyx_n_s_Md5DecrypterProcess___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_INCREF(__pyx_t_4);
+  PyList_Append(__pyx_t_6, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_4);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "md5/md5_crack.py":129
+ *         self.__login_instances = login_instances
+ * 
+ *     def run(self):             # <<<<<<<<<<<<<<
+ *         unprocessed_login_instances = list(self.__login_instances)
+ * 
+ */
+  __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_19Md5DecrypterProcess_3run, 0, __pyx_n_s_Md5DecrypterProcess_run, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_run, __pyx_t_4) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "md5/md5_crack.py":121
+ * 
+ * 
+ * class Md5DecrypterProcess(multiprocessing.Process):             # <<<<<<<<<<<<<<
+ * 
+ *     def __init__(self, password_generators, login_instances):
+ */
+  __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_3, __pyx_n_s_Md5DecrypterProcess, __pyx_t_1, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_CyFunction_InitClassCell(__pyx_t_6, __pyx_t_4) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Md5DecrypterProcess, __pyx_t_4) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "md5/md5_crack.py":146
  * 
  * 
  * class Md5BatchDecrypter:             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self):
  */
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Md5BatchDecrypter, __pyx_n_s_Md5BatchDecrypter, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Md5BatchDecrypter, __pyx_n_s_Md5BatchDecrypter, (PyObject *) NULL, __pyx_n_s_md5_md5_crack, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "md5/md5_crack.py":124
+  /* "md5/md5_crack.py":148
  * class Md5BatchDecrypter:
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
  *         self.__password_generators = []
  *         self.__login_instances = []
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_1__init__, 0, __pyx_n_s_Md5BatchDecrypter___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_1__init__, 0, __pyx_n_s_Md5BatchDecrypter___init, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "md5/md5_crack.py":128
+  /* "md5/md5_crack.py":153
+ * 
+ *     @staticmethod
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):             # <<<<<<<<<<<<<<
+ *         return [sublist
+ *                 for sublist in
+ */
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_3__separate_list_into_max_n_chunks, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_Md5BatchDecrypter___separate_lis_2, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+
+  /* "md5/md5_crack.py":152
  *         self.__login_instances = []
+ * 
+ *     @staticmethod             # <<<<<<<<<<<<<<
+ *     def __separate_list_into_max_n_chunks(values, max_chunks_num):
+ *         return [sublist
+ */
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_Md5BatchDecrypter__separate_lis, __pyx_t_2) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "md5/md5_crack.py":159
+ *                 if len(sublist) > 0]
  * 
  *     def add_password_generator(self, password_generator):             # <<<<<<<<<<<<<<
  *         self.__password_generators.append(password_generator)
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_3add_password_generator, 0, __pyx_n_s_Md5BatchDecrypter_add_password_g, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_password_generator, __pyx_t_3) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_5add_password_generator, 0, __pyx_n_s_Md5BatchDecrypter_add_password_g, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_password_generator, __pyx_t_2) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":131
+  /* "md5/md5_crack.py":162
  *         self.__password_generators.append(password_generator)
  * 
  *     def add_login_inst(self, login_inst):             # <<<<<<<<<<<<<<
  *         self.__login_instances.append(login_inst)
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_5add_login_inst, 0, __pyx_n_s_Md5BatchDecrypter_add_login_inst, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_login_inst, __pyx_t_3) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_7add_login_inst, 0, __pyx_n_s_Md5BatchDecrypter_add_login_inst, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_login_inst, __pyx_t_2) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":134
+  /* "md5/md5_crack.py":165
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         unprocessed_login_instances = list(self.__login_instances)
- * 
+ *         threads_no = min(multiprocessing.cpu_count(),
+ *                          len(self.__login_instances))
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_7run_brute_force, 0, __pyx_n_s_Md5BatchDecrypter_run_brute_forc, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_run_brute_force, __pyx_t_3) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force, 0, __pyx_n_s_Md5BatchDecrypter_run_brute_forc, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_run_brute_force, __pyx_t_2) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":122
+  /* "md5/md5_crack.py":146
  * 
  * 
  * class Md5BatchDecrypter:             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self):
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Md5BatchDecrypter, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Md5BatchDecrypter, __pyx_t_3) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Md5BatchDecrypter, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Md5BatchDecrypter, __pyx_t_2) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":151
+  /* "md5/md5_crack.py":182
  * 
  * 
  * def read_input_as_login_instances():             # <<<<<<<<<<<<<<
  *     return map(lambda x: LoginInstance.build_from_str(x),
  *                filter(lambda x: len(x.strip()) > 0, sys.stdin))
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_1read_input_as_login_instances, 0, __pyx_n_s_read_input_as_login_instances, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_1read_input_as_login_instances, 0, __pyx_n_s_read_input_as_login_instances, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_read_input_as_login_instances, __pyx_t_1) < 0) __PYX_ERR(0, 151, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_read_input_as_login_instances, __pyx_t_1) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":156
+  /* "md5/md5_crack.py":187
  * 
  * 
  * def add_test_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
  *     gen = StandardPasswordGenerator(4, True, True, True)
  *     md5_batch_decrypter.add_password_generator(gen)
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_3add_test_password_settings, 0, __pyx_n_s_add_test_password_settings, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_3add_test_password_settings, 0, __pyx_n_s_add_test_password_settings, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_test_password_settings, __pyx_t_1) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_test_password_settings, __pyx_t_1) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":161
+  /* "md5/md5_crack.py":192
  * 
  * 
  * def add_sem_project_password_settings(md5_batch_decrypter):             # <<<<<<<<<<<<<<
  *     gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
  *     md5_batch_decrypter.add_password_generator(gen)
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_5add_sem_project_password_settings, 0, __pyx_n_s_add_sem_project_password_setting, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_5add_sem_project_password_settings, 0, __pyx_n_s_add_sem_project_password_setting, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_sem_project_password_setting, __pyx_t_1) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_sem_project_password_setting, __pyx_t_1) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":178
+  /* "md5/md5_crack.py":209
  * 
  * 
  * def print_login_instances(login_instances, status):             # <<<<<<<<<<<<<<
  *     print('Status: {}'.format(status))
  *     for login_inst in login_instances:
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_7print_login_instances, 0, __pyx_n_s_print_login_instances, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_7print_login_instances, 0, __pyx_n_s_print_login_instances, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_print_login_instances, __pyx_t_1) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_print_login_instances, __pyx_t_1) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":184
+  /* "md5/md5_crack.py":215
  * 
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     md5_batch_decrypter = Md5BatchDecrypter()
  *     login_instances = []
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_9main, 0, __pyx_n_s_main_2, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_9main, 0, __pyx_n_s_main_2, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "md5/md5_crack.py":203
+  /* "md5/md5_crack.py":234
  * 
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
  *     sys.exit(main())
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_8) {
 
-    /* "md5/md5_crack.py":204
+    /* "md5/md5_crack.py":235
  * 
  * if __name__ == '__main__':
  *     sys.exit(main())             # <<<<<<<<<<<<<<
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_sys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_sys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_exit_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_main_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_exit_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_main_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "md5/md5_crack.py":203
+    /* "md5/md5_crack.py":234
  * 
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
@@ -9932,6 +11430,162 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, 
     return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
 }
 
+/* PyIntBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, CYTHON_UNUSED int inplace) {
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            x = (long)((unsigned long)a + b);
+            if (likely((x^a) >= 0 || (x^b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_add(op1, op2);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
+            }
+        }
+                x = a + b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla + llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+            double result;
+            PyFPE_START_PROTECT("add", return NULL)
+            result = ((double)a) + (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
+}
+#endif
+
+/* None */
+static CYTHON_INLINE void __Pyx_RaiseClosureNameError(const char *varname) {
+    PyErr_Format(PyExc_NameError, "free variable '%s' referenced before assignment in enclosing scope", varname);
+}
+
+/* ObjectGetItem */
+#if CYTHON_USE_TYPE_SLOTS
+static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
+    PyObject *runerr;
+    Py_ssize_t key_value;
+    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
+    if (unlikely(!(m && m->sq_item))) {
+        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
+        return NULL;
+    }
+    key_value = __Pyx_PyIndex_AsSsize_t(index);
+    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
+        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
+    }
+    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
+        PyErr_Clear();
+        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
+    }
+    return NULL;
+}
+static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
+    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(m && m->mp_subscript)) {
+        return m->mp_subscript(obj, key);
+    }
+    return __Pyx_PyObject_GetIndex(obj, key);
+}
+#endif
+
 /* PyObjectGetMethod */
 static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method) {
     PyObject *attr;
@@ -10058,128 +11712,6 @@ static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x) {
     }
     return 0;
 }
-
-/* PyIntBinop */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, CYTHON_UNUSED int inplace) {
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op1))) {
-        const long b = intval;
-        long x;
-        long a = PyInt_AS_LONG(op1);
-            x = (long)((unsigned long)a + b);
-            if (likely((x^a) >= 0 || (x^b) >= 0))
-                return PyInt_FromLong(x);
-            return PyLong_Type.tp_as_number->nb_add(op1, op2);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        const long b = intval;
-        long a, x;
-#ifdef HAVE_LONG_LONG
-        const PY_LONG_LONG llb = intval;
-        PY_LONG_LONG lla, llx;
-#endif
-        const digit* digits = ((PyLongObject*)op1)->ob_digit;
-        const Py_ssize_t size = Py_SIZE(op1);
-        if (likely(__Pyx_sst_abs(size) <= 1)) {
-            a = likely(size) ? digits[0] : 0;
-            if (size == -1) a = -a;
-        } else {
-            switch (size) {
-                case -2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
-            }
-        }
-                x = a + b;
-            return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-        long_long:
-                llx = lla + llb;
-            return PyLong_FromLongLong(llx);
-#endif
-        
-        
-    }
-    #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-        double a = PyFloat_AS_DOUBLE(op1);
-            double result;
-            PyFPE_START_PROTECT("add", return NULL)
-            result = ((double)a) + (double)b;
-            PyFPE_END_PROTECT(result)
-            return PyFloat_FromDouble(result);
-    }
-    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
-}
-#endif
 
 /* PyObject_GenericGetAttrNoDict */
 #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
@@ -10390,6 +11922,27 @@ static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObj
     }
     Py_XDECREF(owned_metaclass);
     return result;
+}
+
+/* CyFunctionClassCell */
+static int __Pyx_CyFunction_InitClassCell(PyObject *cyfunctions, PyObject *classobj) {
+    Py_ssize_t i, count = PyList_GET_SIZE(cyfunctions);
+    for (i = 0; i < count; i++) {
+        __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *)
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+            PyList_GET_ITEM(cyfunctions, i);
+#else
+            PySequence_ITEM(cyfunctions, i);
+        if (unlikely(!m))
+            return -1;
+#endif
+        Py_INCREF(classobj);
+        m->func_classobj = classobj;
+#if !(CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS)
+        Py_DECREF((PyObject*)m);
+#endif
+    }
+    return 0;
 }
 
 /* BytesEquals */
