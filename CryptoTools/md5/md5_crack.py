@@ -62,9 +62,9 @@ class StandardPasswordGenerator(PasswordGenerator):
         return allowed_chars
 
     def __iter__(self):
-        return map(lambda x: ''.join(x),
-                   itertools.product(self.__allowed_chars,
-                                     repeat=self.__password_len))
+        for password in itertools.product(self.__allowed_chars,
+                                          repeat=self.__password_len):
+            yield ''.join(password)
 
 
 class LoginInstance:
