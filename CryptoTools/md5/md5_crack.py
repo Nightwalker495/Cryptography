@@ -163,10 +163,10 @@ class Md5BatchDecrypter:
         self.__login_instances.append(login_inst)
 
     def run_brute_force(self):
-        threads_no = min(multiprocessing.cpu_count(),
-                         len(self.__login_instances))
+        processes_no = min(multiprocessing.cpu_count(),
+                           len(self.__login_instances))
         login_inst_chunks = self.__separate_list_into_max_n_chunks(
-            self.__login_instances, threads_no)
+            self.__login_instances, processes_no)
 
         processes = [Md5DecrypterProcess(self.__password_generators,
                                          login_inst_chunk)
@@ -190,7 +190,7 @@ def add_test_password_settings(md5_batch_decrypter):
 
 
 def add_sem_project_password_settings(md5_batch_decrypter):
-    gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
+    gen = WordlistPasswordGenerator('../resources/sk_names_wordlist_orig.txt')
     md5_batch_decrypter.add_password_generator(gen)
 
     gen = StandardPasswordGenerator(4, True, True, True)
