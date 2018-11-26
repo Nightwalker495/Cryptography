@@ -1607,13 +1607,13 @@ static const char __pyx_k_base64_str[] = "base64_str";
 static const char __pyx_k_from_bytes[] = "from_bytes";
 static const char __pyx_k_login_inst[] = "login_inst";
 static const char __pyx_k_md5_hasher[] = "md5_hasher";
-static const char __pyx_k_threads_no[] = "threads_no";
 static const char __pyx_k_use_digits[] = "use_digits";
 static const char __pyx_k_chars_range[] = "chars_range";
 static const char __pyx_k_md5_crack_py[] = "md5_crack.py";
 static const char __pyx_k_password_gen[] = "password_gen";
 static const char __pyx_k_password_len[] = "password_len";
 static const char __pyx_k_password_str[] = "password_str";
+static const char __pyx_k_processes_no[] = "processes_no";
 static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_LoginInstance[] = "LoginInstance";
 static const char __pyx_k_allowed_chars[] = "allowed_chars";
@@ -1846,6 +1846,7 @@ static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_print_login_instances;
 static PyObject *__pyx_n_s_process;
 static PyObject *__pyx_n_s_processes;
+static PyObject *__pyx_n_s_processes_no;
 static PyObject *__pyx_n_s_product;
 static PyObject *__pyx_n_s_property;
 static PyObject *__pyx_n_s_qualname;
@@ -1872,7 +1873,6 @@ static PyObject *__pyx_n_s_sublist;
 static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_sys;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_threads_no;
 static PyObject *__pyx_n_s_throw;
 static PyObject *__pyx_n_s_token;
 static PyObject *__pyx_n_s_tokens;
@@ -6098,8 +6098,8 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_6add_login_inst(CY
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))
  */
 
 /* Python wrapper */
@@ -6117,7 +6117,7 @@ static PyObject *__pyx_pw_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force(P
 }
 
 static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
-  PyObject *__pyx_v_threads_no = NULL;
+  PyObject *__pyx_v_processes_no = NULL;
   PyObject *__pyx_v_login_inst_chunks = NULL;
   PyObject *__pyx_v_processes = NULL;
   PyObject *__pyx_v_process = NULL;
@@ -6139,10 +6139,10 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
 
   /* "md5/md5_crack.py":167
  *     def run_brute_force(self):
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))             # <<<<<<<<<<<<<<
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))             # <<<<<<<<<<<<<<
  *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
- *             self.__login_instances, threads_no)
+ *             self.__login_instances, processes_no)
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__login_instan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6152,8 +6152,8 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   /* "md5/md5_crack.py":166
  * 
  *     def run_brute_force(self):
- *         threads_no = min(multiprocessing.cpu_count(),             # <<<<<<<<<<<<<<
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),             # <<<<<<<<<<<<<<
+ *                            len(self.__login_instances))
  *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_multiprocessing); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
@@ -6179,10 +6179,10 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
 
   /* "md5/md5_crack.py":167
  *     def run_brute_force(self):
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))             # <<<<<<<<<<<<<<
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))             # <<<<<<<<<<<<<<
  *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
- *             self.__login_instances, threads_no)
+ *             self.__login_instances, processes_no)
  */
   __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -6203,23 +6203,23 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   __pyx_t_1 = __pyx_t_4;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_threads_no = __pyx_t_1;
+  __pyx_v_processes_no = __pyx_t_1;
   __pyx_t_1 = 0;
 
   /* "md5/md5_crack.py":168
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))
  *         login_inst_chunks = self.__separate_list_into_max_n_chunks(             # <<<<<<<<<<<<<<
- *             self.__login_instances, threads_no)
+ *             self.__login_instances, processes_no)
  * 
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Md5BatchDecrypter__separate_lis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
   /* "md5/md5_crack.py":169
- *                          len(self.__login_instances))
+ *                            len(self.__login_instances))
  *         login_inst_chunks = self.__separate_list_into_max_n_chunks(
- *             self.__login_instances, threads_no)             # <<<<<<<<<<<<<<
+ *             self.__login_instances, processes_no)             # <<<<<<<<<<<<<<
  * 
  *         processes = [Md5DecrypterProcess(self.__password_generators,
  */
@@ -6239,7 +6239,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   }
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_threads_no};
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_processes_no};
     __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -6248,7 +6248,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   #endif
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_threads_no};
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_processes_no};
     __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -6263,9 +6263,9 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
     }
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_t_5);
-    __Pyx_INCREF(__pyx_v_threads_no);
-    __Pyx_GIVEREF(__pyx_v_threads_no);
-    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_threads_no);
+    __Pyx_INCREF(__pyx_v_processes_no);
+    __Pyx_GIVEREF(__pyx_v_processes_no);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_processes_no);
     __pyx_t_5 = 0;
     __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -6276,7 +6276,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   __pyx_t_1 = 0;
 
   /* "md5/md5_crack.py":171
- *             self.__login_instances, threads_no)
+ *             self.__login_instances, processes_no)
  * 
  *         processes = [Md5DecrypterProcess(self.__password_generators,             # <<<<<<<<<<<<<<
  *                                          login_inst_chunk)
@@ -6335,7 +6335,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
     __pyx_t_8 = 0;
 
     /* "md5/md5_crack.py":171
- *             self.__login_instances, threads_no)
+ *             self.__login_instances, processes_no)
  * 
  *         processes = [Md5DecrypterProcess(self.__password_generators,             # <<<<<<<<<<<<<<
  *                                          login_inst_chunk)
@@ -6529,8 +6529,8 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))
  */
 
   /* function exit code */
@@ -6547,7 +6547,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_17Md5BatchDecrypter_8run_brute_force(C
   __Pyx_AddTraceback("md5.md5_crack.Md5BatchDecrypter.run_brute_force", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_threads_no);
+  __Pyx_XDECREF(__pyx_v_processes_no);
   __Pyx_XDECREF(__pyx_v_login_inst_chunks);
   __Pyx_XDECREF(__pyx_v_processes);
   __Pyx_XDECREF(__pyx_v_process);
@@ -7648,7 +7648,7 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
  *         login_instances.append(login_inst)
  *         md5_batch_decrypter.add_login_inst(login_inst)             # <<<<<<<<<<<<<<
  * 
- *     add_test_password_settings(md5_batch_decrypter)
+ *     #add_test_password_settings(md5_batch_decrypter)
  */
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_md5_batch_decrypter, __pyx_n_s_add_login_inst); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -7679,14 +7679,14 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "md5/md5_crack.py":222
- *         md5_batch_decrypter.add_login_inst(login_inst)
+  /* "md5/md5_crack.py":223
  * 
- *     add_test_password_settings(md5_batch_decrypter)             # <<<<<<<<<<<<<<
- *     #add_sem_project_password_settings(md5_batch_decrypter)
+ *     #add_test_password_settings(md5_batch_decrypter)
+ *     add_sem_project_password_settings(md5_batch_decrypter)             # <<<<<<<<<<<<<<
  * 
+ *     md5_batch_decrypter.run_brute_force()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_add_test_password_settings); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_add_sem_project_password_setting); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -7700,13 +7700,13 @@ static PyObject *__pyx_pf_3md5_9md5_crack_8main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_md5_batch_decrypter) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_md5_batch_decrypter);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "md5/md5_crack.py":225
- *     #add_sem_project_password_settings(md5_batch_decrypter)
+ *     add_sem_project_password_settings(md5_batch_decrypter)
  * 
  *     md5_batch_decrypter.run_brute_force()             # <<<<<<<<<<<<<<
  *     print_login_instances(filter(lambda x: x.plain_password is not None,
@@ -8457,6 +8457,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_print_login_instances, __pyx_k_print_login_instances, sizeof(__pyx_k_print_login_instances), 0, 0, 1, 1},
   {&__pyx_n_s_process, __pyx_k_process, sizeof(__pyx_k_process), 0, 0, 1, 1},
   {&__pyx_n_s_processes, __pyx_k_processes, sizeof(__pyx_k_processes), 0, 0, 1, 1},
+  {&__pyx_n_s_processes_no, __pyx_k_processes_no, sizeof(__pyx_k_processes_no), 0, 0, 1, 1},
   {&__pyx_n_s_product, __pyx_k_product, sizeof(__pyx_k_product), 0, 0, 1, 1},
   {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
@@ -8483,7 +8484,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_threads_no, __pyx_k_threads_no, sizeof(__pyx_k_threads_no), 0, 0, 1, 1},
   {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
   {&__pyx_n_s_token, __pyx_k_token, sizeof(__pyx_k_token), 0, 0, 1, 1},
   {&__pyx_n_s_tokens, __pyx_k_tokens, sizeof(__pyx_k_tokens), 0, 0, 1, 1},
@@ -8847,10 +8847,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))
  */
-  __pyx_tuple__53 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_threads_no, __pyx_n_s_login_inst_chunks, __pyx_n_s_processes, __pyx_n_s_process, __pyx_n_s_login_inst_chunk); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_tuple__53 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_processes_no, __pyx_n_s_login_inst_chunks, __pyx_n_s_processes, __pyx_n_s_process, __pyx_n_s_login_inst_chunk); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__53);
   __Pyx_GIVEREF(__pyx_tuple__53);
   __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_md5_crack_py, __pyx_n_s_run_brute_force, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 165, __pyx_L1_error)
@@ -9815,8 +9815,8 @@ if (!__Pyx_RefNanny) {
  *         self.__login_instances.append(login_inst)
  * 
  *     def run_brute_force(self):             # <<<<<<<<<<<<<<
- *         threads_no = min(multiprocessing.cpu_count(),
- *                          len(self.__login_instances))
+ *         processes_no = min(multiprocessing.cpu_count(),
+ *                            len(self.__login_instances))
  */
   __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_3md5_9md5_crack_17Md5BatchDecrypter_9run_brute_force, 0, __pyx_n_s_Md5BatchDecrypter_run_brute_forc, NULL, __pyx_n_s_md5_md5_crack, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
