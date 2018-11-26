@@ -190,7 +190,7 @@ def add_test_password_settings(md5_batch_decrypter):
 
 
 def add_sem_project_password_settings(md5_batch_decrypter):
-    gen = WordlistPasswordGenerator('../resources/sk_names_wordlist_orig.txt')
+    gen = WordlistPasswordGenerator('../resources/sk_names_wordlist.txt')
     md5_batch_decrypter.add_password_generator(gen)
 
     gen = StandardPasswordGenerator(4, True, True, True)
@@ -219,8 +219,8 @@ def main():
         login_instances.append(login_inst)
         md5_batch_decrypter.add_login_inst(login_inst)
 
-    add_test_password_settings(md5_batch_decrypter)
-    #add_sem_project_password_settings(md5_batch_decrypter)
+    #add_test_password_settings(md5_batch_decrypter)
+    add_sem_project_password_settings(md5_batch_decrypter)
 
     md5_batch_decrypter.run_brute_force()
     print_login_instances(filter(lambda x: x.plain_password is not None,
